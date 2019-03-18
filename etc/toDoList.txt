@@ -1,0 +1,17 @@
+Carpeta de trabajo
+ 	-X 	Crear los directorios de trabajo 
+ 	-X 	Crear un build para el ant
+
+Clase principal
+	-X Crear un archivo Main
+	-X Crear un metodo toString que devuelva algo
+
+Clase Date
+	-X isDayOfMonthRight
+	-X isMothRight
+	-X nameOfMonth
+	-X whatSeasonIs
+	-X setDay
+	-X setMonth
+	-X setYear
+	-X toString
