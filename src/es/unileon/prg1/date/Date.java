@@ -71,11 +71,13 @@ public class Date{
 		if (month > 1 && month < 12) {
 			isMonthRight = true;
 		}
+
+		return isMonthRight;
 	}
 
 	public String nameOfMonth(int month){
 
-		Strig name = "inicialize";
+		String name = "inicialize";
 
 		switch (month) {
 			case 1:
@@ -186,13 +188,41 @@ public class Date{
 		this._year = year;
 	}
 
+	public boolean isSameDay(int day){
+
+		boolean isSameDay = this._day==day;
+
+		return isSameDay;
+	}
+
+	public boolean isSameMonth(int month){
+
+		boolean isSameMonth = this._month==month;
+		
+		return isSameMonth;
+	}
+
+	public boolean isSameYear(int year){
+
+		boolean isSameYear = this._year==year;
+		
+		return isSameYear;
+	}	
+
+	public boolean isSameDate(){
+
+		boolean isSameDate = (isSameDay() && isSameMonth() && isSameYear());
+		
+		return isSameDate;
+	}
+
 
 	public String toString(){
 
 		StringBuffer salida = new StringBuffer();
 
 		salida.append("(" + this._day + "/" + this._month + "/" + this._year + ") ");
-		salida.append("La estacion en esta fecha es " + whatSeasonIs(_month));
+		salida.append("La estacion en esta fecha es " + whatSeasonIs(_month) + " y el nombre del mes es " + nameOfMonth(_month));
 
 		return salida.toString();
 	}

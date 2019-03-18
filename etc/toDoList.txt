@@ -15,3 +15,7 @@ Clase Date
 	-X setMonth
 	-X setYear
 	-X toString
+	-X isSameDay
+	-X isSameMonth
+	-X isSameYear
+	-X isSameDate
