@@ -211,7 +211,7 @@ public class Date{
 
 	public boolean isSameDate(){
 
-		boolean isSameDate = (isSameDay() && isSameMonth() && isSameYear());
+		boolean isSameDate = (isSameDay(_day) && isSameMonth(_month) && isSameYear(_year));
 		
 		return isSameDate;
 	}
