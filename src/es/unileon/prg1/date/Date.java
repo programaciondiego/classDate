@@ -75,6 +75,7 @@ public class Date{
 		return isMonthRight;
 	}
 
+
 	public String nameOfMonth(int month){
 
 		String name = "inicialize";
@@ -188,12 +189,14 @@ public class Date{
 		this._year = year;
 	}
 
+
 	public boolean isSameDay(int day){
 
 		boolean isSameDay = this._day==day;
 
 		return isSameDay;
 	}
+
 
 	public boolean isSameMonth(int month){
 
@@ -202,6 +205,7 @@ public class Date{
 		return isSameMonth;
 	}
 
+
 	public boolean isSameYear(int year){
 
 		boolean isSameYear = this._year==year;
@@ -209,11 +213,31 @@ public class Date{
 		return isSameYear;
 	}	
 
+
 	public boolean isSameDate(){
 
 		boolean isSameDate = (isSameDay(_day) && isSameMonth(_month) && isSameYear(_year));
 		
 		return isSameDate;
+	}
+
+	public void monthsOfYearLeft(int month){
+
+		System.out.println("Los meses restantes este año son: ");
+
+		for (int i = 12; month <= i ; month++) {
+			System.out.println(nameOfMonth(month));
+		}
+	}
+
+	public void monthsOfYearLeft(){
+
+		System.out.println("Los meses restantes este año son: ");
+		int month = this._month + 1;
+
+		for (int i = 12; month <= i ; month++) {
+			System.out.println(nameOfMonth(month));
+		}
 	}
 
 

@@ -8,6 +8,7 @@ public class MainDate{
 			Date dia;
 			dia = new Date(20, 4, 2019);
 			System.out.println(dia);
+			dia.monthsOfYearLeft();
 		}catch(DateException e){
 
 			System.out.println(e.getMessage());

@@ -18,4 +18,10 @@ Clase Date
 	-X isSameDay
 	-X isSameMonth
 	-X isSameYear
-	-X isSameDate
+	-X isSameDate 
+	-X monthsOfYearLeft
+	daysOfMonthLeft
+	monthsWithSameDays
+	dayOfYear
+	randomDateUntilEqualsToGiven
+	dayOfWeek
