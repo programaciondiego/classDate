@@ -42,7 +42,7 @@ public class Date{
 			case 10: //Next
 			case 12: 
 
-				if (day >= 1 || day <= 31 ) {
+				if (day >= 1 && day <= 31 ) {
 					isDayRight = true;
 				}
 				break;
@@ -51,13 +51,13 @@ public class Date{
 			case 6: //Next
 			case 11: 
 
-				if (day >= 1 || day <= 30 ) {
+				if (day >= 1 && day <= 30 ) {
 					isDayRight = true;
 				}
 				break;
 
 			case 2: 
-				if (day >= 1 || day <= 28) {
+				if (day >= 1 && day <= 28) {
 					isDayRight = true;
 				}
 		}
@@ -129,6 +129,8 @@ public class Date{
 				name = "Diciembre";
 				break;
 		}
+
+
 
 		return name;
 	}
@@ -221,6 +223,7 @@ public class Date{
 		return isSameDate;
 	}
 
+
 	public void monthsOfYearLeft(int month){
 
 		System.out.println("Los meses restantes este año son: ");
@@ -230,6 +233,7 @@ public class Date{
 		}
 	}
 
+
 	public void monthsOfYearLeft(){
 
 		System.out.println("Los meses restantes este año son: ");
@@ -238,6 +242,64 @@ public class Date{
 		for (int i = 12; month <= i ; month++) {
 			System.out.println(nameOfMonth(month));
 		}
+	}
+
+
+	public void daysOfMonthLeft(int day, int month, int year){
+		
+		int daysLeft;
+
+		switch (month) {
+			case 4: //Next
+			case 6: //Next
+			case 11:
+				daysLeft = 30 - day;
+				break;
+
+			case 2:
+				daysLeft = 28 - day;
+				break;
+
+			default:
+				daysLeft = 31 - day;
+		}
+
+		System.out.println();
+		System.out.println("Los dias restantes hasta final de mes son:");
+		System.out.println();
+
+		for (int i = 1 ; i <= daysLeft; i++) {
+			System.out.println("(" + (day + i) + "/" + month + "/" + this._year + ")");
+		}
+	}
+
+
+	public void daysOfMonthLeft(){
+
+		int daysLeft;
+
+		switch (_month) {
+			case 4: //Next
+			case 6: //Next
+			case 11:
+				daysLeft = 30 - _day;
+				break;
+
+			case 2:
+				daysLeft = 28 - _day;
+				break;
+
+			default:
+				daysLeft = 31 - _day;
+		}
+
+		System.out.println();
+		System.out.println("Los dias restantes hasta final de mes son:");
+		System.out.println();
+
+		for (int i = 1 ; i <= daysLeft; i++) {
+			System.out.println("(" + (this._day + i) + "/" + this._month + "/" + this._year + ")");
+		}		
 	}
 
 
