@@ -27,6 +27,30 @@ public class Date{
 
 	}
 
+	//Metodo que cambia el dia del objeto
+	public void setDay(int day){
+
+		if (this.isDayofMonthRight(day, this._month)) {
+		
+			this._day = day;
+		}
+	}
+
+	//Metodo que cambia el mes del objeto
+	public void setMonth(int month){
+
+		if (isMonthRight(month)) {
+			this._month = month;
+		}		
+	}
+
+	//Metodo que cambia el año del objeto
+	public void setYear(int year){
+
+		this._year = year;
+	}
+	
+
 	//Metodo que comprueba que el dia del mes sea correcto
 	private boolean isDayofMonthRight(int day, int month){
 
@@ -64,6 +88,7 @@ public class Date{
 		return isDayRight;
 	}
 
+	//Metodo que comprueba que el mes sea correcto
 	private boolean isMonthRight(int month){
 
 		boolean isMonthRight = false;
@@ -75,7 +100,7 @@ public class Date{
 		return isMonthRight;
 	}
 
-
+	//Metodo que devuelve el nombre del mes que se le pasa
 	public String nameOfMonth(int month){
 
 		String name = "inicialize";
@@ -135,7 +160,7 @@ public class Date{
 		return name;
 	}
 
-
+	//Metodo que comprueba que el dia del mes sea correcto
 	public String whatSeasonIs(int month){
 		
 		String season = "estacion";
@@ -171,51 +196,31 @@ public class Date{
 	}
 
 
-	public void setDay(int day){
-
-		if (this.isDayofMonthRight(day, this._month)) {
-		
-			this._day = day;
-		}
-	}
-
-
-	public void setMonth(int month){
-
-		this._month = month;
-	}
-
-
-	public void setYear(int year){
-
-		this._year = year;
-	}
-
-
-	public boolean isSameDay(int day){
+	//Metodo que comprueba si  
+	public boolean isSameDay(Date date){
 
 		boolean isSameDay = this._day==day;
 
 		return isSameDay;
 	}
 
-
-	public boolean isSameMonth(int month){
+	//Metodo que comprueba si
+	public boolean isSameMonth(Date date){
 
 		boolean isSameMonth = this._month==month;
 		
 		return isSameMonth;
 	}
 
-
-	public boolean isSameYear(int year){
+	//Metodo que comprueba si
+	public boolean isSameYear(Date date){
 
 		boolean isSameYear = this._year==year;
 		
 		return isSameYear;
 	}	
 
-
+	//Metodo que comprueba si
 	public boolean isSameDate(){
 
 		boolean isSameDate = (isSameDay(_day) && isSameMonth(_month) && isSameYear(_year));
@@ -224,16 +229,7 @@ public class Date{
 	}
 
 
-	public void monthsOfYearLeft(int month){
-
-		System.out.println("Los meses restantes este año son: ");
-
-		for (int i = 12; month <= i ; month++) {
-			System.out.println(nameOfMonth(month));
-		}
-	}
-
-
+	//Metodo que imprime el nombre de los meses que faltan desde el mes del objeto sobre el que se ejecuta el metodo hasta diciembre, diciembre incluido
 	public void monthsOfYearLeft(){
 
 		System.out.println("Los meses restantes este año son: ");
@@ -244,36 +240,7 @@ public class Date{
 		}
 	}
 
-
-	public void daysOfMonthLeft(int day, int month, int year){
-		
-		int daysLeft;
-
-		switch (month) {
-			case 4: //Next
-			case 6: //Next
-			case 11:
-				daysLeft = 30 - day;
-				break;
-
-			case 2:
-				daysLeft = 28 - day;
-				break;
-
-			default:
-				daysLeft = 31 - day;
-		}
-
-		System.out.println();
-		System.out.println("Los dias restantes hasta final de mes son:");
-		System.out.println();
-
-		for (int i = 1 ; i <= daysLeft; i++) {
-			System.out.println("(" + (day + i) + "/" + month + "/" + this._year + ")");
-		}
-	}
-
-
+	//Metodo que imprime todas fechas desde el dia del objeto sobre el que se ejecuta el metodo, hasta el final del mes del objeto sobre el que se ejecuta el metodo
 	public void daysOfMonthLeft(){
 
 		int daysLeft;
@@ -302,6 +269,7 @@ public class Date{
 		}		
 	}
 
+	public monthsWithSameDays
 
 	public String toString(){
 

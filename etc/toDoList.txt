@@ -23,5 +23,5 @@ Clase Date
 	-X daysOfMonthLeft
 	monthsWithSameDays
 	dayOfYear
-	randomDateUntilEqualsToGiven
+	randomDateUntilItEqualsToGiven
 	dayOfWeek

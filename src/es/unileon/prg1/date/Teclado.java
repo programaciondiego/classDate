@@ -30,7 +30,7 @@ public class Teclado {
   * Stream para leer lineas de la entrada standar (por defecto el teclado) 
   * 
   * @see BufferedReader
-  * @seeInputStreamReader
+  * @see InputStreamReader
   * @see System.in
   */
   private static final BufferedReader in =
