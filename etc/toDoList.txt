@@ -20,7 +20,7 @@ Clase Date
 	-X isSameYear
 	-X isSameDate 
 	-X monthsOfYearLeft
-	-X daysOfMonthLeft
+	daysOfMonthLeft (Que devuelva un string)
 	monthsWithSameDays
 	dayOfYear
 	randomDateUntilItEqualsToGiven

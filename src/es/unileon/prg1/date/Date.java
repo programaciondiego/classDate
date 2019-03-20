@@ -50,6 +50,20 @@ public class Date{
 		this._year = year;
 	}
 	
+	public int getDay(){
+		int day = this._day;
+		return day;
+	}
+
+	public int getMonth(){
+		int month = this._month;
+		return month;
+	}
+
+	public int getYear(){
+		int year = this._year;
+		return year;
+	}
 
 	//Metodo que comprueba que el dia del mes sea correcto
 	private boolean isDayofMonthRight(int day, int month){
@@ -93,15 +107,23 @@ public class Date{
 
 		boolean isMonthRight = false;
 
-		if (month > 1 && month < 12) {
+		if (month >= 1 && month <= 12) {
 			isMonthRight = true;
 		}
 
 		return isMonthRight;
 	}
 
+	public String nameOfMonth(){
+
+		String salida = "";
+		int month = this._month;
+		salida = nameOfMonth(month);
+		return salida;
+	}
+
 	//Metodo que devuelve el nombre del mes que se le pasa
-	public String nameOfMonth(int month){
+	private String nameOfMonth(int month){
 
 		String name = "inicialize";
 
@@ -161,7 +183,7 @@ public class Date{
 	}
 
 	//Metodo que comprueba que el dia del mes sea correcto
-	public String whatSeasonIs(int month){
+	public String whichSeason(int month){
 		
 		String season = "estacion";
 
@@ -195,55 +217,54 @@ public class Date{
 		return season;
 	}
 
-
-	//Metodo que comprueba si  
+	//Metodo que comprueba si el dia del objeto sobre el que se invoca y el objeto parametro es el mismo
 	public boolean isSameDay(Date date){
 
-		boolean isSameDay = this._day==day;
+		boolean isSameDay = this._day==date.getDay();
 
 		return isSameDay;
 	}
 
-	//Metodo que comprueba si
+	//Metodo que comprueba si el mes del objeto sobre el que se invoca y el objeto parametro es el mismo
 	public boolean isSameMonth(Date date){
 
-		boolean isSameMonth = this._month==month;
+		boolean isSameMonth = this._month==date.getMonth();
 		
 		return isSameMonth;
 	}
 
-	//Metodo que comprueba si
+	//Metodo que comprueba si el año del objeto sobre el que se invoca y el objeto parametro es el mismo
 	public boolean isSameYear(Date date){
 
-		boolean isSameYear = this._year==year;
+		boolean isSameYear = this._year==date.getYear();
 		
 		return isSameYear;
 	}	
 
-	//Metodo que comprueba si
-	public boolean isSameDate(){
+	//Metodo que comprueba si la fecha del objeto sobre el que se invoca y el objeto parametro es el mismo
+	public boolean isSameDate(Date date){
 
-		boolean isSameDate = (isSameDay(_day) && isSameMonth(_month) && isSameYear(_year));
+		boolean isSameDate = (isSameDay(date) && isSameMonth(date) && isSameYear(date));
 		
 		return isSameDate;
 	}
 
-
 	//Metodo que imprime el nombre de los meses que faltan desde el mes del objeto sobre el que se ejecuta el metodo hasta diciembre, diciembre incluido
 	public void monthsOfYearLeft(){
 
-		System.out.println("Los meses restantes este año son: ");
-		int month = this._month + 1;
+		System.out.println("Los meses restantes este anyo son: ");
 
-		for (int i = 12; month <= i ; month++) {
-			System.out.println(nameOfMonth(month));
+		for (int i = this.getMonth(); i <= 12 ; i++) {
+			System.out.println(nameOfMonth(i));
 		}
 	}
 
 	//Metodo que imprime todas fechas desde el dia del objeto sobre el que se ejecuta el metodo, hasta el final del mes del objeto sobre el que se ejecuta el metodo
-	public void daysOfMonthLeft(){
+	public String daysOfMonthLeft(){
 
 		int daysLeft;
+
+		StringBuilder salida = new StringBuilder();
 
 		switch (_month) {
 			case 4: //Next
@@ -260,23 +281,51 @@ public class Date{
 				daysLeft = 31 - _day;
 		}
 
-		System.out.println();
-		System.out.println("Los dias restantes hasta final de mes son:");
-		System.out.println();
+		salida.append("Los dias restantes hasta final de mes son: \n");
 
 		for (int i = 1 ; i <= daysLeft; i++) {
-			System.out.println("(" + (this._day + i) + "/" + this._month + "/" + this._year + ")");
+			salida.append("(" + (this._day + i) + "/" + this._month + "/" + this._year + ") \n");
 		}		
+
+		return salida.toString();
 	}
 
-	public monthsWithSameDays
+	public void monthsWithSameDays(){
+
+		int month = this._month;
+
+		switch (month) {
+			case 1:  //Next
+			case 3:  //Next
+			case 5:  //Next
+			case 7:  //Next
+			case 8:  //Next
+			case 10: //Next
+			case 12: 
+
+			
+				break;
+
+			case 4: //Next
+			case 6: //Next
+			case 11: 
+
+
+				break;
+
+			case 2: 
+		
+			
+		}
+	}
 
 	public String toString(){
 
 		StringBuffer salida = new StringBuffer();
 
 		salida.append("(" + this._day + "/" + this._month + "/" + this._year + ") ");
-		salida.append("La estacion en esta fecha es " + whatSeasonIs(_month) + " y el nombre del mes es " + nameOfMonth(_month));
+		salida.append("La estacion en esta fecha es " + whichSeason(_month) + " y el nombre del mes es " + nameOfMonth());
+		salida.append(daysOfMonthLeft());
 
 		return salida.toString();
 	}
