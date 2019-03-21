@@ -27,6 +27,7 @@ public class Date{
 
 	}
 
+
 	//Metodo que cambia el dia del objeto
 	public void setDay(int day){
 
@@ -65,6 +66,37 @@ public class Date{
 		return year;
 	}
 
+	public int getDaysOfMonth(){
+
+		int month = this._month;
+		int salida = 0;
+		salida = getDaysOfMonth(month);
+		return	salida;	
+	}
+
+	private int getDaysOfMonth(int month){
+
+		int salida = 0;
+
+		switch (month) {
+			case 4: //Next
+			case 6: //Next
+			case 9: //Next
+			case 11: 
+					salida = 30;				
+				break;
+
+			case 2: 
+				salida = 28;
+				break;
+
+			default:
+				salida = 31;
+		}
+
+		return salida;
+	}
+
 	//Metodo que comprueba que el dia del mes sea correcto
 	private boolean isDayofMonthRight(int day, int month){
 
@@ -72,21 +104,9 @@ public class Date{
 
 		switch (month) {
 			
-			case 1:  //Next
-			case 3:  //Next
-			case 5:  //Next
-			case 7:  //Next
-			case 8:  //Next
-			case 10: //Next
-			case 12: 
-
-				if (day >= 1 && day <= 31 ) {
-					isDayRight = true;
-				}
-				break;
-
 			case 4: //Next
 			case 6: //Next
+			case 9: //Next
 			case 11: 
 
 				if (day >= 1 && day <= 30 ) {
@@ -96,6 +116,12 @@ public class Date{
 
 			case 2: 
 				if (day >= 1 && day <= 28) {
+					isDayRight = true;
+				}
+				break;
+
+			default:
+				if (day >= 1 && day <= 31 ) {
 					isDayRight = true;
 				}
 		}
@@ -112,6 +138,14 @@ public class Date{
 		}
 
 		return isMonthRight;
+	}
+
+	public String dateWithFormat(){
+
+		StringBuilder salida = new StringBuilder();
+		salida.append("(" + this.getDay() + "/" + this.getMonth() + "/" + this.getYear() + ")");
+
+		return salida.toString();
 	}
 
 	public String nameOfMonth(){
@@ -249,17 +283,25 @@ public class Date{
 		return isSameDate;
 	}
 
-	//Metodo que imprime el nombre de los meses que faltan desde el mes del objeto sobre el que se ejecuta el metodo hasta diciembre, diciembre incluido
-	public void monthsOfYearLeft(){
+	//Metodo que devuelve el nombre de los meses que faltan desde el mes del objeto sobre el que se ejecuta el metodo hasta diciembre, diciembre incluido
+	public String monthsOfYearLeft(){
 
-		System.out.println("Los meses restantes este anyo son: ");
+		StringBuilder salida = new StringBuilder();
 
-		for (int i = this.getMonth(); i <= 12 ; i++) {
-			System.out.println(nameOfMonth(i));
+		if (this.getMonth() == 12) {
+			salida.append("\nNo hay meses restantes este anyo, Diciembre es el ultimo mes.\n");
+		}else{
+			salida.append("\nLos meses restantes este anyo son: \n");
 		}
+
+		for (int i = this.getMonth() + 1; i <= 12 ; i++) {
+			salida.append(nameOfMonth(i)+"\n");
+		}
+
+		return salida.toString();
 	}
 
-	//Metodo que imprime todas fechas desde el dia del objeto sobre el que se ejecuta el metodo, hasta el final del mes del objeto sobre el que se ejecuta el metodo
+	//Metodo que devuelve todas fechas desde el dia del objeto sobre el que se ejecuta el metodo, hasta el final del mes del objeto sobre el que se ejecuta el metodo
 	public String daysOfMonthLeft(){
 
 		int daysLeft;
@@ -281,7 +323,7 @@ public class Date{
 				daysLeft = 31 - _day;
 		}
 
-		salida.append("Los dias restantes hasta final de mes son: \n");
+		salida.append("\n\nLos dias restantes hasta final de mes son: \n");
 
 		for (int i = 1 ; i <= daysLeft; i++) {
 			salida.append("(" + (this._day + i) + "/" + this._month + "/" + this._year + ") \n");
@@ -290,42 +332,54 @@ public class Date{
 		return salida.toString();
 	}
 
-	public void monthsWithSameDays(){
+	//Metodo que devuelve todos los meses del anyo con el mismo numero de dias que el mes del objeto sobre el que se invoca
+	public String monthsWithSameDays(){
 
 		int month = this._month;
+		StringBuilder salida = new StringBuilder();
 
-		switch (month) {
-			case 1:  //Next
-			case 3:  //Next
-			case 5:  //Next
-			case 7:  //Next
-			case 8:  //Next
-			case 10: //Next
-			case 12: 
+		if (month != 2) {
 
+			salida.append("\nLos meses del año con los mismo dias son:\n");
+
+			for (int i = 1; i <= 12; i++) {
 			
-				break;
-
-			case 4: //Next
-			case 6: //Next
-			case 11: 
-
-
-				break;
-
-			case 2: 
-		
-			
+				if (getDaysOfMonth(month) == getDaysOfMonth(i) && month != i) {
+				
+					salida.append(nameOfMonth(i)+"\n");			
+				}
+			}
+		}else<{
+			salida.append("Febrero es el unico mes con 28 dias")
 		}
+
+		return salida.toString();
+	}
+
+	public int dayOfYear(){
+
+		int month = this.getMonth();
+		int day = this.getDay();
+		int salida = day;
+
+		for (int i = 1; i < month; i++) {
+			
+			salida = salida + getDaysOfMonth(i);
+		}
+
+		return salida;
 	}
 
 	public String toString(){
 
 		StringBuffer salida = new StringBuffer();
 
-		salida.append("(" + this._day + "/" + this._month + "/" + this._year + ") ");
+		salida.append(dateWithFormat());
 		salida.append("La estacion en esta fecha es " + whichSeason(_month) + " y el nombre del mes es " + nameOfMonth());
 		salida.append(daysOfMonthLeft());
+		salida.append(monthsOfYearLeft()); 
+		salida.append(monthsWithSameDays());	
+		salida.append("El dia " + dateWithFormat() + " es el dia " + dayOfYear() + " del anyo");
 
 		return salida.toString();
 	}

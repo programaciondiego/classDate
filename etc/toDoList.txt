@@ -19,9 +19,12 @@ Clase Date
 	-X isSameMonth
 	-X isSameYear
 	-X isSameDate 
+	-X getDay
+	-X getMonth
+	-X getYear
 	-X monthsOfYearLeft
-	daysOfMonthLeft (Que devuelva un string)
-	monthsWithSameDays
-	dayOfYear
+	-X daysOfMonthLeft
+	-X monthsWithSameDays
+	-X dayOfYear
 	randomDateUntilItEqualsToGiven
 	dayOfWeek
