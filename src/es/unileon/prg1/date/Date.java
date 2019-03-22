@@ -349,8 +349,8 @@ public class Date{
 					salida.append(nameOfMonth(i)+"\n");			
 				}
 			}
-		}else<{
-			salida.append("Febrero es el unico mes con 28 dias")
+		}else{
+			salida.append("Febrero es el unico mes con 28 dias");
 		}
 
 		return salida.toString();
@@ -370,12 +370,54 @@ public class Date{
 		return salida;
 	}
 
+	public String dayOfWeek(int dayOfWeek){
+
+		StringBuilder salida = new StringBuilder();
+
+		int day = (dayOfYear()%7)+dayOfWeek;
+
+		switch (dayOfWeek){
+
+			case 1:
+
+				salida.append("Lunes");
+				break;
+			case 2:
+
+				salida.append("Martes");
+				break;
+			case 3:
+
+				salida.append("Miercoles");
+				break;
+			case 4:
+
+				salida.append("Jueves");
+				break;
+			case 5:
+
+				salida.append("Viernes");
+				break;
+			case 6:
+
+				salida.append("Sabado");
+				break;				
+			case 7:
+
+				salida.append("Domingo");
+				break;
+		}		
+
+	return salida.toString();
+	}
+
 	public String toString(){
 
 		StringBuffer salida = new StringBuffer();
 
 		salida.append(dateWithFormat());
 		salida.append("La estacion en esta fecha es " + whichSeason(_month) + " y el nombre del mes es " + nameOfMonth());
+		//salida.append(dayOfWeek());
 		salida.append(daysOfMonthLeft());
 		salida.append(monthsOfYearLeft()); 
 		salida.append(monthsWithSameDays());	
