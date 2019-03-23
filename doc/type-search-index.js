@@ -1,0 +1,1 @@
+typeSearchIndex = [{"p":"es.unileon.prg1.date","l":"Date"},{"p":"es.unileon.prg1.date","l":"DateException"},{"p":"es.unileon.prg1.date","l":"MainDate"},{"p":"es.unileon.prg1.date","l":"Teclado"}]

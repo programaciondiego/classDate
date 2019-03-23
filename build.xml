@@ -1,14 +1,16 @@
 <?xml version="1.0"?>
 
-<project name="Tipos basicos y operadores" basedir="." default="todo">
+<project name="Clase Fecha" basedir="." default="todo">
     <property name="src" value="src"/>
     <property name="classes" value="classes"/>
     <property name="conf" value="etc"/>
+    <property name="doc" value="doc"/>
 
     <property name="paquetes" value="es.unileon.prg1.date"/>
 
     <target name="clean">
       <delete dir="${classes}"/>
+      <delete dir="${doc}"/>
     </target>
 
     <target name="compile" depends="clean">
@@ -24,6 +26,10 @@
               <pathelement path="${classes}"/>
          </classpath>
       </java>
+    </target>
+
+    <target name="documentation" >
+      <javadoc sourcepath="${src}" destdir="${doc}"/>
     </target>
 
     <target name="todo" depends="compile, run"/>

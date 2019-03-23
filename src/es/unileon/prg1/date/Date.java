@@ -217,8 +217,10 @@ public class Date{
 	}
 
 	//Metodo que comprueba que el dia del mes sea correcto
-	public String whichSeason(int month){
+	public String whichSeason(){
 		
+		int month = this.getMonth();
+
 		String season = "estacion";
 
 		switch (month) {
@@ -249,6 +251,54 @@ public class Date{
 		}
 
 		return season;
+	}
+
+	//Metodo que comprueba si el dia del objeto sobre el que se invoca y el objeto parametro es el mismo
+	public boolean isSameDayIf(Date date){
+
+		boolean isSameDay = false;
+
+		if (this._day==date.getDay()){
+			isSameDay = true;			
+		}
+
+		return isSameDay;
+	}
+
+	//Metodo que comprueba si el mes del objeto sobre el que se invoca y el objeto parametro es el mismo
+	public boolean isSameMonthIf(Date date){
+
+		boolean isSameMonth = false;
+
+		if (this._month==date.getMonth()){
+			isSameMonth = true;			
+		}
+		
+		return isSameMonth;
+	}
+
+	//Metodo que comprueba si el año del objeto sobre el que se invoca y el objeto parametro es el mismo
+	public boolean isSameYearIf(Date date){
+
+		boolean isSameYear = false;
+
+		if (this._year==date.getYear()){
+			isSameYear = true;			
+		}
+		
+		return isSameYear;
+	}	
+
+	//Metodo que comprueba si la fecha del objeto sobre el que se invoca y el objeto parametro es el mismo
+	public boolean isSameDateIf(Date date){
+
+		boolean isSameDate = false;
+
+		if ((isSameDay(date) && isSameMonth(date) && isSameYear(date))) {
+			isSameDate = true;			
+		} 
+		
+		return isSameDate;
 	}
 
 	//Metodo que comprueba si el dia del objeto sobre el que se invoca y el objeto parametro es el mismo
@@ -356,6 +406,7 @@ public class Date{
 		return salida.toString();
 	}
 
+	//Metodo que devuelve el dia del anyo del objeto sore el que se ejecuta
 	public int dayOfYear(){
 
 		int month = this.getMonth();
@@ -370,13 +421,27 @@ public class Date{
 		return salida;
 	}
 
-	public String dayOfWeek(int dayOfWeek){
+	//Metodo que devuelve el dia de la semana 
+	public String dayOfWeek(){
 
 		StringBuilder salida = new StringBuilder();
 
-		int day = (dayOfYear()%7)+dayOfWeek;
 
-		switch (dayOfWeek){
+		int dayOfWeek;
+
+			do{
+				System.out.println("\n¿Que dia de la semana era el (1/1/" + this.getYear() +")?");
+				System.out.println("[1] Lunes\n[2] Martes\n[3] Miercoles\n[4] Jueves\n[5] Viernes\n[6] Sabado\n[7] Domingo\n");			
+				dayOfWeek = Teclado.readInteger();
+				if (dayOfWeek < 1 && dayOfWeek > 7) {
+					System.out.println("Introduzca una de las opciones dadas");
+				}
+			}while(!(dayOfWeek >= 1 && dayOfWeek <= 7));
+
+
+		int day = (dayOfYear()%7)+dayOfWeek-1;
+
+		switch (day){
 
 			case 1:
 
@@ -408,7 +473,7 @@ public class Date{
 				break;
 		}		
 
-	return salida.toString();
+		return salida.toString();
 	}
 
 	public String toString(){
@@ -416,12 +481,11 @@ public class Date{
 		StringBuffer salida = new StringBuffer();
 
 		salida.append(dateWithFormat());
-		salida.append("La estacion en esta fecha es " + whichSeason(_month) + " y el nombre del mes es " + nameOfMonth());
-		//salida.append(dayOfWeek());
+		salida.append("La estacion en esta fecha es " + whichSeason() + " y el nombre del mes es " + nameOfMonth());
 		salida.append(daysOfMonthLeft());
 		salida.append(monthsOfYearLeft()); 
 		salida.append(monthsWithSameDays());	
-		salida.append("El dia " + dateWithFormat() + " es el dia " + dayOfYear() + " del anyo");
+		salida.append("El dia " + dateWithFormat() + " es el dia " + dayOfYear() + " del anyo, y es " + dayOfWeek());
 
 		return salida.toString();
 	}
