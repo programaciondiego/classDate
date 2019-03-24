@@ -26,7 +26,8 @@ Clase Date
 	-X daysOfMonthLeft
 	-X monthsWithSameDays
 	-X dayOfYear
-	randomDateUntilItEqualsToGiven
+	-X randomDateUntilItEqualsToGiven
+	-X randomDateUntilItEqualsToGivenWhile
 	-X dayOfWeek
 	-X isSameDayIf
 	-X isSameMonthIf

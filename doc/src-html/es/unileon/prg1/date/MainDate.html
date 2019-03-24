@@ -27,27 +27,25 @@
 <span class="sourceLineNo">019</span><a name="line.19"></a>
 <span class="sourceLineNo">020</span><a name="line.20">                        dia = new Date(day, month, year);</a>
 <span class="sourceLineNo">021</span><a name="line.21">                </a>
-<span class="sourceLineNo">022</span><a name="line.22">                        /*System.out.println("Introduzca otro dia");</a>
+<span class="sourceLineNo">022</span><a name="line.22">                        System.out.println("Introduzca otro dia para comparar");</a>
 <span class="sourceLineNo">023</span><a name="line.23">                        day = Teclado.readInteger();</a>
-<span class="sourceLineNo">024</span><a name="line.24">                        System.out.println("Introduzca otro mes");</a>
+<span class="sourceLineNo">024</span><a name="line.24">                        System.out.println("Introduzca otro mes para comparar");</a>
 <span class="sourceLineNo">025</span><a name="line.25">                        month = Teclado.readInteger();</a>
-<span class="sourceLineNo">026</span><a name="line.26">                        System.out.println("Introduzca otro año");</a>
+<span class="sourceLineNo">026</span><a name="line.26">                        System.out.println("Introduzca otro año para comparar");</a>
 <span class="sourceLineNo">027</span><a name="line.27">                        year = Teclado.readInteger();</a>
 <span class="sourceLineNo">028</span><a name="line.28"></a>
 <span class="sourceLineNo">029</span><a name="line.29">                        otroDia = new Date(day, month, year);</a>
 <span class="sourceLineNo">030</span><a name="line.30"></a>
-<span class="sourceLineNo">031</span><a name="line.31">                        System.out.println("\nMismo dia: " + dia.isSameDay(otroDia) + "\n" + "Mismo mes: " + dia.isSameMonth(otroDia) + "\n" + "Mismo year: " + dia.isSameYear(otroDia) + "\n" + "Misma fecha: " + dia.isSameDate(otroDia));</a>
-<span class="sourceLineNo">032</span><a name="line.32">                        System.out.println(dia);</a>
-<span class="sourceLineNo">033</span><a name="line.33">                */</a>
+<span class="sourceLineNo">031</span><a name="line.31">                        System.out.println("Para los dias " + dia.dateWithFormat() + " y " + otroDia.dateWithFormat());</a>
+<span class="sourceLineNo">032</span><a name="line.32">                        System.out.println("Mismo dia: " + dia.isSameDay(otroDia) + "\n" + "Mismo mes: " + dia.isSameMonth(otroDia) + "\n" + "Mismo year: " + dia.isSameYear(otroDia) + "\n" + "Misma fecha: " + dia.isSameDate(otroDia));</a>
+<span class="sourceLineNo">033</span><a name="line.33">                        System.out.println(dia);</a>
 <span class="sourceLineNo">034</span><a name="line.34"></a>
-<span class="sourceLineNo">035</span><a name="line.35">                        dia.randomDateUntilItEqualsToGivenWhile();</a>
+<span class="sourceLineNo">035</span><a name="line.35">                }catch(DateException e){</a>
 <span class="sourceLineNo">036</span><a name="line.36"></a>
-<span class="sourceLineNo">037</span><a name="line.37">                }catch(DateException e){</a>
-<span class="sourceLineNo">038</span><a name="line.38"></a>
-<span class="sourceLineNo">039</span><a name="line.39">                        System.out.println(e.getMessage());</a>
-<span class="sourceLineNo">040</span><a name="line.40">                }</a>
-<span class="sourceLineNo">041</span><a name="line.41">        }</a>
-<span class="sourceLineNo">042</span><a name="line.42">}</a>
+<span class="sourceLineNo">037</span><a name="line.37">                        System.out.println(e.getMessage());</a>
+<span class="sourceLineNo">038</span><a name="line.38">                }</a>
+<span class="sourceLineNo">039</span><a name="line.39">        }</a>
+<span class="sourceLineNo">040</span><a name="line.40">}</a>
 
 
 

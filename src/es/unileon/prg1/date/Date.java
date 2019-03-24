@@ -1,5 +1,13 @@
 package es.unileon.prg1.date;
 
+	/**
+	* Clase que crea una fecha y contiene metodos para tratar esta fecha
+	*
+	*
+	* @version 1.0
+	* @author Diego Gonzalez Lopez
+	*/
+
 public class Date{
 
 	private int _day;
@@ -140,14 +148,29 @@ public class Date{
 		return isMonthRight;
 	}
 
+
+	/**
+	* Genera la fecha en formato (Dia mes anyo)
+	*
+	*
+	* @return Retorna la fecha del objeto Date en formato dia mes anyo
+	*/ 
 	public String dateWithFormat(){
 
 		StringBuilder salida = new StringBuilder();
-		salida.append("(" + this.getDay() + "/" + this.getMonth() + "/" + this.getYear() + ")");
+		salida.append(this.getDay() + " de " + nameOfMonth(this.getMonth()) + " de " + this.getYear());
 
 		return salida.toString();
 	}
 
+	/**
+	* Llama al metodo privado nameOfMonth y recibe su return
+	*
+	*
+	* @return Retorna un String con el nombre del mes
+	*
+	* @see nameOfMonth
+	*/ 
 	public String nameOfMonth(){
 
 		String salida = "";
@@ -156,7 +179,12 @@ public class Date{
 		return salida;
 	}
 
-	//Metodo que devuelve el nombre del mes que se le pasa
+	/**
+	* Recibe un int con el numero de un mes y devuelve su nombre
+	*
+	*
+	* @return Retorna un String con el nombre del mes
+	*/ 
 	private String nameOfMonth(int month){
 
 		String name = "inicialize";
@@ -216,7 +244,13 @@ public class Date{
 		return name;
 	}
 
-	//Metodo que comprueba que el dia del mes sea correcto
+	
+	/**
+	* Se ejecuta sobre un objeto Date y devuelve la estacion del anyo en ese mes
+	*
+	*
+	* @return Retorna un String con el nombre de la estacion
+	*/ 
 	public String whichSeason(){
 		
 		int month = this.getMonth();
@@ -253,7 +287,12 @@ public class Date{
 		return season;
 	}
 
-	//Metodo que comprueba si el dia del objeto sobre el que se invoca y el objeto parametro es el mismo
+	/**
+	* Recibe un Date y compara el valor de su dia con el del Date sobre el que se ejecuta
+	* Hecho con ifs
+	*
+	* @return Retorna true si son iguales y false si no lo son
+	*/ 
 	public boolean isSameDayIf(Date date){
 
 		boolean isSameDay = false;
@@ -265,7 +304,12 @@ public class Date{
 		return isSameDay;
 	}
 
-	//Metodo que comprueba si el mes del objeto sobre el que se invoca y el objeto parametro es el mismo
+	/**
+	* Recibe un Date y compara el valor de su mes con el del Date sobre el que se ejecuta
+	* Hecho con ifs
+	*
+	* @return Retorna true si son iguales y false si no lo son
+	*/ 
 	public boolean isSameMonthIf(Date date){
 
 		boolean isSameMonth = false;
@@ -277,7 +321,12 @@ public class Date{
 		return isSameMonth;
 	}
 
-	//Metodo que comprueba si el año del objeto sobre el que se invoca y el objeto parametro es el mismo
+	/**
+	* Recibe un Date y compara el valor de su anyo con el del Date sobre el que se ejecuta
+	* Hecho con ifs
+	*
+	* @return Retorna true si son iguales y false si no lo son
+	*/ 
 	public boolean isSameYearIf(Date date){
 
 		boolean isSameYear = false;
@@ -289,7 +338,12 @@ public class Date{
 		return isSameYear;
 	}	
 
-	//Metodo que comprueba si la fecha del objeto sobre el que se invoca y el objeto parametro es el mismo
+	/**
+	* Recibe un Date y compara el valor de su dia, mes y anyo con el del Date sobre el que se ejecuta
+	* Hecho con ifs
+	*
+	* @return Retorna true si son iguales y false si no lo son
+	*/ 
 	public boolean isSameDateIf(Date date){
 
 		boolean isSameDate = false;
@@ -301,7 +355,12 @@ public class Date{
 		return isSameDate;
 	}
 
-	//Metodo que comprueba si el dia del objeto sobre el que se invoca y el objeto parametro es el mismo
+	/**
+	* Recibe un Date y compara el valor de su dia con el del Date sobre el que se ejecuta
+	* Hecho sin ifs
+	*
+	* @return Retorna true si son iguales y false si no lo son
+	*/ 
 	public boolean isSameDay(Date date){
 
 		boolean isSameDay = this._day==date.getDay();
@@ -309,7 +368,12 @@ public class Date{
 		return isSameDay;
 	}
 
-	//Metodo que comprueba si el mes del objeto sobre el que se invoca y el objeto parametro es el mismo
+	/**
+	* Recibe un Date y compara el valor de su mes con el del Date sobre el que se ejecuta
+	* Hecho sin ifs
+	*
+	* @return Retorna true si son iguales y false si no lo son
+	*/ 
 	public boolean isSameMonth(Date date){
 
 		boolean isSameMonth = this._month==date.getMonth();
@@ -317,7 +381,12 @@ public class Date{
 		return isSameMonth;
 	}
 
-	//Metodo que comprueba si el año del objeto sobre el que se invoca y el objeto parametro es el mismo
+	/**
+	* Recibe un Date y compara el valor de su anyo con el del Date sobre el que se ejecuta
+	* Hecho sin ifs
+	*
+	* @return Retorna true si son iguales y false si no lo son
+	*/ 
 	public boolean isSameYear(Date date){
 
 		boolean isSameYear = this._year==date.getYear();
@@ -325,15 +394,25 @@ public class Date{
 		return isSameYear;
 	}	
 
-	//Metodo que comprueba si la fecha del objeto sobre el que se invoca y el objeto parametro es el mismo
+	/**
+	* Recibe un Date y compara el valor de su dia, mes y anyo con el del Date sobre el que se ejecuta
+	* Hecho sin ifs
+	*
+	* @return Retorna true si son iguales y false si no lo son
+	*/ 	//Metodo que comprueba si la fecha del objeto sobre el que se invoca y el objeto parametro es el mismo
 	public boolean isSameDate(Date date){
 
 		boolean isSameDate = (isSameDay(date) && isSameMonth(date) && isSameYear(date));
 		
 		return isSameDate;
 	}
-
-	//Metodo que devuelve el nombre de los meses que faltan desde el mes del objeto sobre el que se ejecuta el metodo hasta diciembre, diciembre incluido
+	
+	/**
+	* Metodo usado para conocer cuantos meses quedan hasta final de anyo, desde el mes del objeto sobre el que se ejecuta
+	*
+	*
+	* @return Retorna un String con los meses que faltan hasta final de anyo
+	*/ 
 	public String monthsOfYearLeft(){
 
 		StringBuilder salida = new StringBuilder();
@@ -350,8 +429,13 @@ public class Date{
 
 		return salida.toString();
 	}
-
-	//Metodo que devuelve todas fechas desde el dia del objeto sobre el que se ejecuta el metodo, hasta el final del mes del objeto sobre el que se ejecuta el metodo
+	
+	/**
+	* Devuelve todas fechas desde el dia del objeto sobre el que se ejecuta el metodo, 
+	* hasta el final del mes del objeto sobre el que se ejecuta el metodo
+	*
+	* @return Retorna un string con las fechas hasta final de mes
+	*/ 
 	public String daysOfMonthLeft(){
 
 		int daysLeft;
@@ -382,7 +466,12 @@ public class Date{
 		return salida.toString();
 	}
 
-	//Metodo que devuelve todos los meses del anyo con el mismo numero de dias que el mes del objeto sobre el que se invoca
+	/**
+	* Devuelve todos los meses del anyo con el mismo numero de dias que el mes del objeto sobre el que se invoca
+	*
+	*
+	* @return Retorna un String con los meses del anyo con el mismo numero de dias
+	*/ 
 	public String monthsWithSameDays(){
 
 		int month = this._month;
@@ -400,13 +489,18 @@ public class Date{
 				}
 			}
 		}else{
-			salida.append("Febrero es el unico mes con 28 dias");
+			salida.append("Febrero es el unico mes con 28 dias\n");
 		}
 
 		return salida.toString();
 	}
-
-	//Metodo que devuelve el dia del anyo del objeto sore el que se ejecuta
+	
+	/**
+	* Devuelve el dia del anyo del objeto sore el que se ejecuta
+	*
+	*
+	* @return Retorna el dia del anyo (entre el 1 y el 365)*
+	*/ 
 	public int dayOfYear(){
 
 		int month = this.getMonth();
@@ -420,8 +514,13 @@ public class Date{
 
 		return salida;
 	}
-
-	//Metodo que devuelve el dia de la semana 
+ 	
+	/**
+	* Se ejecuta sobre un objeto Date y dice que dia de la semana en base al dia de 
+	* la semana que fue el primer dia del anyo
+	*
+	* @return Retorna un string con el nombre del dia de la semana
+	*/ 
 	public String dayOfWeek(){
 
 		StringBuilder salida = new StringBuilder();
@@ -429,17 +528,17 @@ public class Date{
 
 		int dayOfWeek;
 
-			do{
-				System.out.println("\n¿Que dia de la semana era el (1/1/" + this.getYear() +")?");
-				System.out.println("[1] Lunes\n[2] Martes\n[3] Miercoles\n[4] Jueves\n[5] Viernes\n[6] Sabado\n[7] Domingo\n");			
-				dayOfWeek = Teclado.readInteger();
-				if (dayOfWeek < 1 && dayOfWeek > 7) {
-					System.out.println("Introduzca una de las opciones dadas");
-				}
-			}while(!(dayOfWeek >= 1 && dayOfWeek <= 7));
+		do{
+			System.out.println("\n¿Que dia de la semana era el (1/1/" + this.getYear() +")?");
+			System.out.println("[1] Lunes\n[2] Martes\n[3] Miercoles\n[4] Jueves\n[5] Viernes\n[6] Sabado\n[7] Domingo\n");			
+			dayOfWeek = Teclado.readInteger();
+			if (dayOfWeek < 1 || dayOfWeek > 7) {
+				System.out.println("Introduzca una de las opciones dadas");
+			}
+		}while(!(dayOfWeek >= 1 && dayOfWeek <= 7));
 
 
-		int day = (dayOfYear()%7)+dayOfWeek-1;
+		int day = (dayOfYear()%7)+(dayOfWeek-1);
 
 		switch (day){
 
@@ -467,7 +566,7 @@ public class Date{
 
 				salida.append("Sabado");
 				break;				
-			case 7:
+			default:
 
 				salida.append("Domingo");
 				break;
@@ -476,21 +575,59 @@ public class Date{
 		return salida.toString();
 	}
 
+
+	/**
+	* Genera fechas aleatorias hasta que coincide con la del objeto sobre el que se ejecuta el metodo
+	* Hecho con while
+	*
+	* @return Retorna el numero de intentos
+	*/ 
 	public int randomDateUntilItEqualsToGivenWhile(){
 
 		int numberOfAttempts = 0;
 		int randomDay = 0;
+		int randomMonth = 0;
 
-		while(randomDay != dayOfYear()){
+		while(randomDay != getDay() && randomMonth != getMonth()){
 		 	
-			randomDay =  1 + (int)(Math.random()*365);
+			if (randomDay != getDay()){
+				randomDay =  1 + (int)(Math.random()*31);			
+			}
 
-			System.out.println(randomDay);
+			if (randomMonth != getMonth()) {
+				randomMonth =  1 + (int)(Math.random()*12);
+			}
 
 			numberOfAttempts++;
 		} 	
 
-		System.out.println("numer de intentos " + numberOfAttempts);
+		return numberOfAttempts;
+	}
+
+	/**
+	* Genera fechas aleatorias hasta que coincide con la del objeto sobre el que se ejecuta el metodo
+	* Hecho con Do-while
+	*
+	* @return Retorna el numero de intentos
+	*/ 
+	public int randomDateUntilItEqualsToGiven(){
+
+		int numberOfAttempts = 0;
+		int randomDay = 0;
+		int randomMonth = 0;
+
+		do{
+		 	
+			if (randomDay != getDay()){
+				randomDay =  1 + (int)(Math.random()*31);			
+			}
+
+			if (randomMonth != getMonth()) {
+				randomMonth =  1 + (int)(Math.random()*12);
+			}
+
+			numberOfAttempts++;
+		}while(randomDay != getDay() && randomMonth != getMonth());
 
 		return numberOfAttempts;
 	}
@@ -499,12 +636,12 @@ public class Date{
 
 		StringBuffer salida = new StringBuffer();
 
-		salida.append(dateWithFormat());
-		salida.append("La estacion en esta fecha es " + whichSeason() + " y el nombre del mes es " + nameOfMonth());
+		salida.append("El dia " + dateWithFormat() + " es el dia " + dayOfYear() + " del anyo, y es " + dayOfWeek());
+		salida.append("\nLa estacion en esta fecha es " + whichSeason() + " y el nombre del mes es " + nameOfMonth());
 		salida.append(daysOfMonthLeft());
 		salida.append(monthsOfYearLeft()); 
 		salida.append(monthsWithSameDays());	
-		salida.append("El dia " + dateWithFormat() + " es el dia " + dayOfYear() + " del anyo, y es " + dayOfWeek());
+		salida.append("\nSe han necesitado " + randomDateUntilItEqualsToGiven() + " intentos para generar una fecha aleatoria equivalente a la fecha dada");
 
 		return salida.toString();
 	}

@@ -19,20 +19,18 @@ public class MainDate{
 
 			dia = new Date(day, month, year);
 		
-			/*System.out.println("Introduzca otro dia");
+			System.out.println("Introduzca otro dia para comparar");
 			day = Teclado.readInteger();
-			System.out.println("Introduzca otro mes");
+			System.out.println("Introduzca otro mes para comparar");
 			month = Teclado.readInteger();
-			System.out.println("Introduzca otro año");
+			System.out.println("Introduzca otro año para comparar");
 			year = Teclado.readInteger();
 
 			otroDia = new Date(day, month, year);
 
-			System.out.println("\nMismo dia: " + dia.isSameDay(otroDia) + "\n" + "Mismo mes: " + dia.isSameMonth(otroDia) + "\n" + "Mismo year: " + dia.isSameYear(otroDia) + "\n" + "Misma fecha: " + dia.isSameDate(otroDia));
+			System.out.println("Para los dias " + dia.dateWithFormat() + " y " + otroDia.dateWithFormat());
+			System.out.println("Mismo dia: " + dia.isSameDay(otroDia) + "\n" + "Mismo mes: " + dia.isSameMonth(otroDia) + "\n" + "Mismo year: " + dia.isSameYear(otroDia) + "\n" + "Misma fecha: " + dia.isSameDate(otroDia));
 			System.out.println(dia);
-		*/
-
-			dia.randomDateUntilItEqualsToGivenWhile();
 
 		}catch(DateException e){
 

@@ -8,516 +8,653 @@
 <div class="sourceContainer">
 <pre><span class="sourceLineNo">001</span><a name="line.1">package es.unileon.prg1.date;</a>
 <span class="sourceLineNo">002</span><a name="line.2"></a>
-<span class="sourceLineNo">003</span><a name="line.3">public class Date{</a>
-<span class="sourceLineNo">004</span><a name="line.4"></a>
-<span class="sourceLineNo">005</span><a name="line.5">        private int _day;</a>
-<span class="sourceLineNo">006</span><a name="line.6">        private int _month;</a>
-<span class="sourceLineNo">007</span><a name="line.7">        private int _year;</a>
-<span class="sourceLineNo">008</span><a name="line.8"></a>
-<span class="sourceLineNo">009</span><a name="line.9">        public Date (int day, int month, int year) throws Exception{</a>
+<span class="sourceLineNo">003</span><a name="line.3">        /**</a>
+<span class="sourceLineNo">004</span><a name="line.4">        * Clase que crea una fecha y contiene metodos para tratar esta fecha</a>
+<span class="sourceLineNo">005</span><a name="line.5">        *</a>
+<span class="sourceLineNo">006</span><a name="line.6">        *</a>
+<span class="sourceLineNo">007</span><a name="line.7">        * @version 1.0</a>
+<span class="sourceLineNo">008</span><a name="line.8">        * @author Diego Gonzalez Lopez</a>
+<span class="sourceLineNo">009</span><a name="line.9">        */</a>
 <span class="sourceLineNo">010</span><a name="line.10"></a>
-<span class="sourceLineNo">011</span><a name="line.11">                if (isMonthRight(month)) {</a>
+<span class="sourceLineNo">011</span><a name="line.11">public class Date{</a>
 <span class="sourceLineNo">012</span><a name="line.12"></a>
-<span class="sourceLineNo">013</span><a name="line.13">                        this._month = month;</a>
-<span class="sourceLineNo">014</span><a name="line.14">                }else{</a>
-<span class="sourceLineNo">015</span><a name="line.15"></a>
-<span class="sourceLineNo">016</span><a name="line.16">                        throw new DateException("Mes "+month+" no valido, debe ser un mes entre 1 y 12");</a>
-<span class="sourceLineNo">017</span><a name="line.17">                }</a>
+<span class="sourceLineNo">013</span><a name="line.13">        private int _day;</a>
+<span class="sourceLineNo">014</span><a name="line.14">        private int _month;</a>
+<span class="sourceLineNo">015</span><a name="line.15">        private int _year;</a>
+<span class="sourceLineNo">016</span><a name="line.16"></a>
+<span class="sourceLineNo">017</span><a name="line.17">        public Date (int day, int month, int year) throws Exception{</a>
 <span class="sourceLineNo">018</span><a name="line.18"></a>
-<span class="sourceLineNo">019</span><a name="line.19">                if (isDayofMonthRight(day,month)) {</a>
+<span class="sourceLineNo">019</span><a name="line.19">                if (isMonthRight(month)) {</a>
 <span class="sourceLineNo">020</span><a name="line.20"></a>
-<span class="sourceLineNo">021</span><a name="line.21">                        this._day = day;</a>
-<span class="sourceLineNo">022</span><a name="line.22">                        this._year = year;                      </a>
-<span class="sourceLineNo">023</span><a name="line.23">                }else{</a>
-<span class="sourceLineNo">024</span><a name="line.24"></a>
-<span class="sourceLineNo">025</span><a name="line.25">                        throw new DateException("Fecha no valida: (" + day + "/" + month + "/" + year + ")");</a>
-<span class="sourceLineNo">026</span><a name="line.26">                }</a>
-<span class="sourceLineNo">027</span><a name="line.27"></a>
-<span class="sourceLineNo">028</span><a name="line.28">        }</a>
-<span class="sourceLineNo">029</span><a name="line.29"></a>
-<span class="sourceLineNo">030</span><a name="line.30"></a>
-<span class="sourceLineNo">031</span><a name="line.31">        //Metodo que cambia el dia del objeto</a>
-<span class="sourceLineNo">032</span><a name="line.32">        public void setDay(int day){</a>
-<span class="sourceLineNo">033</span><a name="line.33"></a>
-<span class="sourceLineNo">034</span><a name="line.34">                if (this.isDayofMonthRight(day, this._month)) {</a>
-<span class="sourceLineNo">035</span><a name="line.35">                </a>
-<span class="sourceLineNo">036</span><a name="line.36">                        this._day = day;</a>
-<span class="sourceLineNo">037</span><a name="line.37">                }</a>
-<span class="sourceLineNo">038</span><a name="line.38">        }</a>
-<span class="sourceLineNo">039</span><a name="line.39"></a>
-<span class="sourceLineNo">040</span><a name="line.40">        //Metodo que cambia el mes del objeto</a>
-<span class="sourceLineNo">041</span><a name="line.41">        public void setMonth(int month){</a>
-<span class="sourceLineNo">042</span><a name="line.42"></a>
-<span class="sourceLineNo">043</span><a name="line.43">                if (isMonthRight(month)) {</a>
-<span class="sourceLineNo">044</span><a name="line.44">                        this._month = month;</a>
-<span class="sourceLineNo">045</span><a name="line.45">                }               </a>
+<span class="sourceLineNo">021</span><a name="line.21">                        this._month = month;</a>
+<span class="sourceLineNo">022</span><a name="line.22">                }else{</a>
+<span class="sourceLineNo">023</span><a name="line.23"></a>
+<span class="sourceLineNo">024</span><a name="line.24">                        throw new DateException("Mes "+month+" no valido, debe ser un mes entre 1 y 12");</a>
+<span class="sourceLineNo">025</span><a name="line.25">                }</a>
+<span class="sourceLineNo">026</span><a name="line.26"></a>
+<span class="sourceLineNo">027</span><a name="line.27">                if (isDayofMonthRight(day,month)) {</a>
+<span class="sourceLineNo">028</span><a name="line.28"></a>
+<span class="sourceLineNo">029</span><a name="line.29">                        this._day = day;</a>
+<span class="sourceLineNo">030</span><a name="line.30">                        this._year = year;                      </a>
+<span class="sourceLineNo">031</span><a name="line.31">                }else{</a>
+<span class="sourceLineNo">032</span><a name="line.32"></a>
+<span class="sourceLineNo">033</span><a name="line.33">                        throw new DateException("Fecha no valida: (" + day + "/" + month + "/" + year + ")");</a>
+<span class="sourceLineNo">034</span><a name="line.34">                }</a>
+<span class="sourceLineNo">035</span><a name="line.35"></a>
+<span class="sourceLineNo">036</span><a name="line.36">        }</a>
+<span class="sourceLineNo">037</span><a name="line.37"></a>
+<span class="sourceLineNo">038</span><a name="line.38"></a>
+<span class="sourceLineNo">039</span><a name="line.39">        //Metodo que cambia el dia del objeto</a>
+<span class="sourceLineNo">040</span><a name="line.40">        public void setDay(int day){</a>
+<span class="sourceLineNo">041</span><a name="line.41"></a>
+<span class="sourceLineNo">042</span><a name="line.42">                if (this.isDayofMonthRight(day, this._month)) {</a>
+<span class="sourceLineNo">043</span><a name="line.43">                </a>
+<span class="sourceLineNo">044</span><a name="line.44">                        this._day = day;</a>
+<span class="sourceLineNo">045</span><a name="line.45">                }</a>
 <span class="sourceLineNo">046</span><a name="line.46">        }</a>
 <span class="sourceLineNo">047</span><a name="line.47"></a>
-<span class="sourceLineNo">048</span><a name="line.48">        //Metodo que cambia el año del objeto</a>
-<span class="sourceLineNo">049</span><a name="line.49">        public void setYear(int year){</a>
+<span class="sourceLineNo">048</span><a name="line.48">        //Metodo que cambia el mes del objeto</a>
+<span class="sourceLineNo">049</span><a name="line.49">        public void setMonth(int month){</a>
 <span class="sourceLineNo">050</span><a name="line.50"></a>
-<span class="sourceLineNo">051</span><a name="line.51">                this._year = year;</a>
-<span class="sourceLineNo">052</span><a name="line.52">        }</a>
-<span class="sourceLineNo">053</span><a name="line.53">        </a>
-<span class="sourceLineNo">054</span><a name="line.54">        public int getDay(){</a>
-<span class="sourceLineNo">055</span><a name="line.55">                int day = this._day;</a>
-<span class="sourceLineNo">056</span><a name="line.56">                return day;</a>
-<span class="sourceLineNo">057</span><a name="line.57">        }</a>
+<span class="sourceLineNo">051</span><a name="line.51">                if (isMonthRight(month)) {</a>
+<span class="sourceLineNo">052</span><a name="line.52">                        this._month = month;</a>
+<span class="sourceLineNo">053</span><a name="line.53">                }               </a>
+<span class="sourceLineNo">054</span><a name="line.54">        }</a>
+<span class="sourceLineNo">055</span><a name="line.55"></a>
+<span class="sourceLineNo">056</span><a name="line.56">        //Metodo que cambia el año del objeto</a>
+<span class="sourceLineNo">057</span><a name="line.57">        public void setYear(int year){</a>
 <span class="sourceLineNo">058</span><a name="line.58"></a>
-<span class="sourceLineNo">059</span><a name="line.59">        public int getMonth(){</a>
-<span class="sourceLineNo">060</span><a name="line.60">                int month = this._month;</a>
-<span class="sourceLineNo">061</span><a name="line.61">                return month;</a>
-<span class="sourceLineNo">062</span><a name="line.62">        }</a>
-<span class="sourceLineNo">063</span><a name="line.63"></a>
-<span class="sourceLineNo">064</span><a name="line.64">        public int getYear(){</a>
-<span class="sourceLineNo">065</span><a name="line.65">                int year = this._year;</a>
-<span class="sourceLineNo">066</span><a name="line.66">                return year;</a>
-<span class="sourceLineNo">067</span><a name="line.67">        }</a>
-<span class="sourceLineNo">068</span><a name="line.68"></a>
-<span class="sourceLineNo">069</span><a name="line.69">        public int getDaysOfMonth(){</a>
-<span class="sourceLineNo">070</span><a name="line.70"></a>
-<span class="sourceLineNo">071</span><a name="line.71">                int month = this._month;</a>
-<span class="sourceLineNo">072</span><a name="line.72">                int salida = 0;</a>
-<span class="sourceLineNo">073</span><a name="line.73">                salida = getDaysOfMonth(month);</a>
-<span class="sourceLineNo">074</span><a name="line.74">                return  salida; </a>
+<span class="sourceLineNo">059</span><a name="line.59">                this._year = year;</a>
+<span class="sourceLineNo">060</span><a name="line.60">        }</a>
+<span class="sourceLineNo">061</span><a name="line.61">        </a>
+<span class="sourceLineNo">062</span><a name="line.62">        public int getDay(){</a>
+<span class="sourceLineNo">063</span><a name="line.63">                int day = this._day;</a>
+<span class="sourceLineNo">064</span><a name="line.64">                return day;</a>
+<span class="sourceLineNo">065</span><a name="line.65">        }</a>
+<span class="sourceLineNo">066</span><a name="line.66"></a>
+<span class="sourceLineNo">067</span><a name="line.67">        public int getMonth(){</a>
+<span class="sourceLineNo">068</span><a name="line.68">                int month = this._month;</a>
+<span class="sourceLineNo">069</span><a name="line.69">                return month;</a>
+<span class="sourceLineNo">070</span><a name="line.70">        }</a>
+<span class="sourceLineNo">071</span><a name="line.71"></a>
+<span class="sourceLineNo">072</span><a name="line.72">        public int getYear(){</a>
+<span class="sourceLineNo">073</span><a name="line.73">                int year = this._year;</a>
+<span class="sourceLineNo">074</span><a name="line.74">                return year;</a>
 <span class="sourceLineNo">075</span><a name="line.75">        }</a>
 <span class="sourceLineNo">076</span><a name="line.76"></a>
-<span class="sourceLineNo">077</span><a name="line.77">        private int getDaysOfMonth(int month){</a>
+<span class="sourceLineNo">077</span><a name="line.77">        public int getDaysOfMonth(){</a>
 <span class="sourceLineNo">078</span><a name="line.78"></a>
-<span class="sourceLineNo">079</span><a name="line.79">                int salida = 0;</a>
-<span class="sourceLineNo">080</span><a name="line.80"></a>
-<span class="sourceLineNo">081</span><a name="line.81">                switch (month) {</a>
-<span class="sourceLineNo">082</span><a name="line.82">                        case 4: //Next</a>
-<span class="sourceLineNo">083</span><a name="line.83">                        case 6: //Next</a>
-<span class="sourceLineNo">084</span><a name="line.84">                        case 9: //Next</a>
-<span class="sourceLineNo">085</span><a name="line.85">                        case 11: </a>
-<span class="sourceLineNo">086</span><a name="line.86">                                        salida = 30;                            </a>
-<span class="sourceLineNo">087</span><a name="line.87">                                break;</a>
+<span class="sourceLineNo">079</span><a name="line.79">                int month = this._month;</a>
+<span class="sourceLineNo">080</span><a name="line.80">                int salida = 0;</a>
+<span class="sourceLineNo">081</span><a name="line.81">                salida = getDaysOfMonth(month);</a>
+<span class="sourceLineNo">082</span><a name="line.82">                return  salida; </a>
+<span class="sourceLineNo">083</span><a name="line.83">        }</a>
+<span class="sourceLineNo">084</span><a name="line.84"></a>
+<span class="sourceLineNo">085</span><a name="line.85">        private int getDaysOfMonth(int month){</a>
+<span class="sourceLineNo">086</span><a name="line.86"></a>
+<span class="sourceLineNo">087</span><a name="line.87">                int salida = 0;</a>
 <span class="sourceLineNo">088</span><a name="line.88"></a>
-<span class="sourceLineNo">089</span><a name="line.89">                        case 2: </a>
-<span class="sourceLineNo">090</span><a name="line.90">                                salida = 28;</a>
-<span class="sourceLineNo">091</span><a name="line.91">                                break;</a>
-<span class="sourceLineNo">092</span><a name="line.92"></a>
-<span class="sourceLineNo">093</span><a name="line.93">                        default:</a>
-<span class="sourceLineNo">094</span><a name="line.94">                                salida = 31;</a>
-<span class="sourceLineNo">095</span><a name="line.95">                }</a>
+<span class="sourceLineNo">089</span><a name="line.89">                switch (month) {</a>
+<span class="sourceLineNo">090</span><a name="line.90">                        case 4: //Next</a>
+<span class="sourceLineNo">091</span><a name="line.91">                        case 6: //Next</a>
+<span class="sourceLineNo">092</span><a name="line.92">                        case 9: //Next</a>
+<span class="sourceLineNo">093</span><a name="line.93">                        case 11: </a>
+<span class="sourceLineNo">094</span><a name="line.94">                                        salida = 30;                            </a>
+<span class="sourceLineNo">095</span><a name="line.95">                                break;</a>
 <span class="sourceLineNo">096</span><a name="line.96"></a>
-<span class="sourceLineNo">097</span><a name="line.97">                return salida;</a>
-<span class="sourceLineNo">098</span><a name="line.98">        }</a>
-<span class="sourceLineNo">099</span><a name="line.99"></a>
-<span class="sourceLineNo">100</span><a name="line.100">        //Metodo que comprueba que el dia del mes sea correcto</a>
-<span class="sourceLineNo">101</span><a name="line.101">        private boolean isDayofMonthRight(int day, int month){</a>
-<span class="sourceLineNo">102</span><a name="line.102"></a>
-<span class="sourceLineNo">103</span><a name="line.103">                boolean isDayRight = false;</a>
+<span class="sourceLineNo">097</span><a name="line.97">                        case 2: </a>
+<span class="sourceLineNo">098</span><a name="line.98">                                salida = 28;</a>
+<span class="sourceLineNo">099</span><a name="line.99">                                break;</a>
+<span class="sourceLineNo">100</span><a name="line.100"></a>
+<span class="sourceLineNo">101</span><a name="line.101">                        default:</a>
+<span class="sourceLineNo">102</span><a name="line.102">                                salida = 31;</a>
+<span class="sourceLineNo">103</span><a name="line.103">                }</a>
 <span class="sourceLineNo">104</span><a name="line.104"></a>
-<span class="sourceLineNo">105</span><a name="line.105">                switch (month) {</a>
-<span class="sourceLineNo">106</span><a name="line.106">                        </a>
-<span class="sourceLineNo">107</span><a name="line.107">                        case 4: //Next</a>
-<span class="sourceLineNo">108</span><a name="line.108">                        case 6: //Next</a>
-<span class="sourceLineNo">109</span><a name="line.109">                        case 9: //Next</a>
-<span class="sourceLineNo">110</span><a name="line.110">                        case 11: </a>
-<span class="sourceLineNo">111</span><a name="line.111"></a>
-<span class="sourceLineNo">112</span><a name="line.112">                                if (day &gt;= 1 &amp;&amp; day &lt;= 30 ) {</a>
-<span class="sourceLineNo">113</span><a name="line.113">                                        isDayRight = true;</a>
-<span class="sourceLineNo">114</span><a name="line.114">                                }</a>
-<span class="sourceLineNo">115</span><a name="line.115">                                break;</a>
-<span class="sourceLineNo">116</span><a name="line.116"></a>
-<span class="sourceLineNo">117</span><a name="line.117">                        case 2: </a>
-<span class="sourceLineNo">118</span><a name="line.118">                                if (day &gt;= 1 &amp;&amp; day &lt;= 28) {</a>
-<span class="sourceLineNo">119</span><a name="line.119">                                        isDayRight = true;</a>
-<span class="sourceLineNo">120</span><a name="line.120">                                }</a>
-<span class="sourceLineNo">121</span><a name="line.121">                                break;</a>
-<span class="sourceLineNo">122</span><a name="line.122"></a>
-<span class="sourceLineNo">123</span><a name="line.123">                        default:</a>
-<span class="sourceLineNo">124</span><a name="line.124">                                if (day &gt;= 1 &amp;&amp; day &lt;= 31 ) {</a>
-<span class="sourceLineNo">125</span><a name="line.125">                                        isDayRight = true;</a>
-<span class="sourceLineNo">126</span><a name="line.126">                                }</a>
-<span class="sourceLineNo">127</span><a name="line.127">                }</a>
-<span class="sourceLineNo">128</span><a name="line.128">                return isDayRight;</a>
-<span class="sourceLineNo">129</span><a name="line.129">        }</a>
+<span class="sourceLineNo">105</span><a name="line.105">                return salida;</a>
+<span class="sourceLineNo">106</span><a name="line.106">        }</a>
+<span class="sourceLineNo">107</span><a name="line.107"></a>
+<span class="sourceLineNo">108</span><a name="line.108">        //Metodo que comprueba que el dia del mes sea correcto</a>
+<span class="sourceLineNo">109</span><a name="line.109">        private boolean isDayofMonthRight(int day, int month){</a>
+<span class="sourceLineNo">110</span><a name="line.110"></a>
+<span class="sourceLineNo">111</span><a name="line.111">                boolean isDayRight = false;</a>
+<span class="sourceLineNo">112</span><a name="line.112"></a>
+<span class="sourceLineNo">113</span><a name="line.113">                switch (month) {</a>
+<span class="sourceLineNo">114</span><a name="line.114">                        </a>
+<span class="sourceLineNo">115</span><a name="line.115">                        case 4: //Next</a>
+<span class="sourceLineNo">116</span><a name="line.116">                        case 6: //Next</a>
+<span class="sourceLineNo">117</span><a name="line.117">                        case 9: //Next</a>
+<span class="sourceLineNo">118</span><a name="line.118">                        case 11: </a>
+<span class="sourceLineNo">119</span><a name="line.119"></a>
+<span class="sourceLineNo">120</span><a name="line.120">                                if (day &gt;= 1 &amp;&amp; day &lt;= 30 ) {</a>
+<span class="sourceLineNo">121</span><a name="line.121">                                        isDayRight = true;</a>
+<span class="sourceLineNo">122</span><a name="line.122">                                }</a>
+<span class="sourceLineNo">123</span><a name="line.123">                                break;</a>
+<span class="sourceLineNo">124</span><a name="line.124"></a>
+<span class="sourceLineNo">125</span><a name="line.125">                        case 2: </a>
+<span class="sourceLineNo">126</span><a name="line.126">                                if (day &gt;= 1 &amp;&amp; day &lt;= 28) {</a>
+<span class="sourceLineNo">127</span><a name="line.127">                                        isDayRight = true;</a>
+<span class="sourceLineNo">128</span><a name="line.128">                                }</a>
+<span class="sourceLineNo">129</span><a name="line.129">                                break;</a>
 <span class="sourceLineNo">130</span><a name="line.130"></a>
-<span class="sourceLineNo">131</span><a name="line.131">        //Metodo que comprueba que el mes sea correcto</a>
-<span class="sourceLineNo">132</span><a name="line.132">        private boolean isMonthRight(int month){</a>
-<span class="sourceLineNo">133</span><a name="line.133"></a>
-<span class="sourceLineNo">134</span><a name="line.134">                boolean isMonthRight = false;</a>
-<span class="sourceLineNo">135</span><a name="line.135"></a>
-<span class="sourceLineNo">136</span><a name="line.136">                if (month &gt;= 1 &amp;&amp; month &lt;= 12) {</a>
-<span class="sourceLineNo">137</span><a name="line.137">                        isMonthRight = true;</a>
-<span class="sourceLineNo">138</span><a name="line.138">                }</a>
-<span class="sourceLineNo">139</span><a name="line.139"></a>
-<span class="sourceLineNo">140</span><a name="line.140">                return isMonthRight;</a>
-<span class="sourceLineNo">141</span><a name="line.141">        }</a>
-<span class="sourceLineNo">142</span><a name="line.142"></a>
-<span class="sourceLineNo">143</span><a name="line.143">        public String dateWithFormat(){</a>
-<span class="sourceLineNo">144</span><a name="line.144"></a>
-<span class="sourceLineNo">145</span><a name="line.145">                StringBuilder salida = new StringBuilder();</a>
-<span class="sourceLineNo">146</span><a name="line.146">                salida.append("(" + this.getDay() + "/" + this.getMonth() + "/" + this.getYear() + ")");</a>
+<span class="sourceLineNo">131</span><a name="line.131">                        default:</a>
+<span class="sourceLineNo">132</span><a name="line.132">                                if (day &gt;= 1 &amp;&amp; day &lt;= 31 ) {</a>
+<span class="sourceLineNo">133</span><a name="line.133">                                        isDayRight = true;</a>
+<span class="sourceLineNo">134</span><a name="line.134">                                }</a>
+<span class="sourceLineNo">135</span><a name="line.135">                }</a>
+<span class="sourceLineNo">136</span><a name="line.136">                return isDayRight;</a>
+<span class="sourceLineNo">137</span><a name="line.137">        }</a>
+<span class="sourceLineNo">138</span><a name="line.138"></a>
+<span class="sourceLineNo">139</span><a name="line.139">        //Metodo que comprueba que el mes sea correcto</a>
+<span class="sourceLineNo">140</span><a name="line.140">        private boolean isMonthRight(int month){</a>
+<span class="sourceLineNo">141</span><a name="line.141"></a>
+<span class="sourceLineNo">142</span><a name="line.142">                boolean isMonthRight = false;</a>
+<span class="sourceLineNo">143</span><a name="line.143"></a>
+<span class="sourceLineNo">144</span><a name="line.144">                if (month &gt;= 1 &amp;&amp; month &lt;= 12) {</a>
+<span class="sourceLineNo">145</span><a name="line.145">                        isMonthRight = true;</a>
+<span class="sourceLineNo">146</span><a name="line.146">                }</a>
 <span class="sourceLineNo">147</span><a name="line.147"></a>
-<span class="sourceLineNo">148</span><a name="line.148">                return salida.toString();</a>
+<span class="sourceLineNo">148</span><a name="line.148">                return isMonthRight;</a>
 <span class="sourceLineNo">149</span><a name="line.149">        }</a>
 <span class="sourceLineNo">150</span><a name="line.150"></a>
-<span class="sourceLineNo">151</span><a name="line.151">        public String nameOfMonth(){</a>
-<span class="sourceLineNo">152</span><a name="line.152"></a>
-<span class="sourceLineNo">153</span><a name="line.153">                String salida = "";</a>
-<span class="sourceLineNo">154</span><a name="line.154">                int month = this._month;</a>
-<span class="sourceLineNo">155</span><a name="line.155">                salida = nameOfMonth(month);</a>
-<span class="sourceLineNo">156</span><a name="line.156">                return salida;</a>
-<span class="sourceLineNo">157</span><a name="line.157">        }</a>
-<span class="sourceLineNo">158</span><a name="line.158"></a>
-<span class="sourceLineNo">159</span><a name="line.159">        //Metodo que devuelve el nombre del mes que se le pasa</a>
-<span class="sourceLineNo">160</span><a name="line.160">        private String nameOfMonth(int month){</a>
-<span class="sourceLineNo">161</span><a name="line.161"></a>
-<span class="sourceLineNo">162</span><a name="line.162">                String name = "inicialize";</a>
-<span class="sourceLineNo">163</span><a name="line.163"></a>
-<span class="sourceLineNo">164</span><a name="line.164">                switch (month) {</a>
-<span class="sourceLineNo">165</span><a name="line.165">                        case 1:</a>
-<span class="sourceLineNo">166</span><a name="line.166">                                name = "Enero";</a>
-<span class="sourceLineNo">167</span><a name="line.167">                                break;</a>
-<span class="sourceLineNo">168</span><a name="line.168"></a>
-<span class="sourceLineNo">169</span><a name="line.169">                        case 2:</a>
-<span class="sourceLineNo">170</span><a name="line.170">                                name = "Febrero";</a>
-<span class="sourceLineNo">171</span><a name="line.171">                                break;</a>
-<span class="sourceLineNo">172</span><a name="line.172"></a>
-<span class="sourceLineNo">173</span><a name="line.173">                        case 3:</a>
-<span class="sourceLineNo">174</span><a name="line.174">                                name = "Marzo";</a>
-<span class="sourceLineNo">175</span><a name="line.175">                                break;</a>
-<span class="sourceLineNo">176</span><a name="line.176"></a>
-<span class="sourceLineNo">177</span><a name="line.177">                        case 4:</a>
-<span class="sourceLineNo">178</span><a name="line.178">                                name = "Abril";</a>
-<span class="sourceLineNo">179</span><a name="line.179">                                break;</a>
-<span class="sourceLineNo">180</span><a name="line.180"></a>
-<span class="sourceLineNo">181</span><a name="line.181">                        case 5:</a>
-<span class="sourceLineNo">182</span><a name="line.182">                                name = "Mayo";</a>
-<span class="sourceLineNo">183</span><a name="line.183">                                break;</a>
-<span class="sourceLineNo">184</span><a name="line.184"></a>
-<span class="sourceLineNo">185</span><a name="line.185">                        case 6:</a>
-<span class="sourceLineNo">186</span><a name="line.186">                                name = "Junio";</a>
-<span class="sourceLineNo">187</span><a name="line.187">                                break;</a>
-<span class="sourceLineNo">188</span><a name="line.188"></a>
-<span class="sourceLineNo">189</span><a name="line.189">                        case 7:</a>
-<span class="sourceLineNo">190</span><a name="line.190">                                name = "Julio";</a>
-<span class="sourceLineNo">191</span><a name="line.191">                                break;</a>
-<span class="sourceLineNo">192</span><a name="line.192"></a>
-<span class="sourceLineNo">193</span><a name="line.193">                        case 8:</a>
-<span class="sourceLineNo">194</span><a name="line.194">                                name = "Agosto";</a>
+<span class="sourceLineNo">151</span><a name="line.151"></a>
+<span class="sourceLineNo">152</span><a name="line.152">        /**</a>
+<span class="sourceLineNo">153</span><a name="line.153">        * Genera la fecha en formato (Dia mes anyo)</a>
+<span class="sourceLineNo">154</span><a name="line.154">        *</a>
+<span class="sourceLineNo">155</span><a name="line.155">        *</a>
+<span class="sourceLineNo">156</span><a name="line.156">        * @return Retorna la fecha del objeto Date en formato dia mes anyo</a>
+<span class="sourceLineNo">157</span><a name="line.157">        */ </a>
+<span class="sourceLineNo">158</span><a name="line.158">        public String dateWithFormat(){</a>
+<span class="sourceLineNo">159</span><a name="line.159"></a>
+<span class="sourceLineNo">160</span><a name="line.160">                StringBuilder salida = new StringBuilder();</a>
+<span class="sourceLineNo">161</span><a name="line.161">                salida.append(this.getDay() + " de " + nameOfMonth(this.getMonth()) + " de " + this.getYear());</a>
+<span class="sourceLineNo">162</span><a name="line.162"></a>
+<span class="sourceLineNo">163</span><a name="line.163">                return salida.toString();</a>
+<span class="sourceLineNo">164</span><a name="line.164">        }</a>
+<span class="sourceLineNo">165</span><a name="line.165"></a>
+<span class="sourceLineNo">166</span><a name="line.166">        /**</a>
+<span class="sourceLineNo">167</span><a name="line.167">        * Llama al metodo privado nameOfMonth y recibe su return</a>
+<span class="sourceLineNo">168</span><a name="line.168">        *</a>
+<span class="sourceLineNo">169</span><a name="line.169">        *</a>
+<span class="sourceLineNo">170</span><a name="line.170">        * @return Retorna un String con el nombre del mes</a>
+<span class="sourceLineNo">171</span><a name="line.171">        *</a>
+<span class="sourceLineNo">172</span><a name="line.172">        * @see nameOfMonth</a>
+<span class="sourceLineNo">173</span><a name="line.173">        */ </a>
+<span class="sourceLineNo">174</span><a name="line.174">        public String nameOfMonth(){</a>
+<span class="sourceLineNo">175</span><a name="line.175"></a>
+<span class="sourceLineNo">176</span><a name="line.176">                String salida = "";</a>
+<span class="sourceLineNo">177</span><a name="line.177">                int month = this._month;</a>
+<span class="sourceLineNo">178</span><a name="line.178">                salida = nameOfMonth(month);</a>
+<span class="sourceLineNo">179</span><a name="line.179">                return salida;</a>
+<span class="sourceLineNo">180</span><a name="line.180">        }</a>
+<span class="sourceLineNo">181</span><a name="line.181"></a>
+<span class="sourceLineNo">182</span><a name="line.182">        /**</a>
+<span class="sourceLineNo">183</span><a name="line.183">        * Recibe un int con el numero de un mes y devuelve su nombre</a>
+<span class="sourceLineNo">184</span><a name="line.184">        *</a>
+<span class="sourceLineNo">185</span><a name="line.185">        *</a>
+<span class="sourceLineNo">186</span><a name="line.186">        * @return Retorna un String con el nombre del mes</a>
+<span class="sourceLineNo">187</span><a name="line.187">        */ </a>
+<span class="sourceLineNo">188</span><a name="line.188">        private String nameOfMonth(int month){</a>
+<span class="sourceLineNo">189</span><a name="line.189"></a>
+<span class="sourceLineNo">190</span><a name="line.190">                String name = "inicialize";</a>
+<span class="sourceLineNo">191</span><a name="line.191"></a>
+<span class="sourceLineNo">192</span><a name="line.192">                switch (month) {</a>
+<span class="sourceLineNo">193</span><a name="line.193">                        case 1:</a>
+<span class="sourceLineNo">194</span><a name="line.194">                                name = "Enero";</a>
 <span class="sourceLineNo">195</span><a name="line.195">                                break;</a>
 <span class="sourceLineNo">196</span><a name="line.196"></a>
-<span class="sourceLineNo">197</span><a name="line.197">                        case 9:</a>
-<span class="sourceLineNo">198</span><a name="line.198">                                name = "Septiembre";</a>
+<span class="sourceLineNo">197</span><a name="line.197">                        case 2:</a>
+<span class="sourceLineNo">198</span><a name="line.198">                                name = "Febrero";</a>
 <span class="sourceLineNo">199</span><a name="line.199">                                break;</a>
 <span class="sourceLineNo">200</span><a name="line.200"></a>
-<span class="sourceLineNo">201</span><a name="line.201">                        case 10:</a>
-<span class="sourceLineNo">202</span><a name="line.202">                                name = "Octubre";</a>
+<span class="sourceLineNo">201</span><a name="line.201">                        case 3:</a>
+<span class="sourceLineNo">202</span><a name="line.202">                                name = "Marzo";</a>
 <span class="sourceLineNo">203</span><a name="line.203">                                break;</a>
 <span class="sourceLineNo">204</span><a name="line.204"></a>
-<span class="sourceLineNo">205</span><a name="line.205">                        case 11:</a>
-<span class="sourceLineNo">206</span><a name="line.206">                                name = "Noviembre";</a>
+<span class="sourceLineNo">205</span><a name="line.205">                        case 4:</a>
+<span class="sourceLineNo">206</span><a name="line.206">                                name = "Abril";</a>
 <span class="sourceLineNo">207</span><a name="line.207">                                break;</a>
 <span class="sourceLineNo">208</span><a name="line.208"></a>
-<span class="sourceLineNo">209</span><a name="line.209">                        case 12:</a>
-<span class="sourceLineNo">210</span><a name="line.210">                                name = "Diciembre";</a>
+<span class="sourceLineNo">209</span><a name="line.209">                        case 5:</a>
+<span class="sourceLineNo">210</span><a name="line.210">                                name = "Mayo";</a>
 <span class="sourceLineNo">211</span><a name="line.211">                                break;</a>
-<span class="sourceLineNo">212</span><a name="line.212">                }</a>
-<span class="sourceLineNo">213</span><a name="line.213"></a>
-<span class="sourceLineNo">214</span><a name="line.214"></a>
-<span class="sourceLineNo">215</span><a name="line.215"></a>
-<span class="sourceLineNo">216</span><a name="line.216">                return name;</a>
-<span class="sourceLineNo">217</span><a name="line.217">        }</a>
-<span class="sourceLineNo">218</span><a name="line.218"></a>
-<span class="sourceLineNo">219</span><a name="line.219">        //Metodo que comprueba que el dia del mes sea correcto</a>
-<span class="sourceLineNo">220</span><a name="line.220">        public String whichSeason(){</a>
-<span class="sourceLineNo">221</span><a name="line.221">                </a>
-<span class="sourceLineNo">222</span><a name="line.222">                int month = this.getMonth();</a>
-<span class="sourceLineNo">223</span><a name="line.223"></a>
-<span class="sourceLineNo">224</span><a name="line.224">                String season = "estacion";</a>
-<span class="sourceLineNo">225</span><a name="line.225"></a>
-<span class="sourceLineNo">226</span><a name="line.226">                switch (month) {</a>
-<span class="sourceLineNo">227</span><a name="line.227"></a>
-<span class="sourceLineNo">228</span><a name="line.228">                        case 4: //Next</a>
-<span class="sourceLineNo">229</span><a name="line.229">                        case 5: //Next</a>
-<span class="sourceLineNo">230</span><a name="line.230">                        case 6:</a>
-<span class="sourceLineNo">231</span><a name="line.231">                                season = "Primavera";</a>
-<span class="sourceLineNo">232</span><a name="line.232">                                break;</a>
-<span class="sourceLineNo">233</span><a name="line.233"></a>
-<span class="sourceLineNo">234</span><a name="line.234">                        case 7: //Next</a>
-<span class="sourceLineNo">235</span><a name="line.235">                        case 8: //Next</a>
-<span class="sourceLineNo">236</span><a name="line.236">                        case 9:</a>
-<span class="sourceLineNo">237</span><a name="line.237">                                season = "Verano";</a>
-<span class="sourceLineNo">238</span><a name="line.238">                                break;</a>
-<span class="sourceLineNo">239</span><a name="line.239"></a>
-<span class="sourceLineNo">240</span><a name="line.240">                        case 10: //Next</a>
-<span class="sourceLineNo">241</span><a name="line.241">                        case 11: //Next</a>
-<span class="sourceLineNo">242</span><a name="line.242">                        case 12:</a>
-<span class="sourceLineNo">243</span><a name="line.243">                                season = "Otoño";</a>
-<span class="sourceLineNo">244</span><a name="line.244">                                break;</a>
-<span class="sourceLineNo">245</span><a name="line.245"></a>
-<span class="sourceLineNo">246</span><a name="line.246">                        case 1: //Next</a>
-<span class="sourceLineNo">247</span><a name="line.247">                        case 2: //Next</a>
-<span class="sourceLineNo">248</span><a name="line.248">                        case 3:</a>
-<span class="sourceLineNo">249</span><a name="line.249">                                season = "Invierno";</a>
-<span class="sourceLineNo">250</span><a name="line.250">                                break;</a>
-<span class="sourceLineNo">251</span><a name="line.251">                }</a>
-<span class="sourceLineNo">252</span><a name="line.252"></a>
-<span class="sourceLineNo">253</span><a name="line.253">                return season;</a>
-<span class="sourceLineNo">254</span><a name="line.254">        }</a>
-<span class="sourceLineNo">255</span><a name="line.255"></a>
-<span class="sourceLineNo">256</span><a name="line.256">        //Metodo que comprueba si el dia del objeto sobre el que se invoca y el objeto parametro es el mismo</a>
-<span class="sourceLineNo">257</span><a name="line.257">        public boolean isSameDayIf(Date date){</a>
-<span class="sourceLineNo">258</span><a name="line.258"></a>
-<span class="sourceLineNo">259</span><a name="line.259">                boolean isSameDay = false;</a>
-<span class="sourceLineNo">260</span><a name="line.260"></a>
-<span class="sourceLineNo">261</span><a name="line.261">                if (this._day==date.getDay()){</a>
-<span class="sourceLineNo">262</span><a name="line.262">                        isSameDay = true;                       </a>
-<span class="sourceLineNo">263</span><a name="line.263">                }</a>
-<span class="sourceLineNo">264</span><a name="line.264"></a>
-<span class="sourceLineNo">265</span><a name="line.265">                return isSameDay;</a>
-<span class="sourceLineNo">266</span><a name="line.266">        }</a>
+<span class="sourceLineNo">212</span><a name="line.212"></a>
+<span class="sourceLineNo">213</span><a name="line.213">                        case 6:</a>
+<span class="sourceLineNo">214</span><a name="line.214">                                name = "Junio";</a>
+<span class="sourceLineNo">215</span><a name="line.215">                                break;</a>
+<span class="sourceLineNo">216</span><a name="line.216"></a>
+<span class="sourceLineNo">217</span><a name="line.217">                        case 7:</a>
+<span class="sourceLineNo">218</span><a name="line.218">                                name = "Julio";</a>
+<span class="sourceLineNo">219</span><a name="line.219">                                break;</a>
+<span class="sourceLineNo">220</span><a name="line.220"></a>
+<span class="sourceLineNo">221</span><a name="line.221">                        case 8:</a>
+<span class="sourceLineNo">222</span><a name="line.222">                                name = "Agosto";</a>
+<span class="sourceLineNo">223</span><a name="line.223">                                break;</a>
+<span class="sourceLineNo">224</span><a name="line.224"></a>
+<span class="sourceLineNo">225</span><a name="line.225">                        case 9:</a>
+<span class="sourceLineNo">226</span><a name="line.226">                                name = "Septiembre";</a>
+<span class="sourceLineNo">227</span><a name="line.227">                                break;</a>
+<span class="sourceLineNo">228</span><a name="line.228"></a>
+<span class="sourceLineNo">229</span><a name="line.229">                        case 10:</a>
+<span class="sourceLineNo">230</span><a name="line.230">                                name = "Octubre";</a>
+<span class="sourceLineNo">231</span><a name="line.231">                                break;</a>
+<span class="sourceLineNo">232</span><a name="line.232"></a>
+<span class="sourceLineNo">233</span><a name="line.233">                        case 11:</a>
+<span class="sourceLineNo">234</span><a name="line.234">                                name = "Noviembre";</a>
+<span class="sourceLineNo">235</span><a name="line.235">                                break;</a>
+<span class="sourceLineNo">236</span><a name="line.236"></a>
+<span class="sourceLineNo">237</span><a name="line.237">                        case 12:</a>
+<span class="sourceLineNo">238</span><a name="line.238">                                name = "Diciembre";</a>
+<span class="sourceLineNo">239</span><a name="line.239">                                break;</a>
+<span class="sourceLineNo">240</span><a name="line.240">                }</a>
+<span class="sourceLineNo">241</span><a name="line.241"></a>
+<span class="sourceLineNo">242</span><a name="line.242"></a>
+<span class="sourceLineNo">243</span><a name="line.243"></a>
+<span class="sourceLineNo">244</span><a name="line.244">                return name;</a>
+<span class="sourceLineNo">245</span><a name="line.245">        }</a>
+<span class="sourceLineNo">246</span><a name="line.246"></a>
+<span class="sourceLineNo">247</span><a name="line.247">        </a>
+<span class="sourceLineNo">248</span><a name="line.248">        /**</a>
+<span class="sourceLineNo">249</span><a name="line.249">        * Se ejecuta sobre un objeto Date y devuelve la estacion del anyo en ese mes</a>
+<span class="sourceLineNo">250</span><a name="line.250">        *</a>
+<span class="sourceLineNo">251</span><a name="line.251">        *</a>
+<span class="sourceLineNo">252</span><a name="line.252">        * @return Retorna un String con el nombre de la estacion</a>
+<span class="sourceLineNo">253</span><a name="line.253">        */ </a>
+<span class="sourceLineNo">254</span><a name="line.254">        public String whichSeason(){</a>
+<span class="sourceLineNo">255</span><a name="line.255">                </a>
+<span class="sourceLineNo">256</span><a name="line.256">                int month = this.getMonth();</a>
+<span class="sourceLineNo">257</span><a name="line.257"></a>
+<span class="sourceLineNo">258</span><a name="line.258">                String season = "estacion";</a>
+<span class="sourceLineNo">259</span><a name="line.259"></a>
+<span class="sourceLineNo">260</span><a name="line.260">                switch (month) {</a>
+<span class="sourceLineNo">261</span><a name="line.261"></a>
+<span class="sourceLineNo">262</span><a name="line.262">                        case 4: //Next</a>
+<span class="sourceLineNo">263</span><a name="line.263">                        case 5: //Next</a>
+<span class="sourceLineNo">264</span><a name="line.264">                        case 6:</a>
+<span class="sourceLineNo">265</span><a name="line.265">                                season = "Primavera";</a>
+<span class="sourceLineNo">266</span><a name="line.266">                                break;</a>
 <span class="sourceLineNo">267</span><a name="line.267"></a>
-<span class="sourceLineNo">268</span><a name="line.268">        //Metodo que comprueba si el mes del objeto sobre el que se invoca y el objeto parametro es el mismo</a>
-<span class="sourceLineNo">269</span><a name="line.269">        public boolean isSameMonthIf(Date date){</a>
-<span class="sourceLineNo">270</span><a name="line.270"></a>
-<span class="sourceLineNo">271</span><a name="line.271">                boolean isSameMonth = false;</a>
-<span class="sourceLineNo">272</span><a name="line.272"></a>
-<span class="sourceLineNo">273</span><a name="line.273">                if (this._month==date.getMonth()){</a>
-<span class="sourceLineNo">274</span><a name="line.274">                        isSameMonth = true;                     </a>
-<span class="sourceLineNo">275</span><a name="line.275">                }</a>
-<span class="sourceLineNo">276</span><a name="line.276">                </a>
-<span class="sourceLineNo">277</span><a name="line.277">                return isSameMonth;</a>
-<span class="sourceLineNo">278</span><a name="line.278">        }</a>
+<span class="sourceLineNo">268</span><a name="line.268">                        case 7: //Next</a>
+<span class="sourceLineNo">269</span><a name="line.269">                        case 8: //Next</a>
+<span class="sourceLineNo">270</span><a name="line.270">                        case 9:</a>
+<span class="sourceLineNo">271</span><a name="line.271">                                season = "Verano";</a>
+<span class="sourceLineNo">272</span><a name="line.272">                                break;</a>
+<span class="sourceLineNo">273</span><a name="line.273"></a>
+<span class="sourceLineNo">274</span><a name="line.274">                        case 10: //Next</a>
+<span class="sourceLineNo">275</span><a name="line.275">                        case 11: //Next</a>
+<span class="sourceLineNo">276</span><a name="line.276">                        case 12:</a>
+<span class="sourceLineNo">277</span><a name="line.277">                                season = "Otoño";</a>
+<span class="sourceLineNo">278</span><a name="line.278">                                break;</a>
 <span class="sourceLineNo">279</span><a name="line.279"></a>
-<span class="sourceLineNo">280</span><a name="line.280">        //Metodo que comprueba si el año del objeto sobre el que se invoca y el objeto parametro es el mismo</a>
-<span class="sourceLineNo">281</span><a name="line.281">        public boolean isSameYearIf(Date date){</a>
-<span class="sourceLineNo">282</span><a name="line.282"></a>
-<span class="sourceLineNo">283</span><a name="line.283">                boolean isSameYear = false;</a>
-<span class="sourceLineNo">284</span><a name="line.284"></a>
-<span class="sourceLineNo">285</span><a name="line.285">                if (this._year==date.getYear()){</a>
-<span class="sourceLineNo">286</span><a name="line.286">                        isSameYear = true;                      </a>
-<span class="sourceLineNo">287</span><a name="line.287">                }</a>
-<span class="sourceLineNo">288</span><a name="line.288">                </a>
-<span class="sourceLineNo">289</span><a name="line.289">                return isSameYear;</a>
-<span class="sourceLineNo">290</span><a name="line.290">        }       </a>
-<span class="sourceLineNo">291</span><a name="line.291"></a>
-<span class="sourceLineNo">292</span><a name="line.292">        //Metodo que comprueba si la fecha del objeto sobre el que se invoca y el objeto parametro es el mismo</a>
-<span class="sourceLineNo">293</span><a name="line.293">        public boolean isSameDateIf(Date date){</a>
-<span class="sourceLineNo">294</span><a name="line.294"></a>
-<span class="sourceLineNo">295</span><a name="line.295">                boolean isSameDate = false;</a>
-<span class="sourceLineNo">296</span><a name="line.296"></a>
-<span class="sourceLineNo">297</span><a name="line.297">                if ((isSameDay(date) &amp;&amp; isSameMonth(date) &amp;&amp; isSameYear(date))) {</a>
-<span class="sourceLineNo">298</span><a name="line.298">                        isSameDate = true;                      </a>
-<span class="sourceLineNo">299</span><a name="line.299">                } </a>
-<span class="sourceLineNo">300</span><a name="line.300">                </a>
-<span class="sourceLineNo">301</span><a name="line.301">                return isSameDate;</a>
-<span class="sourceLineNo">302</span><a name="line.302">        }</a>
+<span class="sourceLineNo">280</span><a name="line.280">                        case 1: //Next</a>
+<span class="sourceLineNo">281</span><a name="line.281">                        case 2: //Next</a>
+<span class="sourceLineNo">282</span><a name="line.282">                        case 3:</a>
+<span class="sourceLineNo">283</span><a name="line.283">                                season = "Invierno";</a>
+<span class="sourceLineNo">284</span><a name="line.284">                                break;</a>
+<span class="sourceLineNo">285</span><a name="line.285">                }</a>
+<span class="sourceLineNo">286</span><a name="line.286"></a>
+<span class="sourceLineNo">287</span><a name="line.287">                return season;</a>
+<span class="sourceLineNo">288</span><a name="line.288">        }</a>
+<span class="sourceLineNo">289</span><a name="line.289"></a>
+<span class="sourceLineNo">290</span><a name="line.290">        /**</a>
+<span class="sourceLineNo">291</span><a name="line.291">        * Recibe un Date y compara el valor de su dia con el del Date sobre el que se ejecuta</a>
+<span class="sourceLineNo">292</span><a name="line.292">        * Hecho con ifs</a>
+<span class="sourceLineNo">293</span><a name="line.293">        *</a>
+<span class="sourceLineNo">294</span><a name="line.294">        * @return Retorna true si son iguales y false si no lo son</a>
+<span class="sourceLineNo">295</span><a name="line.295">        */ </a>
+<span class="sourceLineNo">296</span><a name="line.296">        public boolean isSameDayIf(Date date){</a>
+<span class="sourceLineNo">297</span><a name="line.297"></a>
+<span class="sourceLineNo">298</span><a name="line.298">                boolean isSameDay = false;</a>
+<span class="sourceLineNo">299</span><a name="line.299"></a>
+<span class="sourceLineNo">300</span><a name="line.300">                if (this._day==date.getDay()){</a>
+<span class="sourceLineNo">301</span><a name="line.301">                        isSameDay = true;                       </a>
+<span class="sourceLineNo">302</span><a name="line.302">                }</a>
 <span class="sourceLineNo">303</span><a name="line.303"></a>
-<span class="sourceLineNo">304</span><a name="line.304">        //Metodo que comprueba si el dia del objeto sobre el que se invoca y el objeto parametro es el mismo</a>
-<span class="sourceLineNo">305</span><a name="line.305">        public boolean isSameDay(Date date){</a>
+<span class="sourceLineNo">304</span><a name="line.304">                return isSameDay;</a>
+<span class="sourceLineNo">305</span><a name="line.305">        }</a>
 <span class="sourceLineNo">306</span><a name="line.306"></a>
-<span class="sourceLineNo">307</span><a name="line.307">                boolean isSameDay = this._day==date.getDay();</a>
-<span class="sourceLineNo">308</span><a name="line.308"></a>
-<span class="sourceLineNo">309</span><a name="line.309">                return isSameDay;</a>
-<span class="sourceLineNo">310</span><a name="line.310">        }</a>
-<span class="sourceLineNo">311</span><a name="line.311"></a>
-<span class="sourceLineNo">312</span><a name="line.312">        //Metodo que comprueba si el mes del objeto sobre el que se invoca y el objeto parametro es el mismo</a>
-<span class="sourceLineNo">313</span><a name="line.313">        public boolean isSameMonth(Date date){</a>
+<span class="sourceLineNo">307</span><a name="line.307">        /**</a>
+<span class="sourceLineNo">308</span><a name="line.308">        * Recibe un Date y compara el valor de su mes con el del Date sobre el que se ejecuta</a>
+<span class="sourceLineNo">309</span><a name="line.309">        * Hecho con ifs</a>
+<span class="sourceLineNo">310</span><a name="line.310">        *</a>
+<span class="sourceLineNo">311</span><a name="line.311">        * @return Retorna true si son iguales y false si no lo son</a>
+<span class="sourceLineNo">312</span><a name="line.312">        */ </a>
+<span class="sourceLineNo">313</span><a name="line.313">        public boolean isSameMonthIf(Date date){</a>
 <span class="sourceLineNo">314</span><a name="line.314"></a>
-<span class="sourceLineNo">315</span><a name="line.315">                boolean isSameMonth = this._month==date.getMonth();</a>
-<span class="sourceLineNo">316</span><a name="line.316">                </a>
-<span class="sourceLineNo">317</span><a name="line.317">                return isSameMonth;</a>
-<span class="sourceLineNo">318</span><a name="line.318">        }</a>
-<span class="sourceLineNo">319</span><a name="line.319"></a>
-<span class="sourceLineNo">320</span><a name="line.320">        //Metodo que comprueba si el año del objeto sobre el que se invoca y el objeto parametro es el mismo</a>
-<span class="sourceLineNo">321</span><a name="line.321">        public boolean isSameYear(Date date){</a>
-<span class="sourceLineNo">322</span><a name="line.322"></a>
-<span class="sourceLineNo">323</span><a name="line.323">                boolean isSameYear = this._year==date.getYear();</a>
-<span class="sourceLineNo">324</span><a name="line.324">                </a>
-<span class="sourceLineNo">325</span><a name="line.325">                return isSameYear;</a>
-<span class="sourceLineNo">326</span><a name="line.326">        }       </a>
-<span class="sourceLineNo">327</span><a name="line.327"></a>
-<span class="sourceLineNo">328</span><a name="line.328">        //Metodo que comprueba si la fecha del objeto sobre el que se invoca y el objeto parametro es el mismo</a>
-<span class="sourceLineNo">329</span><a name="line.329">        public boolean isSameDate(Date date){</a>
-<span class="sourceLineNo">330</span><a name="line.330"></a>
-<span class="sourceLineNo">331</span><a name="line.331">                boolean isSameDate = (isSameDay(date) &amp;&amp; isSameMonth(date) &amp;&amp; isSameYear(date));</a>
-<span class="sourceLineNo">332</span><a name="line.332">                </a>
-<span class="sourceLineNo">333</span><a name="line.333">                return isSameDate;</a>
-<span class="sourceLineNo">334</span><a name="line.334">        }</a>
-<span class="sourceLineNo">335</span><a name="line.335"></a>
-<span class="sourceLineNo">336</span><a name="line.336">        //Metodo que devuelve el nombre de los meses que faltan desde el mes del objeto sobre el que se ejecuta el metodo hasta diciembre, diciembre incluido</a>
-<span class="sourceLineNo">337</span><a name="line.337">        public String monthsOfYearLeft(){</a>
-<span class="sourceLineNo">338</span><a name="line.338"></a>
-<span class="sourceLineNo">339</span><a name="line.339">                StringBuilder salida = new StringBuilder();</a>
+<span class="sourceLineNo">315</span><a name="line.315">                boolean isSameMonth = false;</a>
+<span class="sourceLineNo">316</span><a name="line.316"></a>
+<span class="sourceLineNo">317</span><a name="line.317">                if (this._month==date.getMonth()){</a>
+<span class="sourceLineNo">318</span><a name="line.318">                        isSameMonth = true;                     </a>
+<span class="sourceLineNo">319</span><a name="line.319">                }</a>
+<span class="sourceLineNo">320</span><a name="line.320">                </a>
+<span class="sourceLineNo">321</span><a name="line.321">                return isSameMonth;</a>
+<span class="sourceLineNo">322</span><a name="line.322">        }</a>
+<span class="sourceLineNo">323</span><a name="line.323"></a>
+<span class="sourceLineNo">324</span><a name="line.324">        /**</a>
+<span class="sourceLineNo">325</span><a name="line.325">        * Recibe un Date y compara el valor de su anyo con el del Date sobre el que se ejecuta</a>
+<span class="sourceLineNo">326</span><a name="line.326">        * Hecho con ifs</a>
+<span class="sourceLineNo">327</span><a name="line.327">        *</a>
+<span class="sourceLineNo">328</span><a name="line.328">        * @return Retorna true si son iguales y false si no lo son</a>
+<span class="sourceLineNo">329</span><a name="line.329">        */ </a>
+<span class="sourceLineNo">330</span><a name="line.330">        public boolean isSameYearIf(Date date){</a>
+<span class="sourceLineNo">331</span><a name="line.331"></a>
+<span class="sourceLineNo">332</span><a name="line.332">                boolean isSameYear = false;</a>
+<span class="sourceLineNo">333</span><a name="line.333"></a>
+<span class="sourceLineNo">334</span><a name="line.334">                if (this._year==date.getYear()){</a>
+<span class="sourceLineNo">335</span><a name="line.335">                        isSameYear = true;                      </a>
+<span class="sourceLineNo">336</span><a name="line.336">                }</a>
+<span class="sourceLineNo">337</span><a name="line.337">                </a>
+<span class="sourceLineNo">338</span><a name="line.338">                return isSameYear;</a>
+<span class="sourceLineNo">339</span><a name="line.339">        }       </a>
 <span class="sourceLineNo">340</span><a name="line.340"></a>
-<span class="sourceLineNo">341</span><a name="line.341">                if (this.getMonth() == 12) {</a>
-<span class="sourceLineNo">342</span><a name="line.342">                        salida.append("\nNo hay meses restantes este anyo, Diciembre es el ultimo mes.\n");</a>
-<span class="sourceLineNo">343</span><a name="line.343">                }else{</a>
-<span class="sourceLineNo">344</span><a name="line.344">                        salida.append("\nLos meses restantes este anyo son: \n");</a>
-<span class="sourceLineNo">345</span><a name="line.345">                }</a>
-<span class="sourceLineNo">346</span><a name="line.346"></a>
-<span class="sourceLineNo">347</span><a name="line.347">                for (int i = this.getMonth() + 1; i &lt;= 12 ; i++) {</a>
-<span class="sourceLineNo">348</span><a name="line.348">                        salida.append(nameOfMonth(i)+"\n");</a>
-<span class="sourceLineNo">349</span><a name="line.349">                }</a>
+<span class="sourceLineNo">341</span><a name="line.341">        /**</a>
+<span class="sourceLineNo">342</span><a name="line.342">        * Recibe un Date y compara el valor de su dia, mes y anyo con el del Date sobre el que se ejecuta</a>
+<span class="sourceLineNo">343</span><a name="line.343">        * Hecho con ifs</a>
+<span class="sourceLineNo">344</span><a name="line.344">        *</a>
+<span class="sourceLineNo">345</span><a name="line.345">        * @return Retorna true si son iguales y false si no lo son</a>
+<span class="sourceLineNo">346</span><a name="line.346">        */ </a>
+<span class="sourceLineNo">347</span><a name="line.347">        public boolean isSameDateIf(Date date){</a>
+<span class="sourceLineNo">348</span><a name="line.348"></a>
+<span class="sourceLineNo">349</span><a name="line.349">                boolean isSameDate = false;</a>
 <span class="sourceLineNo">350</span><a name="line.350"></a>
-<span class="sourceLineNo">351</span><a name="line.351">                return salida.toString();</a>
-<span class="sourceLineNo">352</span><a name="line.352">        }</a>
-<span class="sourceLineNo">353</span><a name="line.353"></a>
-<span class="sourceLineNo">354</span><a name="line.354">        //Metodo que devuelve todas fechas desde el dia del objeto sobre el que se ejecuta el metodo, hasta el final del mes del objeto sobre el que se ejecuta el metodo</a>
-<span class="sourceLineNo">355</span><a name="line.355">        public String daysOfMonthLeft(){</a>
-<span class="sourceLineNo">356</span><a name="line.356"></a>
-<span class="sourceLineNo">357</span><a name="line.357">                int daysLeft;</a>
-<span class="sourceLineNo">358</span><a name="line.358"></a>
-<span class="sourceLineNo">359</span><a name="line.359">                StringBuilder salida = new StringBuilder();</a>
-<span class="sourceLineNo">360</span><a name="line.360"></a>
-<span class="sourceLineNo">361</span><a name="line.361">                switch (_month) {</a>
-<span class="sourceLineNo">362</span><a name="line.362">                        case 4: //Next</a>
-<span class="sourceLineNo">363</span><a name="line.363">                        case 6: //Next</a>
-<span class="sourceLineNo">364</span><a name="line.364">                        case 11:</a>
-<span class="sourceLineNo">365</span><a name="line.365">                                daysLeft = 30 - _day;</a>
-<span class="sourceLineNo">366</span><a name="line.366">                                break;</a>
+<span class="sourceLineNo">351</span><a name="line.351">                if ((isSameDay(date) &amp;&amp; isSameMonth(date) &amp;&amp; isSameYear(date))) {</a>
+<span class="sourceLineNo">352</span><a name="line.352">                        isSameDate = true;                      </a>
+<span class="sourceLineNo">353</span><a name="line.353">                } </a>
+<span class="sourceLineNo">354</span><a name="line.354">                </a>
+<span class="sourceLineNo">355</span><a name="line.355">                return isSameDate;</a>
+<span class="sourceLineNo">356</span><a name="line.356">        }</a>
+<span class="sourceLineNo">357</span><a name="line.357"></a>
+<span class="sourceLineNo">358</span><a name="line.358">        /**</a>
+<span class="sourceLineNo">359</span><a name="line.359">        * Recibe un Date y compara el valor de su dia con el del Date sobre el que se ejecuta</a>
+<span class="sourceLineNo">360</span><a name="line.360">        * Hecho sin ifs</a>
+<span class="sourceLineNo">361</span><a name="line.361">        *</a>
+<span class="sourceLineNo">362</span><a name="line.362">        * @return Retorna true si son iguales y false si no lo son</a>
+<span class="sourceLineNo">363</span><a name="line.363">        */ </a>
+<span class="sourceLineNo">364</span><a name="line.364">        public boolean isSameDay(Date date){</a>
+<span class="sourceLineNo">365</span><a name="line.365"></a>
+<span class="sourceLineNo">366</span><a name="line.366">                boolean isSameDay = this._day==date.getDay();</a>
 <span class="sourceLineNo">367</span><a name="line.367"></a>
-<span class="sourceLineNo">368</span><a name="line.368">                        case 2:</a>
-<span class="sourceLineNo">369</span><a name="line.369">                                daysLeft = 28 - _day;</a>
-<span class="sourceLineNo">370</span><a name="line.370">                                break;</a>
-<span class="sourceLineNo">371</span><a name="line.371"></a>
-<span class="sourceLineNo">372</span><a name="line.372">                        default:</a>
-<span class="sourceLineNo">373</span><a name="line.373">                                daysLeft = 31 - _day;</a>
-<span class="sourceLineNo">374</span><a name="line.374">                }</a>
-<span class="sourceLineNo">375</span><a name="line.375"></a>
-<span class="sourceLineNo">376</span><a name="line.376">                salida.append("\n\nLos dias restantes hasta final de mes son: \n");</a>
-<span class="sourceLineNo">377</span><a name="line.377"></a>
-<span class="sourceLineNo">378</span><a name="line.378">                for (int i = 1 ; i &lt;= daysLeft; i++) {</a>
-<span class="sourceLineNo">379</span><a name="line.379">                        salida.append("(" + (this._day + i) + "/" + this._month + "/" + this._year + ") \n");</a>
-<span class="sourceLineNo">380</span><a name="line.380">                }               </a>
-<span class="sourceLineNo">381</span><a name="line.381"></a>
-<span class="sourceLineNo">382</span><a name="line.382">                return salida.toString();</a>
-<span class="sourceLineNo">383</span><a name="line.383">        }</a>
-<span class="sourceLineNo">384</span><a name="line.384"></a>
-<span class="sourceLineNo">385</span><a name="line.385">        //Metodo que devuelve todos los meses del anyo con el mismo numero de dias que el mes del objeto sobre el que se invoca</a>
-<span class="sourceLineNo">386</span><a name="line.386">        public String monthsWithSameDays(){</a>
-<span class="sourceLineNo">387</span><a name="line.387"></a>
-<span class="sourceLineNo">388</span><a name="line.388">                int month = this._month;</a>
-<span class="sourceLineNo">389</span><a name="line.389">                StringBuilder salida = new StringBuilder();</a>
-<span class="sourceLineNo">390</span><a name="line.390"></a>
-<span class="sourceLineNo">391</span><a name="line.391">                if (month != 2) {</a>
-<span class="sourceLineNo">392</span><a name="line.392"></a>
-<span class="sourceLineNo">393</span><a name="line.393">                        salida.append("\nLos meses del año con los mismo dias son:\n");</a>
-<span class="sourceLineNo">394</span><a name="line.394"></a>
-<span class="sourceLineNo">395</span><a name="line.395">                        for (int i = 1; i &lt;= 12; i++) {</a>
-<span class="sourceLineNo">396</span><a name="line.396">                        </a>
-<span class="sourceLineNo">397</span><a name="line.397">                                if (getDaysOfMonth(month) == getDaysOfMonth(i) &amp;&amp; month != i) {</a>
-<span class="sourceLineNo">398</span><a name="line.398">                                </a>
-<span class="sourceLineNo">399</span><a name="line.399">                                        salida.append(nameOfMonth(i)+"\n");                     </a>
-<span class="sourceLineNo">400</span><a name="line.400">                                }</a>
-<span class="sourceLineNo">401</span><a name="line.401">                        }</a>
-<span class="sourceLineNo">402</span><a name="line.402">                }else{</a>
-<span class="sourceLineNo">403</span><a name="line.403">                        salida.append("Febrero es el unico mes con 28 dias");</a>
-<span class="sourceLineNo">404</span><a name="line.404">                }</a>
-<span class="sourceLineNo">405</span><a name="line.405"></a>
-<span class="sourceLineNo">406</span><a name="line.406">                return salida.toString();</a>
-<span class="sourceLineNo">407</span><a name="line.407">        }</a>
-<span class="sourceLineNo">408</span><a name="line.408"></a>
-<span class="sourceLineNo">409</span><a name="line.409">        //Metodo que devuelve el dia del anyo del objeto sore el que se ejecuta</a>
-<span class="sourceLineNo">410</span><a name="line.410">        public int dayOfYear(){</a>
-<span class="sourceLineNo">411</span><a name="line.411"></a>
-<span class="sourceLineNo">412</span><a name="line.412">                int month = this.getMonth();</a>
-<span class="sourceLineNo">413</span><a name="line.413">                int day = this.getDay();</a>
-<span class="sourceLineNo">414</span><a name="line.414">                int salida = day;</a>
-<span class="sourceLineNo">415</span><a name="line.415"></a>
-<span class="sourceLineNo">416</span><a name="line.416">                for (int i = 1; i &lt; month; i++) {</a>
-<span class="sourceLineNo">417</span><a name="line.417">                        </a>
-<span class="sourceLineNo">418</span><a name="line.418">                        salida = salida + getDaysOfMonth(i);</a>
-<span class="sourceLineNo">419</span><a name="line.419">                }</a>
-<span class="sourceLineNo">420</span><a name="line.420"></a>
-<span class="sourceLineNo">421</span><a name="line.421">                return salida;</a>
-<span class="sourceLineNo">422</span><a name="line.422">        }</a>
-<span class="sourceLineNo">423</span><a name="line.423"></a>
-<span class="sourceLineNo">424</span><a name="line.424">        //Metodo que devuelve el dia de la semana </a>
-<span class="sourceLineNo">425</span><a name="line.425">        public String dayOfWeek(){</a>
-<span class="sourceLineNo">426</span><a name="line.426"></a>
-<span class="sourceLineNo">427</span><a name="line.427">                StringBuilder salida = new StringBuilder();</a>
-<span class="sourceLineNo">428</span><a name="line.428"></a>
+<span class="sourceLineNo">368</span><a name="line.368">                return isSameDay;</a>
+<span class="sourceLineNo">369</span><a name="line.369">        }</a>
+<span class="sourceLineNo">370</span><a name="line.370"></a>
+<span class="sourceLineNo">371</span><a name="line.371">        /**</a>
+<span class="sourceLineNo">372</span><a name="line.372">        * Recibe un Date y compara el valor de su mes con el del Date sobre el que se ejecuta</a>
+<span class="sourceLineNo">373</span><a name="line.373">        * Hecho sin ifs</a>
+<span class="sourceLineNo">374</span><a name="line.374">        *</a>
+<span class="sourceLineNo">375</span><a name="line.375">        * @return Retorna true si son iguales y false si no lo son</a>
+<span class="sourceLineNo">376</span><a name="line.376">        */ </a>
+<span class="sourceLineNo">377</span><a name="line.377">        public boolean isSameMonth(Date date){</a>
+<span class="sourceLineNo">378</span><a name="line.378"></a>
+<span class="sourceLineNo">379</span><a name="line.379">                boolean isSameMonth = this._month==date.getMonth();</a>
+<span class="sourceLineNo">380</span><a name="line.380">                </a>
+<span class="sourceLineNo">381</span><a name="line.381">                return isSameMonth;</a>
+<span class="sourceLineNo">382</span><a name="line.382">        }</a>
+<span class="sourceLineNo">383</span><a name="line.383"></a>
+<span class="sourceLineNo">384</span><a name="line.384">        /**</a>
+<span class="sourceLineNo">385</span><a name="line.385">        * Recibe un Date y compara el valor de su anyo con el del Date sobre el que se ejecuta</a>
+<span class="sourceLineNo">386</span><a name="line.386">        * Hecho sin ifs</a>
+<span class="sourceLineNo">387</span><a name="line.387">        *</a>
+<span class="sourceLineNo">388</span><a name="line.388">        * @return Retorna true si son iguales y false si no lo son</a>
+<span class="sourceLineNo">389</span><a name="line.389">        */ </a>
+<span class="sourceLineNo">390</span><a name="line.390">        public boolean isSameYear(Date date){</a>
+<span class="sourceLineNo">391</span><a name="line.391"></a>
+<span class="sourceLineNo">392</span><a name="line.392">                boolean isSameYear = this._year==date.getYear();</a>
+<span class="sourceLineNo">393</span><a name="line.393">                </a>
+<span class="sourceLineNo">394</span><a name="line.394">                return isSameYear;</a>
+<span class="sourceLineNo">395</span><a name="line.395">        }       </a>
+<span class="sourceLineNo">396</span><a name="line.396"></a>
+<span class="sourceLineNo">397</span><a name="line.397">        /**</a>
+<span class="sourceLineNo">398</span><a name="line.398">        * Recibe un Date y compara el valor de su dia, mes y anyo con el del Date sobre el que se ejecuta</a>
+<span class="sourceLineNo">399</span><a name="line.399">        * Hecho sin ifs</a>
+<span class="sourceLineNo">400</span><a name="line.400">        *</a>
+<span class="sourceLineNo">401</span><a name="line.401">        * @return Retorna true si son iguales y false si no lo son</a>
+<span class="sourceLineNo">402</span><a name="line.402">        */      //Metodo que comprueba si la fecha del objeto sobre el que se invoca y el objeto parametro es el mismo</a>
+<span class="sourceLineNo">403</span><a name="line.403">        public boolean isSameDate(Date date){</a>
+<span class="sourceLineNo">404</span><a name="line.404"></a>
+<span class="sourceLineNo">405</span><a name="line.405">                boolean isSameDate = (isSameDay(date) &amp;&amp; isSameMonth(date) &amp;&amp; isSameYear(date));</a>
+<span class="sourceLineNo">406</span><a name="line.406">                </a>
+<span class="sourceLineNo">407</span><a name="line.407">                return isSameDate;</a>
+<span class="sourceLineNo">408</span><a name="line.408">        }</a>
+<span class="sourceLineNo">409</span><a name="line.409">        </a>
+<span class="sourceLineNo">410</span><a name="line.410">        /**</a>
+<span class="sourceLineNo">411</span><a name="line.411">        * Metodo usado para conocer cuantos meses quedan hasta final de anyo, desde el mes del objeto sobre el que se ejecuta</a>
+<span class="sourceLineNo">412</span><a name="line.412">        *</a>
+<span class="sourceLineNo">413</span><a name="line.413">        *</a>
+<span class="sourceLineNo">414</span><a name="line.414">        * @return Retorna un String con los meses que faltan hasta final de anyo</a>
+<span class="sourceLineNo">415</span><a name="line.415">        */ </a>
+<span class="sourceLineNo">416</span><a name="line.416">        public String monthsOfYearLeft(){</a>
+<span class="sourceLineNo">417</span><a name="line.417"></a>
+<span class="sourceLineNo">418</span><a name="line.418">                StringBuilder salida = new StringBuilder();</a>
+<span class="sourceLineNo">419</span><a name="line.419"></a>
+<span class="sourceLineNo">420</span><a name="line.420">                if (this.getMonth() == 12) {</a>
+<span class="sourceLineNo">421</span><a name="line.421">                        salida.append("\nNo hay meses restantes este anyo, Diciembre es el ultimo mes.\n");</a>
+<span class="sourceLineNo">422</span><a name="line.422">                }else{</a>
+<span class="sourceLineNo">423</span><a name="line.423">                        salida.append("\nLos meses restantes este anyo son: \n");</a>
+<span class="sourceLineNo">424</span><a name="line.424">                }</a>
+<span class="sourceLineNo">425</span><a name="line.425"></a>
+<span class="sourceLineNo">426</span><a name="line.426">                for (int i = this.getMonth() + 1; i &lt;= 12 ; i++) {</a>
+<span class="sourceLineNo">427</span><a name="line.427">                        salida.append(nameOfMonth(i)+"\n");</a>
+<span class="sourceLineNo">428</span><a name="line.428">                }</a>
 <span class="sourceLineNo">429</span><a name="line.429"></a>
-<span class="sourceLineNo">430</span><a name="line.430">                int dayOfWeek;</a>
-<span class="sourceLineNo">431</span><a name="line.431"></a>
-<span class="sourceLineNo">432</span><a name="line.432">                        do{</a>
-<span class="sourceLineNo">433</span><a name="line.433">                                System.out.println("\n¿Que dia de la semana era el (1/1/" + this.getYear() +")?");</a>
-<span class="sourceLineNo">434</span><a name="line.434">                                System.out.println("[1] Lunes\n[2] Martes\n[3] Miercoles\n[4] Jueves\n[5] Viernes\n[6] Sabado\n[7] Domingo\n");                 </a>
-<span class="sourceLineNo">435</span><a name="line.435">                                dayOfWeek = Teclado.readInteger();</a>
-<span class="sourceLineNo">436</span><a name="line.436">                                if (dayOfWeek &lt; 1 &amp;&amp; dayOfWeek &gt; 7) {</a>
-<span class="sourceLineNo">437</span><a name="line.437">                                        System.out.println("Introduzca una de las opciones dadas");</a>
-<span class="sourceLineNo">438</span><a name="line.438">                                }</a>
-<span class="sourceLineNo">439</span><a name="line.439">                        }while(!(dayOfWeek &gt;= 1 &amp;&amp; dayOfWeek &lt;= 7));</a>
+<span class="sourceLineNo">430</span><a name="line.430">                return salida.toString();</a>
+<span class="sourceLineNo">431</span><a name="line.431">        }</a>
+<span class="sourceLineNo">432</span><a name="line.432">        </a>
+<span class="sourceLineNo">433</span><a name="line.433">        /**</a>
+<span class="sourceLineNo">434</span><a name="line.434">        * Devuelve todas fechas desde el dia del objeto sobre el que se ejecuta el metodo, </a>
+<span class="sourceLineNo">435</span><a name="line.435">        * hasta el final del mes del objeto sobre el que se ejecuta el metodo</a>
+<span class="sourceLineNo">436</span><a name="line.436">        *</a>
+<span class="sourceLineNo">437</span><a name="line.437">        * @return Retorna un string con las fechas hasta final de mes</a>
+<span class="sourceLineNo">438</span><a name="line.438">        */ </a>
+<span class="sourceLineNo">439</span><a name="line.439">        public String daysOfMonthLeft(){</a>
 <span class="sourceLineNo">440</span><a name="line.440"></a>
-<span class="sourceLineNo">441</span><a name="line.441"></a>
-<span class="sourceLineNo">442</span><a name="line.442">                int day = (dayOfYear()%7)+dayOfWeek-1;</a>
-<span class="sourceLineNo">443</span><a name="line.443"></a>
-<span class="sourceLineNo">444</span><a name="line.444">                switch (day){</a>
-<span class="sourceLineNo">445</span><a name="line.445"></a>
-<span class="sourceLineNo">446</span><a name="line.446">                        case 1:</a>
-<span class="sourceLineNo">447</span><a name="line.447"></a>
-<span class="sourceLineNo">448</span><a name="line.448">                                salida.append("Lunes");</a>
-<span class="sourceLineNo">449</span><a name="line.449">                                break;</a>
-<span class="sourceLineNo">450</span><a name="line.450">                        case 2:</a>
+<span class="sourceLineNo">441</span><a name="line.441">                int daysLeft;</a>
+<span class="sourceLineNo">442</span><a name="line.442"></a>
+<span class="sourceLineNo">443</span><a name="line.443">                StringBuilder salida = new StringBuilder();</a>
+<span class="sourceLineNo">444</span><a name="line.444"></a>
+<span class="sourceLineNo">445</span><a name="line.445">                switch (_month) {</a>
+<span class="sourceLineNo">446</span><a name="line.446">                        case 4: //Next</a>
+<span class="sourceLineNo">447</span><a name="line.447">                        case 6: //Next</a>
+<span class="sourceLineNo">448</span><a name="line.448">                        case 11:</a>
+<span class="sourceLineNo">449</span><a name="line.449">                                daysLeft = 30 - _day;</a>
+<span class="sourceLineNo">450</span><a name="line.450">                                break;</a>
 <span class="sourceLineNo">451</span><a name="line.451"></a>
-<span class="sourceLineNo">452</span><a name="line.452">                                salida.append("Martes");</a>
-<span class="sourceLineNo">453</span><a name="line.453">                                break;</a>
-<span class="sourceLineNo">454</span><a name="line.454">                        case 3:</a>
+<span class="sourceLineNo">452</span><a name="line.452">                        case 2:</a>
+<span class="sourceLineNo">453</span><a name="line.453">                                daysLeft = 28 - _day;</a>
+<span class="sourceLineNo">454</span><a name="line.454">                                break;</a>
 <span class="sourceLineNo">455</span><a name="line.455"></a>
-<span class="sourceLineNo">456</span><a name="line.456">                                salida.append("Miercoles");</a>
-<span class="sourceLineNo">457</span><a name="line.457">                                break;</a>
-<span class="sourceLineNo">458</span><a name="line.458">                        case 4:</a>
+<span class="sourceLineNo">456</span><a name="line.456">                        default:</a>
+<span class="sourceLineNo">457</span><a name="line.457">                                daysLeft = 31 - _day;</a>
+<span class="sourceLineNo">458</span><a name="line.458">                }</a>
 <span class="sourceLineNo">459</span><a name="line.459"></a>
-<span class="sourceLineNo">460</span><a name="line.460">                                salida.append("Jueves");</a>
-<span class="sourceLineNo">461</span><a name="line.461">                                break;</a>
-<span class="sourceLineNo">462</span><a name="line.462">                        case 5:</a>
-<span class="sourceLineNo">463</span><a name="line.463"></a>
-<span class="sourceLineNo">464</span><a name="line.464">                                salida.append("Viernes");</a>
-<span class="sourceLineNo">465</span><a name="line.465">                                break;</a>
-<span class="sourceLineNo">466</span><a name="line.466">                        case 6:</a>
-<span class="sourceLineNo">467</span><a name="line.467"></a>
-<span class="sourceLineNo">468</span><a name="line.468">                                salida.append("Sabado");</a>
-<span class="sourceLineNo">469</span><a name="line.469">                                break;                          </a>
-<span class="sourceLineNo">470</span><a name="line.470">                        case 7:</a>
-<span class="sourceLineNo">471</span><a name="line.471"></a>
-<span class="sourceLineNo">472</span><a name="line.472">                                salida.append("Domingo");</a>
-<span class="sourceLineNo">473</span><a name="line.473">                                break;</a>
-<span class="sourceLineNo">474</span><a name="line.474">                }               </a>
-<span class="sourceLineNo">475</span><a name="line.475"></a>
-<span class="sourceLineNo">476</span><a name="line.476">                return salida.toString();</a>
-<span class="sourceLineNo">477</span><a name="line.477">        }</a>
-<span class="sourceLineNo">478</span><a name="line.478"></a>
-<span class="sourceLineNo">479</span><a name="line.479">        public int randomDateUntilItEqualsToGivenWhile(){</a>
-<span class="sourceLineNo">480</span><a name="line.480"></a>
-<span class="sourceLineNo">481</span><a name="line.481">                int numberOfAttempts = 0;</a>
-<span class="sourceLineNo">482</span><a name="line.482">                int randomDay = 0;</a>
+<span class="sourceLineNo">460</span><a name="line.460">                salida.append("\n\nLos dias restantes hasta final de mes son: \n");</a>
+<span class="sourceLineNo">461</span><a name="line.461"></a>
+<span class="sourceLineNo">462</span><a name="line.462">                for (int i = 1 ; i &lt;= daysLeft; i++) {</a>
+<span class="sourceLineNo">463</span><a name="line.463">                        salida.append("(" + (this._day + i) + "/" + this._month + "/" + this._year + ") \n");</a>
+<span class="sourceLineNo">464</span><a name="line.464">                }               </a>
+<span class="sourceLineNo">465</span><a name="line.465"></a>
+<span class="sourceLineNo">466</span><a name="line.466">                return salida.toString();</a>
+<span class="sourceLineNo">467</span><a name="line.467">        }</a>
+<span class="sourceLineNo">468</span><a name="line.468"></a>
+<span class="sourceLineNo">469</span><a name="line.469">        /**</a>
+<span class="sourceLineNo">470</span><a name="line.470">        * Devuelve todos los meses del anyo con el mismo numero de dias que el mes del objeto sobre el que se invoca</a>
+<span class="sourceLineNo">471</span><a name="line.471">        *</a>
+<span class="sourceLineNo">472</span><a name="line.472">        *</a>
+<span class="sourceLineNo">473</span><a name="line.473">        * @return Retorna un String con los meses del anyo con el mismo numero de dias</a>
+<span class="sourceLineNo">474</span><a name="line.474">        */ </a>
+<span class="sourceLineNo">475</span><a name="line.475">        public String monthsWithSameDays(){</a>
+<span class="sourceLineNo">476</span><a name="line.476"></a>
+<span class="sourceLineNo">477</span><a name="line.477">                int month = this._month;</a>
+<span class="sourceLineNo">478</span><a name="line.478">                StringBuilder salida = new StringBuilder();</a>
+<span class="sourceLineNo">479</span><a name="line.479"></a>
+<span class="sourceLineNo">480</span><a name="line.480">                if (month != 2) {</a>
+<span class="sourceLineNo">481</span><a name="line.481"></a>
+<span class="sourceLineNo">482</span><a name="line.482">                        salida.append("\nLos meses del año con los mismo dias son:\n");</a>
 <span class="sourceLineNo">483</span><a name="line.483"></a>
-<span class="sourceLineNo">484</span><a name="line.484">                while(randomDay != dayOfYear()){</a>
+<span class="sourceLineNo">484</span><a name="line.484">                        for (int i = 1; i &lt;= 12; i++) {</a>
 <span class="sourceLineNo">485</span><a name="line.485">                        </a>
-<span class="sourceLineNo">486</span><a name="line.486">                        randomDay =  1 + (int)(Math.random()*365);</a>
-<span class="sourceLineNo">487</span><a name="line.487"></a>
-<span class="sourceLineNo">488</span><a name="line.488">                        System.out.println(randomDay);</a>
-<span class="sourceLineNo">489</span><a name="line.489"></a>
-<span class="sourceLineNo">490</span><a name="line.490">                        numberOfAttempts++;</a>
-<span class="sourceLineNo">491</span><a name="line.491">                }       </a>
-<span class="sourceLineNo">492</span><a name="line.492"></a>
-<span class="sourceLineNo">493</span><a name="line.493">                System.out.println("numer de intentos " + numberOfAttempts);</a>
+<span class="sourceLineNo">486</span><a name="line.486">                                if (getDaysOfMonth(month) == getDaysOfMonth(i) &amp;&amp; month != i) {</a>
+<span class="sourceLineNo">487</span><a name="line.487">                                </a>
+<span class="sourceLineNo">488</span><a name="line.488">                                        salida.append(nameOfMonth(i)+"\n");                     </a>
+<span class="sourceLineNo">489</span><a name="line.489">                                }</a>
+<span class="sourceLineNo">490</span><a name="line.490">                        }</a>
+<span class="sourceLineNo">491</span><a name="line.491">                }else{</a>
+<span class="sourceLineNo">492</span><a name="line.492">                        salida.append("Febrero es el unico mes con 28 dias\n");</a>
+<span class="sourceLineNo">493</span><a name="line.493">                }</a>
 <span class="sourceLineNo">494</span><a name="line.494"></a>
-<span class="sourceLineNo">495</span><a name="line.495">                return numberOfAttempts;</a>
+<span class="sourceLineNo">495</span><a name="line.495">                return salida.toString();</a>
 <span class="sourceLineNo">496</span><a name="line.496">        }</a>
-<span class="sourceLineNo">497</span><a name="line.497"></a>
-<span class="sourceLineNo">498</span><a name="line.498">        public String toString(){</a>
-<span class="sourceLineNo">499</span><a name="line.499"></a>
-<span class="sourceLineNo">500</span><a name="line.500">                StringBuffer salida = new StringBuffer();</a>
-<span class="sourceLineNo">501</span><a name="line.501"></a>
-<span class="sourceLineNo">502</span><a name="line.502">                salida.append(dateWithFormat());</a>
-<span class="sourceLineNo">503</span><a name="line.503">                salida.append("La estacion en esta fecha es " + whichSeason() + " y el nombre del mes es " + nameOfMonth());</a>
-<span class="sourceLineNo">504</span><a name="line.504">                salida.append(daysOfMonthLeft());</a>
-<span class="sourceLineNo">505</span><a name="line.505">                salida.append(monthsOfYearLeft()); </a>
-<span class="sourceLineNo">506</span><a name="line.506">                salida.append(monthsWithSameDays());    </a>
-<span class="sourceLineNo">507</span><a name="line.507">                salida.append("El dia " + dateWithFormat() + " es el dia " + dayOfYear() + " del anyo, y es " + dayOfWeek());</a>
-<span class="sourceLineNo">508</span><a name="line.508"></a>
-<span class="sourceLineNo">509</span><a name="line.509">                return salida.toString();</a>
-<span class="sourceLineNo">510</span><a name="line.510">        }</a>
-<span class="sourceLineNo">511</span><a name="line.511"></a>
-<span class="sourceLineNo">512</span><a name="line.512">}</a>
+<span class="sourceLineNo">497</span><a name="line.497">        </a>
+<span class="sourceLineNo">498</span><a name="line.498">        /**</a>
+<span class="sourceLineNo">499</span><a name="line.499">        * Devuelve el dia del anyo del objeto sore el que se ejecuta</a>
+<span class="sourceLineNo">500</span><a name="line.500">        *</a>
+<span class="sourceLineNo">501</span><a name="line.501">        *</a>
+<span class="sourceLineNo">502</span><a name="line.502">        * @return Retorna el dia del anyo (entre el 1 y el 365)*</a>
+<span class="sourceLineNo">503</span><a name="line.503">        */ </a>
+<span class="sourceLineNo">504</span><a name="line.504">        public int dayOfYear(){</a>
+<span class="sourceLineNo">505</span><a name="line.505"></a>
+<span class="sourceLineNo">506</span><a name="line.506">                int month = this.getMonth();</a>
+<span class="sourceLineNo">507</span><a name="line.507">                int day = this.getDay();</a>
+<span class="sourceLineNo">508</span><a name="line.508">                int salida = day;</a>
+<span class="sourceLineNo">509</span><a name="line.509"></a>
+<span class="sourceLineNo">510</span><a name="line.510">                for (int i = 1; i &lt; month; i++) {</a>
+<span class="sourceLineNo">511</span><a name="line.511">                        </a>
+<span class="sourceLineNo">512</span><a name="line.512">                        salida = salida + getDaysOfMonth(i);</a>
+<span class="sourceLineNo">513</span><a name="line.513">                }</a>
+<span class="sourceLineNo">514</span><a name="line.514"></a>
+<span class="sourceLineNo">515</span><a name="line.515">                return salida;</a>
+<span class="sourceLineNo">516</span><a name="line.516">        }</a>
+<span class="sourceLineNo">517</span><a name="line.517">        </a>
+<span class="sourceLineNo">518</span><a name="line.518">        /**</a>
+<span class="sourceLineNo">519</span><a name="line.519">        * Se ejecuta sobre un objeto Date y dice que dia de la semana en base al dia de </a>
+<span class="sourceLineNo">520</span><a name="line.520">        * la semana que fue el primer dia del anyo</a>
+<span class="sourceLineNo">521</span><a name="line.521">        *</a>
+<span class="sourceLineNo">522</span><a name="line.522">        * @return Retorna un string con el nombre del dia de la semana</a>
+<span class="sourceLineNo">523</span><a name="line.523">        */ </a>
+<span class="sourceLineNo">524</span><a name="line.524">        public String dayOfWeek(){</a>
+<span class="sourceLineNo">525</span><a name="line.525"></a>
+<span class="sourceLineNo">526</span><a name="line.526">                StringBuilder salida = new StringBuilder();</a>
+<span class="sourceLineNo">527</span><a name="line.527"></a>
+<span class="sourceLineNo">528</span><a name="line.528"></a>
+<span class="sourceLineNo">529</span><a name="line.529">                int dayOfWeek;</a>
+<span class="sourceLineNo">530</span><a name="line.530"></a>
+<span class="sourceLineNo">531</span><a name="line.531">                do{</a>
+<span class="sourceLineNo">532</span><a name="line.532">                        System.out.println("\n¿Que dia de la semana era el (1/1/" + this.getYear() +")?");</a>
+<span class="sourceLineNo">533</span><a name="line.533">                        System.out.println("[1] Lunes\n[2] Martes\n[3] Miercoles\n[4] Jueves\n[5] Viernes\n[6] Sabado\n[7] Domingo\n");                 </a>
+<span class="sourceLineNo">534</span><a name="line.534">                        dayOfWeek = Teclado.readInteger();</a>
+<span class="sourceLineNo">535</span><a name="line.535">                        if (dayOfWeek &lt; 1 || dayOfWeek &gt; 7) {</a>
+<span class="sourceLineNo">536</span><a name="line.536">                                System.out.println("Introduzca una de las opciones dadas");</a>
+<span class="sourceLineNo">537</span><a name="line.537">                        }</a>
+<span class="sourceLineNo">538</span><a name="line.538">                }while(!(dayOfWeek &gt;= 1 &amp;&amp; dayOfWeek &lt;= 7));</a>
+<span class="sourceLineNo">539</span><a name="line.539"></a>
+<span class="sourceLineNo">540</span><a name="line.540"></a>
+<span class="sourceLineNo">541</span><a name="line.541">                int day = (dayOfYear()%7)+(dayOfWeek-1);</a>
+<span class="sourceLineNo">542</span><a name="line.542"></a>
+<span class="sourceLineNo">543</span><a name="line.543">                switch (day){</a>
+<span class="sourceLineNo">544</span><a name="line.544"></a>
+<span class="sourceLineNo">545</span><a name="line.545">                        case 1:</a>
+<span class="sourceLineNo">546</span><a name="line.546"></a>
+<span class="sourceLineNo">547</span><a name="line.547">                                salida.append("Lunes");</a>
+<span class="sourceLineNo">548</span><a name="line.548">                                break;</a>
+<span class="sourceLineNo">549</span><a name="line.549">                        case 2:</a>
+<span class="sourceLineNo">550</span><a name="line.550"></a>
+<span class="sourceLineNo">551</span><a name="line.551">                                salida.append("Martes");</a>
+<span class="sourceLineNo">552</span><a name="line.552">                                break;</a>
+<span class="sourceLineNo">553</span><a name="line.553">                        case 3:</a>
+<span class="sourceLineNo">554</span><a name="line.554"></a>
+<span class="sourceLineNo">555</span><a name="line.555">                                salida.append("Miercoles");</a>
+<span class="sourceLineNo">556</span><a name="line.556">                                break;</a>
+<span class="sourceLineNo">557</span><a name="line.557">                        case 4:</a>
+<span class="sourceLineNo">558</span><a name="line.558"></a>
+<span class="sourceLineNo">559</span><a name="line.559">                                salida.append("Jueves");</a>
+<span class="sourceLineNo">560</span><a name="line.560">                                break;</a>
+<span class="sourceLineNo">561</span><a name="line.561">                        case 5:</a>
+<span class="sourceLineNo">562</span><a name="line.562"></a>
+<span class="sourceLineNo">563</span><a name="line.563">                                salida.append("Viernes");</a>
+<span class="sourceLineNo">564</span><a name="line.564">                                break;</a>
+<span class="sourceLineNo">565</span><a name="line.565">                        case 6:</a>
+<span class="sourceLineNo">566</span><a name="line.566"></a>
+<span class="sourceLineNo">567</span><a name="line.567">                                salida.append("Sabado");</a>
+<span class="sourceLineNo">568</span><a name="line.568">                                break;                          </a>
+<span class="sourceLineNo">569</span><a name="line.569">                        default:</a>
+<span class="sourceLineNo">570</span><a name="line.570"></a>
+<span class="sourceLineNo">571</span><a name="line.571">                                salida.append("Domingo");</a>
+<span class="sourceLineNo">572</span><a name="line.572">                                break;</a>
+<span class="sourceLineNo">573</span><a name="line.573">                }               </a>
+<span class="sourceLineNo">574</span><a name="line.574"></a>
+<span class="sourceLineNo">575</span><a name="line.575">                return salida.toString();</a>
+<span class="sourceLineNo">576</span><a name="line.576">        }</a>
+<span class="sourceLineNo">577</span><a name="line.577"></a>
+<span class="sourceLineNo">578</span><a name="line.578"></a>
+<span class="sourceLineNo">579</span><a name="line.579">        /**</a>
+<span class="sourceLineNo">580</span><a name="line.580">        * Genera fechas aleatorias hasta que coincide con la del objeto sobre el que se ejecuta el metodo</a>
+<span class="sourceLineNo">581</span><a name="line.581">        * Hecho con while</a>
+<span class="sourceLineNo">582</span><a name="line.582">        *</a>
+<span class="sourceLineNo">583</span><a name="line.583">        * @return Retorna el numero de intentos</a>
+<span class="sourceLineNo">584</span><a name="line.584">        */ </a>
+<span class="sourceLineNo">585</span><a name="line.585">        public int randomDateUntilItEqualsToGivenWhile(){</a>
+<span class="sourceLineNo">586</span><a name="line.586"></a>
+<span class="sourceLineNo">587</span><a name="line.587">                int numberOfAttempts = 0;</a>
+<span class="sourceLineNo">588</span><a name="line.588">                int randomDay = 0;</a>
+<span class="sourceLineNo">589</span><a name="line.589">                int randomMonth = 0;</a>
+<span class="sourceLineNo">590</span><a name="line.590"></a>
+<span class="sourceLineNo">591</span><a name="line.591">                while(randomDay != getDay() &amp;&amp; randomMonth != getMonth()){</a>
+<span class="sourceLineNo">592</span><a name="line.592">                        </a>
+<span class="sourceLineNo">593</span><a name="line.593">                        if (randomDay != getDay()){</a>
+<span class="sourceLineNo">594</span><a name="line.594">                                randomDay =  1 + (int)(Math.random()*31);                       </a>
+<span class="sourceLineNo">595</span><a name="line.595">                        }</a>
+<span class="sourceLineNo">596</span><a name="line.596"></a>
+<span class="sourceLineNo">597</span><a name="line.597">                        if (randomMonth != getMonth()) {</a>
+<span class="sourceLineNo">598</span><a name="line.598">                                randomMonth =  1 + (int)(Math.random()*12);</a>
+<span class="sourceLineNo">599</span><a name="line.599">                        }</a>
+<span class="sourceLineNo">600</span><a name="line.600"></a>
+<span class="sourceLineNo">601</span><a name="line.601">                        numberOfAttempts++;</a>
+<span class="sourceLineNo">602</span><a name="line.602">                }       </a>
+<span class="sourceLineNo">603</span><a name="line.603"></a>
+<span class="sourceLineNo">604</span><a name="line.604">                return numberOfAttempts;</a>
+<span class="sourceLineNo">605</span><a name="line.605">        }</a>
+<span class="sourceLineNo">606</span><a name="line.606"></a>
+<span class="sourceLineNo">607</span><a name="line.607">        /**</a>
+<span class="sourceLineNo">608</span><a name="line.608">        * Genera fechas aleatorias hasta que coincide con la del objeto sobre el que se ejecuta el metodo</a>
+<span class="sourceLineNo">609</span><a name="line.609">        * Hecho con Do-while</a>
+<span class="sourceLineNo">610</span><a name="line.610">        *</a>
+<span class="sourceLineNo">611</span><a name="line.611">        * @return Retorna el numero de intentos</a>
+<span class="sourceLineNo">612</span><a name="line.612">        */ </a>
+<span class="sourceLineNo">613</span><a name="line.613">        public int randomDateUntilItEqualsToGiven(){</a>
+<span class="sourceLineNo">614</span><a name="line.614"></a>
+<span class="sourceLineNo">615</span><a name="line.615">                int numberOfAttempts = 0;</a>
+<span class="sourceLineNo">616</span><a name="line.616">                int randomDay = 0;</a>
+<span class="sourceLineNo">617</span><a name="line.617">                int randomMonth = 0;</a>
+<span class="sourceLineNo">618</span><a name="line.618"></a>
+<span class="sourceLineNo">619</span><a name="line.619">                do{</a>
+<span class="sourceLineNo">620</span><a name="line.620">                        </a>
+<span class="sourceLineNo">621</span><a name="line.621">                        if (randomDay != getDay()){</a>
+<span class="sourceLineNo">622</span><a name="line.622">                                randomDay =  1 + (int)(Math.random()*31);                       </a>
+<span class="sourceLineNo">623</span><a name="line.623">                        }</a>
+<span class="sourceLineNo">624</span><a name="line.624"></a>
+<span class="sourceLineNo">625</span><a name="line.625">                        if (randomMonth != getMonth()) {</a>
+<span class="sourceLineNo">626</span><a name="line.626">                                randomMonth =  1 + (int)(Math.random()*12);</a>
+<span class="sourceLineNo">627</span><a name="line.627">                        }</a>
+<span class="sourceLineNo">628</span><a name="line.628"></a>
+<span class="sourceLineNo">629</span><a name="line.629">                        numberOfAttempts++;</a>
+<span class="sourceLineNo">630</span><a name="line.630">                }while(randomDay != getDay() &amp;&amp; randomMonth != getMonth());</a>
+<span class="sourceLineNo">631</span><a name="line.631"></a>
+<span class="sourceLineNo">632</span><a name="line.632">                return numberOfAttempts;</a>
+<span class="sourceLineNo">633</span><a name="line.633">        }</a>
+<span class="sourceLineNo">634</span><a name="line.634"></a>
+<span class="sourceLineNo">635</span><a name="line.635">        public String toString(){</a>
+<span class="sourceLineNo">636</span><a name="line.636"></a>
+<span class="sourceLineNo">637</span><a name="line.637">                StringBuffer salida = new StringBuffer();</a>
+<span class="sourceLineNo">638</span><a name="line.638"></a>
+<span class="sourceLineNo">639</span><a name="line.639">                salida.append("El dia " + dateWithFormat() + " es el dia " + dayOfYear() + " del anyo, y es " + dayOfWeek());</a>
+<span class="sourceLineNo">640</span><a name="line.640">                salida.append("\nLa estacion en esta fecha es " + whichSeason() + " y el nombre del mes es " + nameOfMonth());</a>
+<span class="sourceLineNo">641</span><a name="line.641">                salida.append(daysOfMonthLeft());</a>
+<span class="sourceLineNo">642</span><a name="line.642">                salida.append(monthsOfYearLeft()); </a>
+<span class="sourceLineNo">643</span><a name="line.643">                salida.append(monthsWithSameDays());    </a>
+<span class="sourceLineNo">644</span><a name="line.644">                salida.append("\nSe han necesitado " + randomDateUntilItEqualsToGiven() + " intentos para generar una fecha aleatoria equivalente a la fecha dada");</a>
+<span class="sourceLineNo">645</span><a name="line.645"></a>
+<span class="sourceLineNo">646</span><a name="line.646">                return salida.toString();</a>
+<span class="sourceLineNo">647</span><a name="line.647">        }</a>
+<span class="sourceLineNo">648</span><a name="line.648"></a>
+<span class="sourceLineNo">649</span><a name="line.649">}</a>
 
 
 
