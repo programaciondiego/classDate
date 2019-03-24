@@ -10,10 +10,35 @@ package es.unileon.prg1.date;
 
 public class Date{
 
+	/**
+	* Atributo para almacenar el dia introducido
+	*
+	* @see Integrer
+	*/ 
 	private int _day;
+
+	/**
+	* Atributo para almacenar el mes introducido
+	*
+	* @see Integrer
+	*/ 
 	private int _month;
+
+	/**
+	* Atributo para almacenar el anyo introducido
+	*
+	* @see Integrer
+	*/ 
 	private int _year;
 
+
+	/**
+	* Crea fechas a partir de los datos introducidos
+	*
+	* @param day
+	* @param month
+	* @param year
+	*/ 
 	public Date (int day, int month, int year) throws Exception{
 
 		if (isMonthRight(month)) {
@@ -36,7 +61,13 @@ public class Date{
 	}
 
 
-	//Metodo que cambia el dia del objeto
+	
+	/**
+	* Cambia el dia del objeto
+	*
+	* @param day
+	* @return No retorna nada
+	*/ 
 	public void setDay(int day){
 
 		if (this.isDayofMonthRight(day, this._month)) {
@@ -45,7 +76,12 @@ public class Date{
 		}
 	}
 
-	//Metodo que cambia el mes del objeto
+	/**
+	* Cambia el mes del obje
+	*
+	* @param month
+	* @return No retorna nada
+	*/ 
 	public void setMonth(int month){
 
 		if (isMonthRight(month)) {
@@ -53,27 +89,59 @@ public class Date{
 		}		
 	}
 
-	//Metodo que cambia el año del objeto
+	/**
+	* Cambia el anyo del objeto
+	*
+	* @param year
+	* @return No retorna nada
+	*/ 
 	public void setYear(int year){
 
 		this._year = year;
 	}
 	
+	/**
+	* Obtiene el dia del objeto
+	*
+	*
+	* @return Retorna un int con el dia
+	*/ 
 	public int getDay(){
 		int day = this._day;
 		return day;
 	}
 
+	/**
+	* Obtiene el mes del objeto
+	*
+	*
+	* @return Retorna un int con el mes del objeto
+	*/ 
 	public int getMonth(){
 		int month = this._month;
 		return month;
 	}
 
+	/**
+	* Obtiene el anyo del objeto
+	*
+	*
+	* @return Retorna el anyo del objeto
+	*/ 
 	public int getYear(){
 		int year = this._year;
 		return year;
 	}
 
+	/**
+	* Llama al metodo getDaysOfMonth y le pasa como parametro el mes obtenido con getMont
+	*
+	*
+	* @return Retorna el numero de dias que tiene el mes dado
+	*
+	* @see getMonth
+	* @see getDaysOfMonth
+	*/ 
 	public int getDaysOfMonth(){
 
 		int month = this._month;
@@ -82,6 +150,14 @@ public class Date{
 		return	salida;	
 	}
 
+	/**
+	* Obtiene el numero de dias que tiene el mes del objeto
+	*
+	* @param month
+	* @return Retorna el numero de dias que tiene el mes dado
+	*
+	* @see getMonth
+	*/ 
 	private int getDaysOfMonth(int month){
 
 		int salida = 0;
@@ -105,7 +181,15 @@ public class Date{
 		return salida;
 	}
 
-	//Metodo que comprueba que el dia del mes sea correcto
+	/**
+	* Comprueba si el dia dado dentro de mes es correcto
+	*
+	* @param day
+	* @param month
+	* @return Retorna true si es correcto y false si no lo es
+	*
+	* @see DateException
+	*/ 
 	private boolean isDayofMonthRight(int day, int month){
 
 		boolean isDayRight = false;
@@ -136,7 +220,14 @@ public class Date{
 		return isDayRight;
 	}
 
-	//Metodo que comprueba que el mes sea correcto
+	/**
+	* Comprueba que el mes exista
+	*
+	* @param month
+	* @return Retorna true si el mes esta entre 1 y 12, false si no lo esta
+	*
+	* @see DateException
+	*/ 
 	private boolean isMonthRight(int month){
 
 		boolean isMonthRight = false;
@@ -147,7 +238,6 @@ public class Date{
 
 		return isMonthRight;
 	}
-
 
 	/**
 	* Genera la fecha en formato (Dia mes anyo)
@@ -182,7 +272,7 @@ public class Date{
 	/**
 	* Recibe un int con el numero de un mes y devuelve su nombre
 	*
-	*
+	* @param month
 	* @return Retorna un String con el nombre del mes
 	*/ 
 	private String nameOfMonth(int month){
@@ -291,6 +381,7 @@ public class Date{
 	* Recibe un Date y compara el valor de su dia con el del Date sobre el que se ejecuta
 	* Hecho con ifs
 	*
+	* @param date
 	* @return Retorna true si son iguales y false si no lo son
 	*/ 
 	public boolean isSameDayIf(Date date){
@@ -308,6 +399,7 @@ public class Date{
 	* Recibe un Date y compara el valor de su mes con el del Date sobre el que se ejecuta
 	* Hecho con ifs
 	*
+	* @param date
 	* @return Retorna true si son iguales y false si no lo son
 	*/ 
 	public boolean isSameMonthIf(Date date){
@@ -325,6 +417,7 @@ public class Date{
 	* Recibe un Date y compara el valor de su anyo con el del Date sobre el que se ejecuta
 	* Hecho con ifs
 	*
+	* @param date
 	* @return Retorna true si son iguales y false si no lo son
 	*/ 
 	public boolean isSameYearIf(Date date){
@@ -342,6 +435,7 @@ public class Date{
 	* Recibe un Date y compara el valor de su dia, mes y anyo con el del Date sobre el que se ejecuta
 	* Hecho con ifs
 	*
+	* @param date
 	* @return Retorna true si son iguales y false si no lo son
 	*/ 
 	public boolean isSameDateIf(Date date){
@@ -359,6 +453,7 @@ public class Date{
 	* Recibe un Date y compara el valor de su dia con el del Date sobre el que se ejecuta
 	* Hecho sin ifs
 	*
+	* @param date
 	* @return Retorna true si son iguales y false si no lo son
 	*/ 
 	public boolean isSameDay(Date date){
@@ -372,6 +467,7 @@ public class Date{
 	* Recibe un Date y compara el valor de su mes con el del Date sobre el que se ejecuta
 	* Hecho sin ifs
 	*
+	* @param date
 	* @return Retorna true si son iguales y false si no lo son
 	*/ 
 	public boolean isSameMonth(Date date){
@@ -385,6 +481,7 @@ public class Date{
 	* Recibe un Date y compara el valor de su anyo con el del Date sobre el que se ejecuta
 	* Hecho sin ifs
 	*
+	* @param date
 	* @return Retorna true si son iguales y false si no lo son
 	*/ 
 	public boolean isSameYear(Date date){
@@ -398,6 +495,7 @@ public class Date{
 	* Recibe un Date y compara el valor de su dia, mes y anyo con el del Date sobre el que se ejecuta
 	* Hecho sin ifs
 	*
+	* @param date
 	* @return Retorna true si son iguales y false si no lo son
 	*/ 	//Metodo que comprueba si la fecha del objeto sobre el que se invoca y el objeto parametro es el mismo
 	public boolean isSameDate(Date date){
