@@ -19,7 +19,7 @@ public class MainDate{
 
 			dia = new Date(day, month, year);
 		
-			System.out.println("Introduzca otro dia");
+			/*System.out.println("Introduzca otro dia");
 			day = Teclado.readInteger();
 			System.out.println("Introduzca otro mes");
 			month = Teclado.readInteger();
@@ -29,10 +29,10 @@ public class MainDate{
 			otroDia = new Date(day, month, year);
 
 			System.out.println("\nMismo dia: " + dia.isSameDay(otroDia) + "\n" + "Mismo mes: " + dia.isSameMonth(otroDia) + "\n" + "Mismo year: " + dia.isSameYear(otroDia) + "\n" + "Misma fecha: " + dia.isSameDate(otroDia));
-		
 			System.out.println(dia);
-			dia.monthsOfYearLeft();
-			dia.daysOfMonthLeft();
+		*/
+
+			dia.randomDateUntilItEqualsToGivenWhile();
 
 		}catch(DateException e){
 

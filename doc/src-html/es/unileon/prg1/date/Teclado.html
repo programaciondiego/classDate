@@ -1,0 +1,285 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="es">
+<head>
+<title>Source code</title>
+<link rel="stylesheet" type="text/css" href="../../../../../stylesheet.css" title="Style">
+</head>
+<body>
+<div class="sourceContainer">
+<pre><span class="sourceLineNo">001</span><a name="line.1">package es.unileon.prg1.date;</a>
+<span class="sourceLineNo">002</span><a name="line.2"></a>
+<span class="sourceLineNo">003</span><a name="line.3">// Clase para la gestion de entrada por teclado</a>
+<span class="sourceLineNo">004</span><a name="line.4">// Modificado 09/2004</a>
+<span class="sourceLineNo">005</span><a name="line.5">/*</a>
+<span class="sourceLineNo">006</span><a name="line.6"> *  This code is from the book:</a>
+<span class="sourceLineNo">007</span><a name="line.7"> *</a>
+<span class="sourceLineNo">008</span><a name="line.8"> *    Winder, R and Roberts, G (2000) Developing Java</a>
+<span class="sourceLineNo">009</span><a name="line.9"> *    Software, second edition, John Wiley &amp; Sons.</a>
+<span class="sourceLineNo">010</span><a name="line.10"> *</a>
+<span class="sourceLineNo">011</span><a name="line.11"> *  It is copyright (c) 2000 Russel Winder and Graham Roberts.</a>
+<span class="sourceLineNo">012</span><a name="line.12"> */</a>
+<span class="sourceLineNo">013</span><a name="line.13"></a>
+<span class="sourceLineNo">014</span><a name="line.14">import java.io.* ;</a>
+<span class="sourceLineNo">015</span><a name="line.15">/**</a>
+<span class="sourceLineNo">016</span><a name="line.16"> *  Clase que permite leer valores simples de la linea de comandos.</a>
+<span class="sourceLineNo">017</span><a name="line.17"> *  Si ocurre un error durante la lectura las excepciones lanzadas </a>
+<span class="sourceLineNo">018</span><a name="line.18"> *  son capturadas y  se retorna el menor valor representable</a>
+<span class="sourceLineNo">019</span><a name="line.19"> *  del tipo de datos leido.</a>
+<span class="sourceLineNo">020</span><a name="line.20"> *  </a>
+<span class="sourceLineNo">021</span><a name="line.21"> *  Nota: esta no es una muy buena opcion de tratar los posibles errores. En futuras versiones </a>
+<span class="sourceLineNo">022</span><a name="line.22"> *  (cuendo se explique la gestion de excepciones) se mejorara este tratamiento.</a>
+<span class="sourceLineNo">023</span><a name="line.23"> *</a>
+<span class="sourceLineNo">024</span><a name="line.24"> *  @version 1.0</a>
+<span class="sourceLineNo">025</span><a name="line.25"> *  @author PRG</a>
+<span class="sourceLineNo">026</span><a name="line.26"> */</a>
+<span class="sourceLineNo">027</span><a name="line.27">public class Teclado {</a>
+<span class="sourceLineNo">028</span><a name="line.28">  </a>
+<span class="sourceLineNo">029</span><a name="line.29">  /**</a>
+<span class="sourceLineNo">030</span><a name="line.30">  * Stream para leer lineas de la entrada standar (por defecto el teclado) </a>
+<span class="sourceLineNo">031</span><a name="line.31">  * </a>
+<span class="sourceLineNo">032</span><a name="line.32">  * @see BufferedReader</a>
+<span class="sourceLineNo">033</span><a name="line.33">  * @see InputStreamReader</a>
+<span class="sourceLineNo">034</span><a name="line.34">  * @see System.in</a>
+<span class="sourceLineNo">035</span><a name="line.35">  */</a>
+<span class="sourceLineNo">036</span><a name="line.36">  private static final BufferedReader in =</a>
+<span class="sourceLineNo">037</span><a name="line.37">    new BufferedReader(new InputStreamReader (System.in)) ;</a>
+<span class="sourceLineNo">038</span><a name="line.38">  /**</a>
+<span class="sourceLineNo">039</span><a name="line.39">   * Atributo para almacenar la linea ledia por teclado</a>
+<span class="sourceLineNo">040</span><a name="line.40">   * </a>
+<span class="sourceLineNo">041</span><a name="line.41">   * @see String</a>
+<span class="sourceLineNo">042</span><a name="line.42">   */</a>
+<span class="sourceLineNo">043</span><a name="line.43">  private static String input;</a>
+<span class="sourceLineNo">044</span><a name="line.44">  </a>
+<span class="sourceLineNo">045</span><a name="line.45">  /**</a>
+<span class="sourceLineNo">046</span><a name="line.46">   *  Lee un &lt;CODE&gt;int&lt;/CODE&gt; introducido por el teclado. </a>
+<span class="sourceLineNo">047</span><a name="line.47">   *  </a>
+<span class="sourceLineNo">048</span><a name="line.48">   *  </a>
+<span class="sourceLineNo">049</span><a name="line.49">   *  @return Retorna el valor introducido por el teclado. Si se introduce un valor que no es correcto se retorna el minimo</a>
+<span class="sourceLineNo">050</span><a name="line.50">   *  valor representable  en int (Integer.MIN_VALUE)</a>
+<span class="sourceLineNo">051</span><a name="line.51">   *  @see Integer</a>
+<span class="sourceLineNo">052</span><a name="line.52">   */</a>
+<span class="sourceLineNo">053</span><a name="line.53">  public static final synchronized int readInteger() {</a>
+<span class="sourceLineNo">054</span><a name="line.54">    input = "";</a>
+<span class="sourceLineNo">055</span><a name="line.55">    int value = Integer.MIN_VALUE;</a>
+<span class="sourceLineNo">056</span><a name="line.56">    try {</a>
+<span class="sourceLineNo">057</span><a name="line.57">      input = in.readLine() ;</a>
+<span class="sourceLineNo">058</span><a name="line.58">    }</a>
+<span class="sourceLineNo">059</span><a name="line.59">    catch (IOException e) { error("standard input"); } </a>
+<span class="sourceLineNo">060</span><a name="line.60">    try {</a>
+<span class="sourceLineNo">061</span><a name="line.61">      value = Integer.parseInt(input) ;</a>
+<span class="sourceLineNo">062</span><a name="line.62">    }</a>
+<span class="sourceLineNo">063</span><a name="line.63">    catch (NumberFormatException e) { </a>
+<span class="sourceLineNo">064</span><a name="line.64">                value=Integer.MIN_VALUE;</a>
+<span class="sourceLineNo">065</span><a name="line.65">    }</a>
+<span class="sourceLineNo">066</span><a name="line.66">    return value ;</a>
+<span class="sourceLineNo">067</span><a name="line.67">  }</a>
+<span class="sourceLineNo">068</span><a name="line.68"></a>
+<span class="sourceLineNo">069</span><a name="line.69">  /**</a>
+<span class="sourceLineNo">070</span><a name="line.70">   *  Lee un &lt;CODE&gt;short&lt;/CODE&gt; introducido por el teclado. </a>
+<span class="sourceLineNo">071</span><a name="line.71">   *  </a>
+<span class="sourceLineNo">072</span><a name="line.72">   *  </a>
+<span class="sourceLineNo">073</span><a name="line.73">   *  @return Retorna el valor introducido por el teclado. Si se introduce un valor que no es correcto se retorna el minimo</a>
+<span class="sourceLineNo">074</span><a name="line.74">   *  valor representable  en short (Short.MIN_VALUE)</a>
+<span class="sourceLineNo">075</span><a name="line.75">   *  @see Short</a>
+<span class="sourceLineNo">076</span><a name="line.76">   */</a>
+<span class="sourceLineNo">077</span><a name="line.77">  public static final synchronized short readShort(){</a>
+<span class="sourceLineNo">078</span><a name="line.78">    input = "";</a>
+<span class="sourceLineNo">079</span><a name="line.79">    short value = Short.MIN_VALUE;</a>
+<span class="sourceLineNo">080</span><a name="line.80">    try {</a>
+<span class="sourceLineNo">081</span><a name="line.81">      input = in.readLine() ;</a>
+<span class="sourceLineNo">082</span><a name="line.82">    }</a>
+<span class="sourceLineNo">083</span><a name="line.83">    catch (IOException e) { error("standard input"); } </a>
+<span class="sourceLineNo">084</span><a name="line.84">    try {</a>
+<span class="sourceLineNo">085</span><a name="line.85">      value = Short.parseShort(input) ;</a>
+<span class="sourceLineNo">086</span><a name="line.86">    }</a>
+<span class="sourceLineNo">087</span><a name="line.87">    catch (NumberFormatException e) {</a>
+<span class="sourceLineNo">088</span><a name="line.88">        value = Short.MIN_VALUE;        </a>
+<span class="sourceLineNo">089</span><a name="line.89">    }</a>
+<span class="sourceLineNo">090</span><a name="line.90">    return value ;</a>
+<span class="sourceLineNo">091</span><a name="line.91">    </a>
+<span class="sourceLineNo">092</span><a name="line.92">  }</a>
+<span class="sourceLineNo">093</span><a name="line.93">  </a>
+<span class="sourceLineNo">094</span><a name="line.94">  /**</a>
+<span class="sourceLineNo">095</span><a name="line.95">   *  Lee un &lt;CODE&gt;long&lt;/CODE&gt; introducido por el teclado. </a>
+<span class="sourceLineNo">096</span><a name="line.96">   *  </a>
+<span class="sourceLineNo">097</span><a name="line.97">   *  </a>
+<span class="sourceLineNo">098</span><a name="line.98">   *  @return Retorna el valor introducido por el teclado. Si se introduce un valor que no es correcto se retorna el minimo</a>
+<span class="sourceLineNo">099</span><a name="line.99">   *  valor representable  en long (Long.MIN_VALUE)</a>
+<span class="sourceLineNo">100</span><a name="line.100">   *  @see Long</a>
+<span class="sourceLineNo">101</span><a name="line.101">   */</a>
+<span class="sourceLineNo">102</span><a name="line.102">  </a>
+<span class="sourceLineNo">103</span><a name="line.103">  public static final synchronized long readLong() {</a>
+<span class="sourceLineNo">104</span><a name="line.104">    input = "" ;</a>
+<span class="sourceLineNo">105</span><a name="line.105">    long value = Long.MIN_VALUE;</a>
+<span class="sourceLineNo">106</span><a name="line.106">    try {</a>
+<span class="sourceLineNo">107</span><a name="line.107">      input = in.readLine() ;</a>
+<span class="sourceLineNo">108</span><a name="line.108">    }</a>
+<span class="sourceLineNo">109</span><a name="line.109">    catch (IOException e) { error("standard input"); }</a>
+<span class="sourceLineNo">110</span><a name="line.110">    try {</a>
+<span class="sourceLineNo">111</span><a name="line.111">      value = Long.parseLong(input) ;</a>
+<span class="sourceLineNo">112</span><a name="line.112">    }</a>
+<span class="sourceLineNo">113</span><a name="line.113">    catch (NumberFormatException e) {</a>
+<span class="sourceLineNo">114</span><a name="line.114">        value = Long.MIN_VALUE; </a>
+<span class="sourceLineNo">115</span><a name="line.115">    }</a>
+<span class="sourceLineNo">116</span><a name="line.116">    return value ;</a>
+<span class="sourceLineNo">117</span><a name="line.117">  }</a>
+<span class="sourceLineNo">118</span><a name="line.118">  </a>
+<span class="sourceLineNo">119</span><a name="line.119">  </a>
+<span class="sourceLineNo">120</span><a name="line.120">  /**</a>
+<span class="sourceLineNo">121</span><a name="line.121">   *  Lee un &lt;CODE&gt;float&lt;/CODE&gt; introducido por el teclado. </a>
+<span class="sourceLineNo">122</span><a name="line.122">   *  </a>
+<span class="sourceLineNo">123</span><a name="line.123">   *  </a>
+<span class="sourceLineNo">124</span><a name="line.124">   *  @return Retorna el valor introducido por el teclado. Si se introduce un valor que no es correcto se retorna el minimo</a>
+<span class="sourceLineNo">125</span><a name="line.125">   *  valor representable  en float (Float.MIN_VALUE)</a>
+<span class="sourceLineNo">126</span><a name="line.126">   *  @see Float</a>
+<span class="sourceLineNo">127</span><a name="line.127">   *    </a>
+<span class="sourceLineNo">128</span><a name="line.128">   */</a>
+<span class="sourceLineNo">129</span><a name="line.129">  public static final synchronized float readFloat() {</a>
+<span class="sourceLineNo">130</span><a name="line.130">    input = "" ;</a>
+<span class="sourceLineNo">131</span><a name="line.131">    float value = Float.MIN_VALUE ;</a>
+<span class="sourceLineNo">132</span><a name="line.132">    try {</a>
+<span class="sourceLineNo">133</span><a name="line.133">      input = in.readLine() ;</a>
+<span class="sourceLineNo">134</span><a name="line.134">    }</a>
+<span class="sourceLineNo">135</span><a name="line.135">    catch (IOException e) { error("standard input"); }</a>
+<span class="sourceLineNo">136</span><a name="line.136">    try {</a>
+<span class="sourceLineNo">137</span><a name="line.137">      value = Float.parseFloat(input) ;</a>
+<span class="sourceLineNo">138</span><a name="line.138">    }</a>
+<span class="sourceLineNo">139</span><a name="line.139">    catch (NumberFormatException e) {</a>
+<span class="sourceLineNo">140</span><a name="line.140">        value = Float.MIN_VALUE ;</a>
+<span class="sourceLineNo">141</span><a name="line.141">    }</a>
+<span class="sourceLineNo">142</span><a name="line.142">    return value ;</a>
+<span class="sourceLineNo">143</span><a name="line.143">  }</a>
+<span class="sourceLineNo">144</span><a name="line.144">  </a>
+<span class="sourceLineNo">145</span><a name="line.145">  </a>
+<span class="sourceLineNo">146</span><a name="line.146">  /**</a>
+<span class="sourceLineNo">147</span><a name="line.147">   *  Lee un &lt;CODE&gt;long&lt;/CODE&gt; introducido por el teclado. </a>
+<span class="sourceLineNo">148</span><a name="line.148">   *  </a>
+<span class="sourceLineNo">149</span><a name="line.149">   *  @return Retorna el valor introducido por el teclado. Si se introduce un valor que no es correcto se retorna el minimo</a>
+<span class="sourceLineNo">150</span><a name="line.150">   *  valor representable  en double (Double.MIN_VALUE)</a>
+<span class="sourceLineNo">151</span><a name="line.151">   *  @see Double</a>
+<span class="sourceLineNo">152</span><a name="line.152">   */</a>
+<span class="sourceLineNo">153</span><a name="line.153">  </a>
+<span class="sourceLineNo">154</span><a name="line.154">  public static final synchronized double readDouble() {</a>
+<span class="sourceLineNo">155</span><a name="line.155">    input = "" ;</a>
+<span class="sourceLineNo">156</span><a name="line.156">    double value = Double.MIN_VALUE ;</a>
+<span class="sourceLineNo">157</span><a name="line.157">    try {</a>
+<span class="sourceLineNo">158</span><a name="line.158">      input = in.readLine() ;</a>
+<span class="sourceLineNo">159</span><a name="line.159">    }</a>
+<span class="sourceLineNo">160</span><a name="line.160">    catch (IOException e) { error("standard input"); }</a>
+<span class="sourceLineNo">161</span><a name="line.161">    try {</a>
+<span class="sourceLineNo">162</span><a name="line.162">      value = Double.parseDouble(input) ;</a>
+<span class="sourceLineNo">163</span><a name="line.163">    }</a>
+<span class="sourceLineNo">164</span><a name="line.164">    catch (NumberFormatException e) { </a>
+<span class="sourceLineNo">165</span><a name="line.165">        value = Double.MIN_VALUE;</a>
+<span class="sourceLineNo">166</span><a name="line.166">    }</a>
+<span class="sourceLineNo">167</span><a name="line.167">    return value ;</a>
+<span class="sourceLineNo">168</span><a name="line.168">  }</a>
+<span class="sourceLineNo">169</span><a name="line.169">  </a>
+<span class="sourceLineNo">170</span><a name="line.170">  </a>
+<span class="sourceLineNo">171</span><a name="line.171">  </a>
+<span class="sourceLineNo">172</span><a name="line.172">  </a>
+<span class="sourceLineNo">173</span><a name="line.173">  /**</a>
+<span class="sourceLineNo">174</span><a name="line.174">   *  Lee un &lt;CODE&gt;char&lt;/CODE&gt; introducido por el teclado. </a>
+<span class="sourceLineNo">175</span><a name="line.175">   *  </a>
+<span class="sourceLineNo">176</span><a name="line.176">   *  @return Retorna el caracter introducido por el teclado.</a>
+<span class="sourceLineNo">177</span><a name="line.177">   */</a>
+<span class="sourceLineNo">178</span><a name="line.178">  public static final synchronized char readChar() {</a>
+<span class="sourceLineNo">179</span><a name="line.179">    char c = ' ' ;</a>
+<span class="sourceLineNo">180</span><a name="line.180">    try {</a>
+<span class="sourceLineNo">181</span><a name="line.181">     c = (char)in.read() ;     </a>
+<span class="sourceLineNo">182</span><a name="line.182">    }</a>
+<span class="sourceLineNo">183</span><a name="line.183">    catch (IOException e) { error("standard input"); }</a>
+<span class="sourceLineNo">184</span><a name="line.184">    return c ;</a>
+<span class="sourceLineNo">185</span><a name="line.185">  }</a>
+<span class="sourceLineNo">186</span><a name="line.186">  </a>
+<span class="sourceLineNo">187</span><a name="line.187">  /**</a>
+<span class="sourceLineNo">188</span><a name="line.188">   *  Lee un &lt;CODE&gt;String&lt;/CODE&gt; introducido por el teclado.</a>
+<span class="sourceLineNo">189</span><a name="line.189">   *  </a>
+<span class="sourceLineNo">190</span><a name="line.190">   *  @return Retorna la cadena de caracteres introducida por el teclado.</a>
+<span class="sourceLineNo">191</span><a name="line.191">   *  @see String</a>
+<span class="sourceLineNo">192</span><a name="line.192">   */</a>
+<span class="sourceLineNo">193</span><a name="line.193">  public static final synchronized String readString() {</a>
+<span class="sourceLineNo">194</span><a name="line.194">    String s = "";</a>
+<span class="sourceLineNo">195</span><a name="line.195">    try {</a>
+<span class="sourceLineNo">196</span><a name="line.196">      s = in.readLine() ;</a>
+<span class="sourceLineNo">197</span><a name="line.197">    }</a>
+<span class="sourceLineNo">198</span><a name="line.198">    catch (IOException e) { error("standard input"); }</a>
+<span class="sourceLineNo">199</span><a name="line.199">    if (s == null) {</a>
+<span class="sourceLineNo">200</span><a name="line.200">      s = "" ;</a>
+<span class="sourceLineNo">201</span><a name="line.201">    }</a>
+<span class="sourceLineNo">202</span><a name="line.202">    return s ;</a>
+<span class="sourceLineNo">203</span><a name="line.203">  }</a>
+<span class="sourceLineNo">204</span><a name="line.204">  </a>
+<span class="sourceLineNo">205</span><a name="line.205">  /**</a>
+<span class="sourceLineNo">206</span><a name="line.206">   * Lanzado cuando ocurre un error.Muestra un mensaje y termina</a>
+<span class="sourceLineNo">207</span><a name="line.207">   */</a>
+<span class="sourceLineNo">208</span><a name="line.208">  private static void error(String msg) {</a>
+<span class="sourceLineNo">209</span><a name="line.209">    System.err.println("Error: " + msg) ;</a>
+<span class="sourceLineNo">210</span><a name="line.210">    System.err.println("Imposible continuar la ejecucion del programa") ;</a>
+<span class="sourceLineNo">211</span><a name="line.211">    System.exit(0) ;</a>
+<span class="sourceLineNo">212</span><a name="line.212">  }</a>
+<span class="sourceLineNo">213</span><a name="line.213">}</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</div>
+</body>
+</html>

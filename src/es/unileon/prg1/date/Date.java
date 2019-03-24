@@ -476,6 +476,25 @@ public class Date{
 		return salida.toString();
 	}
 
+	public int randomDateUntilItEqualsToGivenWhile(){
+
+		int numberOfAttempts = 0;
+		int randomDay = 0;
+
+		while(randomDay != dayOfYear()){
+		 	
+			randomDay =  1 + (int)(Math.random()*365);
+
+			System.out.println(randomDay);
+
+			numberOfAttempts++;
+		} 	
+
+		System.out.println("numer de intentos " + numberOfAttempts);
+
+		return numberOfAttempts;
+	}
+
 	public String toString(){
 
 		StringBuffer salida = new StringBuffer();

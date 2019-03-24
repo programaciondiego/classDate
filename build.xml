@@ -29,7 +29,7 @@
     </target>
 
     <target name="documentation" >
-      <javadoc sourcepath="${src}" destdir="${doc}"/>
+      <javadoc sourcepath="${src}" destdir="${doc}" author="true" version="true" linksource="true" private="true"/>
     </target>
 
     <target name="todo" depends="compile, run"/>
