@@ -15,21 +15,21 @@ public class Date{
 	*
 	* @see Integrer
 	*/ 
-	private int _day;
+	private int day;
 
 	/**
 	* Atributo para almacenar el mes introducido
 	*
 	* @see Integrer
 	*/ 
-	private int _month;
+	private int month;
 
 	/**
 	* Atributo para almacenar el anyo introducido
 	*
 	* @see Integrer
 	*/ 
-	private int _year;
+	private int year;
 
 
 	/**
@@ -39,11 +39,11 @@ public class Date{
 	* @param month
 	* @param year
 	*/ 
-	public Date (int day, int month, int year) throws Exception{
+	public Date (int day, int month, int year) throws DateException{
 
 		if (isMonthRight(month)) {
 
-			this._month = month;
+			this.month = month;
 		}else{
 
 			throw new DateException("Mes "+month+" no valido, debe ser un mes entre 1 y 12");
@@ -51,53 +51,86 @@ public class Date{
 
 		if (isDayofMonthRight(day,month)) {
 
-			this._day = day;
-			this._year = year;			
+			this.day = day;
 		}else{
 
 			throw new DateException("Fecha no valida: (" + day + "/" + month + "/" + year + ")");
 		}
-
+		if (year > 0) {
+			this.year = year;			
+		}else{
+			throw new DateException("Anyo no valido");
+		}
 	}
 
+	/**
+	* Crea fechas a partir de los datos introducidos
+	*
+	* @param Date
+	*/ 
+	public Date (Date anotherDay){
+
+		this.day = anotherDay.getDay();
+		this.month = anotherDay.getMonth();
+		this.year = anotherDay.getYear();
+
+	}
+	
+	/**
+	* Crea la fecha 1/1/2017
+	*
+	*/ 
+	public Date (){
+
+		this.day = 1;
+		this.month = 1;
+		this.year = 2017;
+
+	}
 
 	
 	/**
 	* Cambia el dia del objeto
 	*
 	* @param day
-	* @return No retorna nada
 	*/ 
-	public void setDay(int day){
+	public void setDay(int day) throws DateException{
 
-		if (this.isDayofMonthRight(day, this._month)) {
+		if (this.isDayofMonthRight(day, this.month)) {
 		
-			this._day = day;
+			this.day = day;
+		}else{ 
+			throw new DateException("Fecha no valida: (" + day + "/" + month + "/" + year + ")");
 		}
 	}
 
 	/**
-	* Cambia el mes del obje
+	* Cambia el mes del objeto
 	*
 	* @param month
-	* @return No retorna nada
 	*/ 
-	public void setMonth(int month){
+	public void setMonth(int month) throws DateException{
 
 		if (isMonthRight(month)) {
-			this._month = month;
-		}		
+			this.month = month;
+		}else{
+			throw new DateException("Mes "+month+" no valido, debe ser un mes entre 1 y 12");
+		}
+		
 	}
 
 	/**
 	* Cambia el anyo del objeto
 	*
 	* @param year
-	* @return No retorna nada
 	*/ 
-	public void setYear(int year){
-
-		this._year = year;
+	public void setYear(int year) throws DateException{
+		
+		if (year > 0) {
+			this.year = year;			
+		}else{
+			throw new DateException("Anyo no valido");
+		}
 	}
 	
 	/**
@@ -107,7 +140,7 @@ public class Date{
 	* @return Retorna un int con el dia
 	*/ 
 	public int getDay(){
-		int day = this._day;
+		int day = this.day;
 		return day;
 	}
 
@@ -118,7 +151,7 @@ public class Date{
 	* @return Retorna un int con el mes del objeto
 	*/ 
 	public int getMonth(){
-		int month = this._month;
+		int month = this.month;
 		return month;
 	}
 
@@ -129,7 +162,7 @@ public class Date{
 	* @return Retorna el anyo del objeto
 	*/ 
 	public int getYear(){
-		int year = this._year;
+		int year = this.year;
 		return year;
 	}
 
@@ -142,11 +175,11 @@ public class Date{
 	* @see getMonth
 	* @see getDaysOfMonth
 	*/ 
-	public int getDaysOfMonth(){
+	public int daysOfMonth(){
 
-		int month = this._month;
+		int month = this.month;
 		int salida = 0;
-		salida = getDaysOfMonth(month);
+		salida = daysOfMonth(month);
 		return	salida;	
 	}
 
@@ -158,7 +191,7 @@ public class Date{
 	*
 	* @see getMonth
 	*/ 
-	private int getDaysOfMonth(int month){
+	private int daysOfMonth(int month){
 
 		int salida = 0;
 
@@ -230,10 +263,10 @@ public class Date{
 	*/ 
 	private boolean isMonthRight(int month){
 
-		boolean isMonthRight = false;
+		boolean isMonthRight = true;
 
-		if (month >= 1 && month <= 12) {
-			isMonthRight = true;
+		if (month < 1 || month > 12) {
+			isMonthRight = false;
 		}
 
 		return isMonthRight;
@@ -248,7 +281,7 @@ public class Date{
 	public String dateWithFormat(){
 
 		StringBuilder salida = new StringBuilder();
-		salida.append(this.getDay() + " de " + nameOfMonth(this.getMonth()) + " de " + this.getYear());
+		salida.append(this.getDay() + " de " + getMonthName(this.getMonth()) + " de " + this.getYear());
 
 		return salida.toString();
 	}
@@ -261,12 +294,12 @@ public class Date{
 	*
 	* @see nameOfMonth
 	*/ 
-	public String nameOfMonth(){
+	public String getMonthName(){
 
-		String salida = "";
-		int month = this._month;
-		salida = nameOfMonth(month);
-		return salida;
+		StringBuilder salida = new StringBuilder();
+		int month = this.month;
+		salida.append(getMonthName(month));
+		return salida.toString();
 	}
 
 	/**
@@ -275,57 +308,57 @@ public class Date{
 	* @param month
 	* @return Retorna un String con el nombre del mes
 	*/ 
-	private String nameOfMonth(int month){
+	private String getMonthName(int month){
 
 		String name = "inicialize";
 
 		switch (month) {
 			case 1:
-				name = "Enero";
+				name = "January";
 				break;
 
 			case 2:
-				name = "Febrero";
+				name = "February";
 				break;
 
 			case 3:
-				name = "Marzo";
+				name = "March";
 				break;
 
 			case 4:
-				name = "Abril";
+				name = "April";
 				break;
 
 			case 5:
-				name = "Mayo";
+				name = "May";
 				break;
 
 			case 6:
-				name = "Junio";
+				name = "June";
 				break;
 
 			case 7:
-				name = "Julio";
+				name = "July";
 				break;
 
 			case 8:
-				name = "Agosto";
+				name = "August";
 				break;
 
 			case 9:
-				name = "Septiembre";
+				name = "September";
 				break;
 
 			case 10:
-				name = "Octubre";
+				name = "October";
 				break;
 
 			case 11:
-				name = "Noviembre";
+				name = "November";
 				break;
 
 			case 12:
-				name = "Diciembre";
+				name = "December";
 				break;
 		}
 
@@ -341,7 +374,7 @@ public class Date{
 	*
 	* @return Retorna un String con el nombre de la estacion
 	*/ 
-	public String whichSeason(){
+	public String getSeasonName(){
 		
 		int month = this.getMonth();
 
@@ -352,25 +385,25 @@ public class Date{
 			case 4: //Next
 			case 5: //Next
 			case 6:
-				season = "Primavera";
+				season = "Spring";
 				break;
 
 			case 7: //Next
 			case 8: //Next
 			case 9:
-				season = "Verano";
+				season = "Summer";
 				break;
 
 			case 10: //Next
 			case 11: //Next
 			case 12:
-				season = "Otoño";
+				season = "Autumn";
 				break;
 
 			case 1: //Next
 			case 2: //Next
 			case 3:
-				season = "Invierno";
+				season = "Winter";
 				break;
 		}
 
@@ -388,7 +421,7 @@ public class Date{
 
 		boolean isSameDay = false;
 
-		if (this._day==date.getDay()){
+		if (this.day==date.getDay()){
 			isSameDay = true;			
 		}
 
@@ -406,7 +439,7 @@ public class Date{
 
 		boolean isSameMonth = false;
 
-		if (this._month==date.getMonth()){
+		if (this.month==date.getMonth()){
 			isSameMonth = true;			
 		}
 		
@@ -424,7 +457,7 @@ public class Date{
 
 		boolean isSameYear = false;
 
-		if (this._year==date.getYear()){
+		if (this.year==date.getYear()){
 			isSameYear = true;			
 		}
 		
@@ -458,7 +491,7 @@ public class Date{
 	*/ 
 	public boolean isSameDay(Date date){
 
-		boolean isSameDay = this._day==date.getDay();
+		boolean isSameDay = this.day==date.getDay();
 
 		return isSameDay;
 	}
@@ -472,7 +505,7 @@ public class Date{
 	*/ 
 	public boolean isSameMonth(Date date){
 
-		boolean isSameMonth = this._month==date.getMonth();
+		boolean isSameMonth = this.month==date.getMonth();
 		
 		return isSameMonth;
 	}
@@ -486,7 +519,7 @@ public class Date{
 	*/ 
 	public boolean isSameYear(Date date){
 
-		boolean isSameYear = this._year==date.getYear();
+		boolean isSameYear = this.year==date.getYear();
 		
 		return isSameYear;
 	}	
@@ -498,7 +531,7 @@ public class Date{
 	* @param date
 	* @return Retorna true si son iguales y false si no lo son
 	*/ 	//Metodo que comprueba si la fecha del objeto sobre el que se invoca y el objeto parametro es el mismo
-	public boolean isSameDate(Date date){
+	public boolean isSame(Date date){
 
 		boolean isSameDate = (isSameDay(date) && isSameMonth(date) && isSameYear(date));
 		
@@ -511,18 +544,13 @@ public class Date{
 	*
 	* @return Retorna un String con los meses que faltan hasta final de anyo
 	*/ 
-	public String monthsOfYearLeft(){
+	public String getMonthsLeft(){
 
-		StringBuilder salida = new StringBuilder();
+		StringBuilder salida = new StringBuilder(); 
 
-		if (this.getMonth() == 12) {
-			salida.append("\nNo hay meses restantes este anyo, Diciembre es el ultimo mes.\n");
-		}else{
-			salida.append("\nLos meses restantes este anyo son: \n");
-		}
 
 		for (int i = this.getMonth() + 1; i <= 12 ; i++) {
-			salida.append(nameOfMonth(i)+"\n");
+			salida.append(getMonthName(i)+" ");
 		}
 
 		return salida.toString();
@@ -534,31 +562,29 @@ public class Date{
 	*
 	* @return Retorna un string con las fechas hasta final de mes
 	*/ 
-	public String daysOfMonthLeft(){
+	public String getDaysLeftOfMonth(){
 
 		int daysLeft;
 
 		StringBuilder salida = new StringBuilder();
 
-		switch (_month) {
+		switch (month) {
 			case 4: //Next
 			case 6: //Next
 			case 11:
-				daysLeft = 30 - _day;
+				daysLeft = 30 - this.getDay();
 				break;
 
 			case 2:
-				daysLeft = 28 - _day;
+				daysLeft = 28 - this.getDay();
 				break;
 
 			default:
-				daysLeft = 31 - _day;
+				daysLeft = 31 - this.getDay();
 		}
 
-		salida.append("\n\nLos dias restantes hasta final de mes son: \n");
-
 		for (int i = 1 ; i <= daysLeft; i++) {
-			salida.append("(" + (this._day + i) + "/" + this._month + "/" + this._year + ") \n");
+			salida.append( (this.getDay() + i) + "/" + this.getMonth() + "/" + this.getYear() + " ");
 		}		
 
 		return salida.toString();
@@ -570,24 +596,17 @@ public class Date{
 	*
 	* @return Retorna un String con los meses del anyo con el mismo numero de dias
 	*/ 
-	public String monthsWithSameDays(){
+	public String getMonthsSameDays(){
 
-		int month = this._month;
+		int month = this.getMonth();
 		StringBuilder salida = new StringBuilder();
 
-		if (month != 2) {
-
-			salida.append("\nLos meses del año con los mismo dias son:\n");
-
-			for (int i = 1; i <= 12; i++) {
+		for (int i = 1; i <= 12; i++) { 
+		
+			if (daysOfMonth(month) == daysOfMonth(i)) {
 			
-				if (getDaysOfMonth(month) == getDaysOfMonth(i) && month != i) {
-				
-					salida.append(nameOfMonth(i)+"\n");			
-				}
+				salida.append(getMonthName(i)+" ");			
 			}
-		}else{
-			salida.append("Febrero es el unico mes con 28 dias\n");
 		}
 
 		return salida.toString();
@@ -599,15 +618,15 @@ public class Date{
 	*
 	* @return Retorna el dia del anyo (entre el 1 y el 365)*
 	*/ 
-	public int dayOfYear(){
+	public int daysPast(){
 
 		int month = this.getMonth();
 		int day = this.getDay();
-		int salida = day;
+		int salida = day - 1;
 
 		for (int i = 1; i < month; i++) {
 			
-			salida = salida + getDaysOfMonth(i);
+			salida = salida + daysOfMonth(i);
 		}
 
 		return salida;
@@ -619,54 +638,43 @@ public class Date{
 	*
 	* @return Retorna un string con el nombre del dia de la semana
 	*/ 
-	public String dayOfWeek(){
+	public String dayOfWeek(int dayOfWeek){
 
 		StringBuilder salida = new StringBuilder();
 
 
-		int dayOfWeek;
 
-		do{
-			System.out.println("\n¿Que dia de la semana era el (1/1/" + this.getYear() +")?");
-			System.out.println("[1] Lunes\n[2] Martes\n[3] Miercoles\n[4] Jueves\n[5] Viernes\n[6] Sabado\n[7] Domingo\n");			
-			dayOfWeek = Teclado.readInteger();
-			if (dayOfWeek < 1 || dayOfWeek > 7) {
-				System.out.println("Introduzca una de las opciones dadas");
-			}
-		}while(!(dayOfWeek >= 1 && dayOfWeek <= 7));
-
-
-		int day = (dayOfYear()%7)+(dayOfWeek-1);
+		int day = (daysPast()%7)+(dayOfWeek);
 
 		switch (day){
 
 			case 1:
 
-				salida.append("Lunes");
+				salida.append("Monday");
 				break;
 			case 2:
 
-				salida.append("Martes");
+				salida.append("Tuesday");
 				break;
 			case 3:
 
-				salida.append("Miercoles");
+				salida.append("Wednesday");
 				break;
 			case 4:
 
-				salida.append("Jueves");
+				salida.append("Thursday");
 				break;
 			case 5:
 
-				salida.append("Viernes");
+				salida.append("Friday");
 				break;
 			case 6:
 
-				salida.append("Sabado");
+				salida.append("Saturday");
 				break;				
-			default:
+			case 0:
 
-				salida.append("Domingo");
+				salida.append("Sunday");
 				break;
 		}		
 
@@ -680,7 +688,7 @@ public class Date{
 	*
 	* @return Retorna el numero de intentos
 	*/ 
-	public int randomDateUntilItEqualsToGivenWhile(){
+	public int numRandomTriesEqualDateWhile(){
 
 		int numberOfAttempts = 0;
 		int randomDay = 0;
@@ -708,7 +716,7 @@ public class Date{
 	*
 	* @return Retorna el numero de intentos
 	*/ 
-	public int randomDateUntilItEqualsToGiven(){
+	public int numRandomTriesEqualDate(){
 
 		int numberOfAttempts = 0;
 		int randomDay = 0;
@@ -730,17 +738,48 @@ public class Date{
 		return numberOfAttempts;
 	}
 
+	/**
+	* Crea el dia siguiente al objeto sobre el que se ejecuta
+	*
+	*
+	* @return Retorna el dia siguiente
+	*
+	* @see Date
+	*/ 
+	public Date tomorrow(){
+
+		Date tomorrow = new Date();
+
+		try{
+
+			if (this.getDay()==this.daysOfMonth()) {
+				
+				tomorrow.setDay(1);
+				if (this.getMonth()==12) {
+					tomorrow.setMonth(1);
+					tomorrow.setYear(this.getYear()+1);
+				}else{
+				tomorrow.setMonth(this.getMonth()+1);
+				tomorrow.setYear(this.getYear());
+				}
+			}else{
+				tomorrow.setDay(this.getDay()+1);
+				tomorrow.setMonth(this.getMonth());
+				tomorrow.setYear(this.getYear());
+			}
+		}catch(DateException e){
+
+			System.out.println(e.getMessage());
+		}
+		return tomorrow;
+	}
+	
 	public String toString(){
 
 		StringBuffer salida = new StringBuffer();
 
-		salida.append("El dia " + dateWithFormat() + " es el dia " + dayOfYear() + " del anyo, y es " + dayOfWeek());
-		salida.append("\nLa estacion en esta fecha es " + whichSeason() + " y el nombre del mes es " + nameOfMonth());
-		salida.append(daysOfMonthLeft());
-		salida.append(monthsOfYearLeft()); 
-		salida.append(monthsWithSameDays());	
-		salida.append("\nSe han necesitado " + randomDateUntilItEqualsToGiven() + " intentos para generar una fecha aleatoria equivalente a la fecha dada");
-
+		salida.append(this.getDay() + "/" + this.getMonth() + "/" + this.getYear());
+		salida.append("El siguiente dia es: " + tomorrow());
 		return salida.toString();
 	}
 

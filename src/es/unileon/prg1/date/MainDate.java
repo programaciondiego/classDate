@@ -8,7 +8,7 @@ public class MainDate{
 			Date dia, otroDia;
 			int day; 
 			int month;
-			int year;
+			int year = 2017;
 
 			System.out.println("Introduzca el dia");
 			day = Teclado.readInteger();
@@ -16,7 +16,7 @@ public class MainDate{
 			month = Teclado.readInteger();
 			System.out.println("Introduzca el año");
 			year = Teclado.readInteger();
-
+/*
 			dia = new Date(day, month, year);
 		
 			System.out.println("Introduzca otro dia para comparar");
@@ -27,10 +27,14 @@ public class MainDate{
 			year = Teclado.readInteger();
 
 			otroDia = new Date(day, month, year);
+*/
+			dia = new Date(day,month,year);
 
-			System.out.println("Para los dias " + dia.dateWithFormat() + " y " + otroDia.dateWithFormat());
-			System.out.println("Mismo dia: " + dia.isSameDay(otroDia) + "\n" + "Mismo mes: " + dia.isSameMonth(otroDia) + "\n" + "Mismo year: " + dia.isSameYear(otroDia) + "\n" + "Misma fecha: " + dia.isSameDate(otroDia));
-			System.out.println(dia);
+			System.out.println("Que dia era el 1/1/"+year);
+			int respuesta;
+			respuesta = Teclado.readInteger();
+			System.out.println(dia.dayOfWeek(respuesta));
+			
 
 		}catch(DateException e){
 
