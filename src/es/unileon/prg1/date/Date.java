@@ -12,22 +12,16 @@ public class Date{
 
 	/**
 	* Atributo para almacenar el dia introducido
-	*
-	* @see Integrer
 	*/ 
 	private int day;
 
 	/**
 	* Atributo para almacenar el mes introducido
-	*
-	* @see Integrer
 	*/ 
 	private int month;
 
 	/**
 	* Atributo para almacenar el anyo introducido
-	*
-	* @see Integrer
 	*/ 
 	private int year;
 
@@ -66,7 +60,7 @@ public class Date{
 	/**
 	* Crea fechas a partir de los datos introducidos
 	*
-	* @param Date
+	* @param anotherDay
 	*/ 
 	public Date (Date anotherDay){
 
@@ -167,13 +161,13 @@ public class Date{
 	}
 
 	/**
-	* Llama al metodo getDaysOfMonth y le pasa como parametro el mes obtenido con getMont
+	* Llama al metodo daysOfMonth y le pasa como parametro el mes obtenido con getMont
 	*
 	*
 	* @return Retorna el numero de dias que tiene el mes dado
 	*
 	* @see getMonth
-	* @see getDaysOfMonth
+	* @see daysOfMonth
 	*/ 
 	public int daysOfMonth(){
 
@@ -287,12 +281,12 @@ public class Date{
 	}
 
 	/**
-	* Llama al metodo privado nameOfMonth y recibe su return
+	* Llama al metodo privado getMonthName y recibe su return
 	*
 	*
 	* @return Retorna un String con el nombre del mes
 	*
-	* @see nameOfMonth
+	* @see getMonthName
 	*/ 
 	public String getMonthName(){
 
@@ -769,7 +763,7 @@ public class Date{
 			}
 		}catch(DateException e){
 
-			System.out.println(e.getMessage());
+			System.err.println("Fallo en el metodo tomorrow");
 		}
 		return tomorrow;
 	}
@@ -779,7 +773,7 @@ public class Date{
 		StringBuffer salida = new StringBuffer();
 
 		salida.append(this.getDay() + "/" + this.getMonth() + "/" + this.getYear());
-		salida.append("El siguiente dia es: " + tomorrow());
+
 		return salida.toString();
 	}
 

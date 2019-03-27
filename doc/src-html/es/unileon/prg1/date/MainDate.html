@@ -16,7 +16,7 @@
 <span class="sourceLineNo">008</span><a name="line.8">                        Date dia, otroDia;</a>
 <span class="sourceLineNo">009</span><a name="line.9">                        int day; </a>
 <span class="sourceLineNo">010</span><a name="line.10">                        int month;</a>
-<span class="sourceLineNo">011</span><a name="line.11">                        int year;</a>
+<span class="sourceLineNo">011</span><a name="line.11">                        int year = 2017;</a>
 <span class="sourceLineNo">012</span><a name="line.12"></a>
 <span class="sourceLineNo">013</span><a name="line.13">                        System.out.println("Introduzca el dia");</a>
 <span class="sourceLineNo">014</span><a name="line.14">                        day = Teclado.readInteger();</a>
@@ -24,7 +24,7 @@
 <span class="sourceLineNo">016</span><a name="line.16">                        month = Teclado.readInteger();</a>
 <span class="sourceLineNo">017</span><a name="line.17">                        System.out.println("Introduzca el año");</a>
 <span class="sourceLineNo">018</span><a name="line.18">                        year = Teclado.readInteger();</a>
-<span class="sourceLineNo">019</span><a name="line.19"></a>
+<span class="sourceLineNo">019</span><a name="line.19">/*</a>
 <span class="sourceLineNo">020</span><a name="line.20">                        dia = new Date(day, month, year);</a>
 <span class="sourceLineNo">021</span><a name="line.21">                </a>
 <span class="sourceLineNo">022</span><a name="line.22">                        System.out.println("Introduzca otro dia para comparar");</a>
@@ -35,17 +35,21 @@
 <span class="sourceLineNo">027</span><a name="line.27">                        year = Teclado.readInteger();</a>
 <span class="sourceLineNo">028</span><a name="line.28"></a>
 <span class="sourceLineNo">029</span><a name="line.29">                        otroDia = new Date(day, month, year);</a>
-<span class="sourceLineNo">030</span><a name="line.30"></a>
-<span class="sourceLineNo">031</span><a name="line.31">                        System.out.println("Para los dias " + dia.dateWithFormat() + " y " + otroDia.dateWithFormat());</a>
-<span class="sourceLineNo">032</span><a name="line.32">                        System.out.println("Mismo dia: " + dia.isSameDay(otroDia) + "\n" + "Mismo mes: " + dia.isSameMonth(otroDia) + "\n" + "Mismo year: " + dia.isSameYear(otroDia) + "\n" + "Misma fecha: " + dia.isSameDate(otroDia));</a>
-<span class="sourceLineNo">033</span><a name="line.33">                        System.out.println(dia);</a>
-<span class="sourceLineNo">034</span><a name="line.34"></a>
-<span class="sourceLineNo">035</span><a name="line.35">                }catch(DateException e){</a>
-<span class="sourceLineNo">036</span><a name="line.36"></a>
-<span class="sourceLineNo">037</span><a name="line.37">                        System.out.println(e.getMessage());</a>
-<span class="sourceLineNo">038</span><a name="line.38">                }</a>
-<span class="sourceLineNo">039</span><a name="line.39">        }</a>
-<span class="sourceLineNo">040</span><a name="line.40">}</a>
+<span class="sourceLineNo">030</span><a name="line.30">*/</a>
+<span class="sourceLineNo">031</span><a name="line.31">                        dia = new Date(day,month,year);</a>
+<span class="sourceLineNo">032</span><a name="line.32"></a>
+<span class="sourceLineNo">033</span><a name="line.33">                        System.out.println("Que dia era el 1/1/"+year);</a>
+<span class="sourceLineNo">034</span><a name="line.34">                        int respuesta;</a>
+<span class="sourceLineNo">035</span><a name="line.35">                        respuesta = Teclado.readInteger();</a>
+<span class="sourceLineNo">036</span><a name="line.36">                        System.out.println(dia.dayOfWeek(respuesta));</a>
+<span class="sourceLineNo">037</span><a name="line.37">                        </a>
+<span class="sourceLineNo">038</span><a name="line.38"></a>
+<span class="sourceLineNo">039</span><a name="line.39">                }catch(DateException e){</a>
+<span class="sourceLineNo">040</span><a name="line.40"></a>
+<span class="sourceLineNo">041</span><a name="line.41">                        System.out.println(e.getMessage());</a>
+<span class="sourceLineNo">042</span><a name="line.42">                }</a>
+<span class="sourceLineNo">043</span><a name="line.43">        }</a>
+<span class="sourceLineNo">044</span><a name="line.44">}</a>
 
 
 
